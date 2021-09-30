@@ -1,0 +1,10 @@
+<ion-content>
+  <div *ngIf="activity_loaded && activity_list.length==0">
+    <p class="error-message">No activities found for the selected week</p>
+  </div>
+  <app-activity-selector
+    [activity_list]="activity_list"
+    (selected)="activity_btnclick($event)"
+  ></app-activity-selector>
+  <h2>hello</h2>
+</ion-content>

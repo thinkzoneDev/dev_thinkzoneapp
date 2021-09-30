@@ -1,0 +1,80 @@
+<ion-header no-border [ngClass]="(toolbarshadow)?'':'shadow'">
+  <ion-toolbar (click)="calltoroot()">
+    <ion-row>
+      <!-- <button class="backbutton" (click)="calltoroot()">
+        <ion-icon name="arrow-back"></ion-icon>
+      </button> -->
+      <ion-buttons>
+        <ion-back-button></ion-back-button>
+      </ion-buttons>
+      <ion-title> {{ 'HOME.ppttrainingcontent' | translate }} </ion-title>
+    </ion-row>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="no-content">
+    <p *ngIf="contentstatus">{{ 'PPT.no_contents_found' | translate }}</p>
+  </div>
+  <div *ngIf="!contentstatus" class="container">
+    <div
+      *ngFor="let content of contentdata let i = index;"
+      [ngClass]="(current_segment == i) ? 'showdiv' : 'hidediv'"
+    >
+      <ion-card>
+        <!-- Text -->
+        <div *ngIf="content.type == 'content'" class="text">
+          <div [innerHTML]="content.content" class="text-content"></div>
+        </div>
+
+        <!-- Image -->
+
+        <img
+          *ngIf="content.type == 'image'"
+          loading="eager"
+          alt="..."
+          src="{{ (content.content == undefined || content.content == null || content.content == '') ? './../../../../assets/img/media_missing.png' : content.content }}"
+          onerror="this.onerror=null; this.src='./../../../../assets/img/media_missing.png'"
+        />
+
+        <!-- Video  -->
+        <div *ngIf="content.type == 'vedio'" class="video">
+          <!-- download button -->
+
+          <ion-button
+            (click)="play_btn_click(segment)"
+            expand="full"
+            fill="solid"
+            shape="round"
+            strong="true"
+            mode="ios"
+          >
+            <ion-icon slot="start" name="play-circle"></ion-icon>Play Video
+          </ion-button>
+
+          <ion-button
+            (click)="delete_btn_click(segment)"
+            expand="full"
+            fill="solid"
+            color="danger"
+            shape="round"
+            strong="true"
+            mode="ios"
+          >
+            <ion-icon slot="start" name="trash"></ion-icon>Delete Video
+          </ion-button>
+        </div>
+      </ion-card>
+
+      <div class="btn-grp">
+        <ion-button (click)="prev(i)"
+          ><ion-icon name="arrow-dropleft"></ion-icon
+        ></ion-button>
+
+        <ion-button (click)="next(i)" [hidden]="hide_next_button"
+          ><ion-icon name="arrow-dropright"></ion-icon
+        ></ion-button>
+      </div>
+    </div>
+  </div>
+</ion-content>

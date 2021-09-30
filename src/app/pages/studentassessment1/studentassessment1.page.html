@@ -1,0 +1,61 @@
+<ion-header no-border [ngClass]="(toolbarshadow)?'':'shadow'">
+    <ion-toolbar class="material-toolbar" color="--ion-color-cushead">
+        <ion-row>
+            <ion-back-button class="white"></ion-back-button>
+            <ion-title class="white page-title-absolute">
+                <p style="margin-bottom: 0px;color:#ffffff;text-transform:capitalize;">Student Assessment</p>
+            </ion-title>
+        </ion-row>
+        <ion-row>
+            <div class="ass1_studentname d-flex">
+                <div class="ass_student_heading">{{ studentname | uppercase }}</div>
+                <div class="ass_student_heading">{{ program | uppercase }}</div>
+            </div>
+        </ion-row>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content [scrollEvents]="true" (ionScroll)="logScrolling($event)">
+    <div class="card-margin">
+        <!-- No records found area -->
+        <div class="no_records_found" *ngIf="assessment_list.length<=0">
+            <table>
+                <tr>
+                    <td>
+                        <ion-icon name="alert" class="icon_size"></ion-icon>
+                    </td>
+                    <td>No records found !</td>
+                </tr>
+            </table>
+        </div>
+        <div class="" *ngIf="assessment_list.length>0">
+            <ion-list>
+                <ion-item *ngFor="let ass of assessment_list; let i=index;" (click)="open_assessment_details(ass)">
+                    <table>
+                        <tr>
+                            <td>
+                                <ion-label class="list_title">{{ ass.stage | titlecase }}</ion-label>
+                            </td>
+                        </tr>
+                        <!-- <tr><td><ion-label class="list_subtitle">{{ ass.program | titlecase }}</ion-label></td></tr> -->
+                        <tr>
+                            <td>
+                                <ion-label class="list_subtitle">Level: {{ ass.level }}</ion-label>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <ion-label class="list_subtitle">{{ ass.createdon | date: 'mediumDate' }}</ion-label>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <ion-label *ngIf="ass.program != 'ece'" class="list_subtitle">{{ ass.subject | titlecase }}</ion-label>
+                            </td>
+                        </tr>
+                    </table>
+                </ion-item>
+            </ion-list>
+        </div>
+    </div>
+</ion-content>

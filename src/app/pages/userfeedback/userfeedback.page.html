@@ -1,0 +1,51 @@
+<ion-header no-border [ngClass]="(toolbarshadow)?'':'shadow'">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title> Feedback & Issues </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="container">
+    <div class="card">
+      <ion-radio-group
+        (ionChange)="select_feedback_onchange($event.detail.value)"
+      >
+        <div class="flex">
+          <ion-radio value="issue"></ion-radio>
+          <p>Issues</p>
+        </div>
+
+        <div class="flex">
+          <ion-radio value="feedback"></ion-radio>
+          <p>Feedback</p>
+        </div>
+      </ion-radio-group>
+      <!-- Feedback or Issue -->
+      <!-- <ion-item class="radio-margin">
+            <ion-label>Feedback/ Issue</ion-label>
+            <ion-select placeholder="Select One" value="{{selected_feedback_or_issue}}" (ionChange)="select_feedback_onchange($event.detail.value)" class="select-width">
+              <ion-select-option value="feedback">Feedback</ion-select-option>
+              <ion-select-option value="issue">Issue</ion-select-option>
+            </ion-select>
+          </ion-item> -->
+
+      <!-- Textarea with custom number of rows and cols -->
+
+      <ion-textarea
+        rows="6"
+        cols="20"
+        placeholder="Enter feedback or issues description here..."
+        [(ngModel)]="descrption"
+      ></ion-textarea>
+
+      <!-- Button submit -->
+
+      <ion-button (click)="saveUserfeedback()">
+        Submit <ion-icon name="save"></ion-icon>
+      </ion-button>
+    </div>
+  </div>
+</ion-content>

@@ -1,0 +1,48 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{ 'HBL.response_report' | translate }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="container">
+    <div class="drop">
+      <ion-icon name="calendar"></ion-icon>
+      <ion-item lines="none">
+        <ion-label>Month</ion-label>
+        <ion-select
+          [(ngModel)]="month"
+          (ngModelChange)="monthOnChange(month)"
+          value="{{month}}"
+          interface="action-sheet"
+        >
+          <ion-select-option
+            *ngFor="let month of monthlist"
+            value="{{month.value}}"
+            >{{ month.name | uppercase }}</ion-select-option
+          >
+        </ion-select>
+      </ion-item>
+    </div>
+
+    <ion-card>
+      <ion-grid class="ion-margin">
+        <ion-row>
+          <ion-col>S.No</ion-col>
+          <ion-col>Student</ion-col>
+          <!-- <ion-col>Phone</ion-col> -->
+          <ion-col>No of calls</ion-col>
+        </ion-row>
+        <ion-row *ngFor="let r of report; index as i">
+          <ion-col>{{ i + 1 }}</ion-col>
+          <ion-col>{{r._id.studentname}}</ion-col>
+          <!-- <ion-col>{{r.detailsarr.phonenumber}}</ion-col> -->
+          <ion-col>{{r.detailsarr.length}}</ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-card>
+  </div>
+</ion-content>

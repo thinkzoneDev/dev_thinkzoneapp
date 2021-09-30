@@ -1,0 +1,52 @@
+<!-- <ion-header no-border [ngClass]="'shadow'">
+  <ion-toolbar class="material-toolbar" color="--ion-color-reghead">
+      <ion-buttons slot="start" style="color:#ffffff">
+          <ion-back-button style="color:#ffffff"></ion-back-button>
+      </ion-buttons>
+      <ion-title>
+          <ion-title class='page-title'>
+              <p style="margin-bottom:0;color:#ffffff;text-transform: capitalize;">PPT{{ 'ASSESSMENT.title' | translate }} {{(subject!='na')?'('+subject+')':''}}</p>
+          </ion-title>
+      </ion-title>
+      <div class="d-flex justify-content-around align-items-center" style="padding:10px">
+          <div class="text-center">
+              <p class='data-large white pMargin font12'>{{ 'ASSESSMENT.name' | translate }}</p>
+              <p class="pMargin white fontSize"> {{studentname | uppercase}}</p>
+          </div>
+          <div class="vr"></div>
+          <div class="text-center">
+              <p class='data white pMargin font12'>{{ 'ASSESSMENT.program' | translate }}</p>
+              <p class="pMargin white fontSize"> {{program | uppercase}}</p>
+          </div>
+          <div class="vr"></div>
+          <div class="text-center">
+              <p class='data white pMargin font12'>{{ 'ASSESSMENT.level' | translate }}</p>
+              <p class="pMargin white fontSize">{{level}}</p>
+          </div>
+      </div>
+  </ion-toolbar>
+</ion-header> -->
+<ion-content>
+  <div class="container">
+    <div class="img">
+      <img src="../../../../assets/img/good-job.png" />
+    </div>
+
+    <!-- Save -->
+    <ion-button (click)="save_button_click()" [disabled]="disable_save_button">
+      <ion-icon name="save"></ion-icon>{{ 'ASSESSMENT.btn_save' | translate }}
+    </ion-button>
+
+    <!-- Quiz -->
+
+    <ion-button (click)="quiz_button_click()" [disabled]="disable_quiz_button">
+      <ion-icon name="help-circle"></ion-icon>{{ 'PPT.quiz' | translate }}
+    </ion-button>
+
+    <!-- Preview -->
+
+    <ion-button (click)="preview_button_click()" [disabled]="!(disable_save_button && disable_quiz_button)">
+      <ion-icon name="eye"></ion-icon>{{ 'PPT.preview' | translate }}
+    </ion-button>
+  </div>
+</ion-content>

@@ -1,0 +1,145 @@
+ion-header {
+  ion-toolbar {
+    --background: #eff4ff;
+    ion-back-button {
+      color: #4286f4;
+    }
+
+    ion-title {
+      font-size: 1.2rem;
+      font-weight: 400;
+      letter-spacing: 1px;
+      font-family: Arial, Helvetica, sans-serif;
+      color: #4286f4;
+      padding: 0;
+    }
+  }
+}
+
+ion-content {
+  --background: #eff4ff;
+
+  ion-card {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    min-height: 150px;
+    flex-direction: column;
+    padding: 0;
+    background: white;
+    padding: 10px 0px;
+
+    .Wrapper {
+      display: flex;
+      justify-content: flex-start;
+      flex-direction: row;
+      align-items: center;
+      width: 100%;
+      padding: 0px 20px;
+      img {
+        height: 70px;
+        width: 70px;
+      }
+
+      h2 {
+        font-size: 1.5rem;
+        font-weight: 400;
+        letter-spacing: 1px;
+        font-family: "Times New Roman", Times, serif;
+        color: black;
+        margin-left: 20px;
+      }
+    }
+    .search-bar {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0px 5px;
+      width: 100%;
+
+      ion-button {
+        --background: white;
+        height: 40px;
+        ion-icon {
+          font-size: 1.5rem;
+          color: #4286f4;
+        }
+      }
+    }
+  }
+
+  .container {
+    height: 90%;
+    overflow: auto;
+    background: white;
+    margin: auto;
+    width: 95%;
+    margin-top: 15px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    border-radius: 5px;
+    padding: 10px;
+    position: relative;
+
+    h2 {
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 1.3rem;
+      color: black;
+      letter-spacing: 1px;
+      text-transform: capitalize;
+      margin: 10px 0px;
+      font-weight: 500;
+    }
+
+    h1,
+    h3,
+    p {
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 1.1rem;
+      margin: 0;
+      font-weight: 400;
+    }
+
+    h1 {
+      color: #ef5350;
+      text-decoration: underline;
+      text-transform: capitalize;
+      letter-spacing: 1px;
+    }
+
+    h3 {
+      color: #4286f4;
+      letter-spacing: 1px;
+    }
+
+    p {
+      color: black;
+    }
+
+    .border {
+      padding: 7px;
+      border-radius: 50%;
+      position: absolute;
+      background: white;
+      right: 0;
+      top: 0;
+      margin: 10px;
+
+      .button {
+        height: 40px;
+        width: 40px;
+        background: rgba(224, 224, 224, 0.7);
+        border-radius: 50%;
+        box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        ion-icon {
+          color: #4286f4;
+          font-size: 1.7rem;
+        }
+      }
+    }
+  }
+}

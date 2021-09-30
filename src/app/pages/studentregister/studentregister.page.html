@@ -1,0 +1,281 @@
+<ion-header>
+  <ion-toolbar (click)="checkQuizStatus()">
+    <ion-row>
+      <button (click)="checkQuizStatus()">
+        <ion-icon name="arrow-back"></ion-icon>
+      </button>
+      <ion-title>{{ 'REGISTER.register' | translate}}</ion-title>
+    </ion-row>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="container">
+    <ion-card>
+      <ion-item lines="none">
+        <ion-label position="floating"
+          >{{ 'REGISTER.student_name' | translate}}</ion-label
+        >
+        <ion-input
+          value="{{_studentname}}"
+          [(ngModel)]="studentname"
+          type="text"
+        ></ion-input>
+      </ion-item>
+    </ion-card>
+
+    <ion-card>
+      <ion-item lines="none">
+        <ion-label position="floating">
+          {{ 'REGISTER.guardian' | translate}}</ion-label
+        >
+        <ion-input
+          value="{{_parentsname}}"
+          [(ngModel)]="parentsname"
+          type="text"
+        ></ion-input>
+      </ion-item>
+    </ion-card>
+
+    <ion-card>
+      <ion-item lines="none">
+        <ion-radio-group>
+          <ion-label>{{ 'REGISTER.gender' | translate}}:</ion-label>
+
+          <div class="wrapper">
+            <ion-item lines="none">
+              <ion-label>{{ 'REGISTER.male' | translate}}</ion-label>
+              <ion-radio
+                slot="start"
+                (click)='gender="male"'
+                [ngClass]='(gender=="male")?"selected-chip":"unselected-chip"'
+              ></ion-radio>
+            </ion-item>
+            <ion-item lines="none">
+              <ion-label>{{ 'REGISTER.female' | translate}}</ion-label>
+              <ion-radio
+                slot="start"
+                (click)='gender="female"'
+                [ngClass]='(gender=="female")?"selected-chip":"unselected-chip"'
+              ></ion-radio>
+            </ion-item>
+          </div>
+        </ion-radio-group>
+      </ion-item>
+    </ion-card>
+
+    <ion-card>
+      <ion-item lines="none">
+        <ion-label position="floating"
+          >{{ 'REGISTER.phone' | translate}}</ion-label
+        >
+        <ion-input
+          [(ngModel)]="phone"
+          type="number"
+          minlength="10"
+          maxlength="10"
+        ></ion-input>
+      </ion-item>
+    </ion-card>
+
+    <ion-card>
+      <ion-item lines="none">
+        <ion-label>{{ 'REGISTER.dob' | translate}}</ion-label>
+        <ion-input type="date" [(ngModel)]="dob"></ion-input>
+      </ion-item>
+    </ion-card>
+
+    <!-- <ion-card>
+      <ion-item lines="none">
+        <ion-label>{{ 'REGISTER.reg_date' | translate}}</ion-label>
+        <ion-icon name="calendar"></ion-icon>
+        <ion-datetime
+          value="{{_registration_date}}"
+          display-format="DD/MM/YYYY"
+          picker-format="DD, MM, YYYY"
+          (ionChange)="regdate_onhange($event.detail.value)"
+        ></ion-datetime>
+      </ion-item>
+    </ion-card> -->
+
+    <ion-card>
+      <ion-item lines="none">
+        <ion-label>HBL</ion-label>
+        <ion-checkbox
+          [(ngModel)]="isHBL"
+          (ionChange)="checkIsHBL()"
+        ></ion-checkbox>
+      </ion-item>
+    </ion-card>
+
+    <ion-card *ngIf="isFellow">
+      <ion-item lines="none">
+        <ion-radio-group>
+          <ion-label>{{ 'REGISTER.program' | translate}}:</ion-label>
+          <div class="wrapper">
+            <ion-item lines="none">
+              <ion-label>{{ 'REGISTER.ece' | translate}}</ion-label>
+              <ion-radio
+                slot="start"
+                (click)='select_program_onchange("ece")'
+                [ngClass]='(program=="ece")?"selected-chip":"unselected-chip"'
+              ></ion-radio>
+            </ion-item>
+            <ion-item lines="none">
+              <ion-label>{{ 'REGISTER.pge' | translate}}</ion-label>
+              <ion-radio
+                slot="start"
+                (click)='select_program_onchange("pge")'
+                [ngClass]='(program=="pge")?"selected-chip":"unselected-chip"'
+              ></ion-radio>
+            </ion-item>
+          </div>
+        </ion-radio-group>
+      </ion-item>
+    </ion-card>
+
+    <ion-card *ngIf="is_selected">
+      <ion-item lines="none">
+        <ion-select
+          interface="popover"
+          multiple="false"
+          cancelText="Cancel"
+          okText="Ok"
+          placeholder="{{selected_class_text}}"
+          [(ngModel)]="selected_class"
+          value="{{selected_class}}"
+          style="min-width: 100%; color: black"
+        >
+          <ion-select-option
+            *ngFor="let classval of class_list"
+            value="{{classval}}"
+            >{{classval}}</ion-select-option
+          >
+        </ion-select>
+      </ion-item>
+    </ion-card>
+
+    <ion-button (click)="register_button_click()" expand="block">
+      {{ 'REGISTER.btn_save' | translate}}<ion-icon name="save"></ion-icon>
+    </ion-button>
+  </div>
+
+  <!-- <ion-row style="margin-bottom:10px;">
+            <ion-col> 
+                <div class='cancel-button' (click)="closeModal()">
+                  <p style='margin-top: 10px;margin-bottom: 10px; color: blue;'>{{ 'REGISTER.btn_cancel' | translate}}</p>
+                </div> 
+            </ion-col>
+          </ion-row> -->
+</ion-content>
+
+<!-- <ion-content> -->
+<!-- <ion-card> -->
+<!-- <div class='shadow card text-center gray-bg'>
+        <p class='data-large white'>{{ 'REGISTER.student_register' | translate}}</p>
+    </div>
+
+
+    <div class='card shadow'>
+      <div class="data-large hffs">
+        <ion-icon class='m10' name="person"></ion-icon>
+        <p>Personal details</p>
+      </div> -->
+
+<!-- Student name -->
+<!-- <ion-item  class="animated fadeInUp">
+        <ion-label position="floating">
+          {{ 'REGISTER.student_name' | translate}}
+        </ion-label>
+        <ion-input value="{{_studentname}}" [(ngModel)]="studentname" color="secondary" type="text"></ion-input>
+      </ion-item> -->
+
+<!-- Fathers name -->
+<!-- <ion-item  class="animated fadeInUp">
+        <ion-label position="floating">
+          {{ 'REGISTER.guardian' | translate}}
+        </ion-label>
+        <ion-input value="{{_parentsname}}" [(ngModel)]="parentsname" color="secondary" type="text"></ion-input>
+      </ion-item>
+
+    </div> -->
+
+<!-- <div class='card shadow'>
+      <div class='hffs data-large'>
+        <ion-icon class='m10' name="clipboard"></ion-icon>
+        <p>Additional information</p>
+      </div> -->
+
+<!-- DOB -->
+<!-- <ion-item class="radio-margin">
+        <ion-label class="gray">{{ 'REGISTER.dob' | translate}}</ion-label>
+        <ion-datetime value="{{_dob}}" display-format="DD/MM/YYYY" picker-format="DD MM, YYYY" (ionChange)="dob_onhange($event.detail.value)"></ion-datetime>
+      </ion-item> -->
+
+<!-- Registration Date -->
+<!-- <ion-item class="radio-margin">
+        <ion-label class="gray">{{ 'REGISTER.reg_date' | translate}}</ion-label>
+        <ion-datetime value="{{_registration_date}}" display-format="DD/MM/YYYY" picker-format="DD MM, YYYY" (ionChange)="regdate_onhange($event.detail.value)"></ion-datetime>
+      </ion-item> -->
+
+<!-- Phone -->
+<!-- <ion-item  class="animated fadeInUp">
+        <ion-label position="floating">
+          {{ 'REGISTER.phone' | translate}}
+        </ion-label>
+        <ion-input [(ngModel)]="phone" color="secondary" type="number"></ion-input>
+      </ion-item> -->
+
+<!-- Gender -->
+<!-- <div class='horizontal-flexbox'>
+        <div (click)='gender="male"' [ngClass]='(gender=="male")?"selected-chip":"unselected-chip"'>
+          <p class='padding10 m0'>Male</p>
+        </div>
+    
+        <div (click)='gender="female"' [ngClass]='(gender=="female")?"selected-chip":"unselected-chip"'>
+          <p class='padding10 m0'>Female</p>
+        </div>
+      </div>
+    </div>
+
+    <div class='card shadow'>
+      <ion-row class="hffs data-large gray">
+        <ion-icon class="m10" name="podium"></ion-icon>
+        <p>{{ 'REGISTER.program' | translate}}</p>
+      </ion-row> -->
+<!-- Program -->
+<!-- <div class='m10'>
+        <div class='horizontal-flexbox'>
+          <div (click)='select_program_onchange("ece")' [ngClass]='(program=="ece")?"selected-chip":"unselected-chip"'>
+            <p class='padding10 m0'>ECE</p>
+          </div>
+      
+          <div (click)='select_program_onchange("pge")' [ngClass]='(program=="pge")?"selected-chip":"unselected-chip"'>
+            <p class='padding10 m0'>PGE</p>
+          </div>
+        </div>
+      </div>
+
+      <div [ngClass]='buttonclass' [hidden]="hide_class_field">
+        <div class='horizontal-flexbox'>
+          <p>{{ 'REGISTER.class' | translate}}</p>
+          <div style='width: 60%; background: #E0E0E0;margin-left: 20px;height: 1px;'></div>
+        </div>
+        
+        <div class='horizontal-flexbox' style='flex-wrap: wrap' [ngClass]='(buttonclass=="revealer")?"inner-stuff-visible":"inner-stuff-hidden"'>
+          <div style='margin-top: 10px;margin-right: 15px;margin-left: 15px' (click)='select_class_onchange(c)' [ngClass]='(class==c)?"selected-chip":"unselected-chip"' *ngFor='let c of class_list'>
+            <p class='padding10 m0'>{{c}}</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div (click)="register_button_click()" class='shadow card padding10 blue-bg text-center'  style='border-radius: 4px'>
+      <p class='m0 data-large white'>{{ 'REGISTER.btn_save' | translate}}</p>
+    </div>
+
+
+    <div (click)="closeModal()" class='card padding10 white-bg text-center'  style='border-radius: 4px;border: 1px gray solid'>
+      <p class='data-large m0'>{{ 'REGISTER.btn_cancel' | translate}}</p>
+    </div> -->

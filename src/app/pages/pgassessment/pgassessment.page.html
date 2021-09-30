@@ -1,0 +1,489 @@
+<!-- Code Commented By abinash Shasini on 16/07/2021 Design change -->
+<ion-header no-border [ngClass]="(toolbarshadow)?'':'shadow'">
+  <ion-toolbar (click)="closeModal()">
+    <ion-row>
+      <button (click)="closeModal()">
+        <ion-icon name="arrow-back"></ion-icon>
+      </button>
+      <ion-title> {{ 'PGEASSESSMENT.title' | translate }} </ion-title>
+    </ion-row>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [scrollEvents]="true" (ionScroll)="logScrolling($event)">
+  <div class="shadow">
+    <div class="wrapper">
+      <div
+        class="item"
+        (click)="month_onchange(q.value)"
+        *ngFor="let q of month_list"
+        [ngClass]='(selected_month==q.value)?"selected-chip":"unselected-chip"'
+      >
+        <p class="data">{{q.text}}</p>
+      </div>
+    </div>
+  </div>
+  <div class="card">
+    <h2>{{studentData.studentname}}</h2>
+    <h4>{{studentData.program}}</h4>
+  </div>
+
+  <!-- <div class="btn">
+    <ion-button
+      (click)="pge_fillmarks_btnclick(s,'eng')"
+      [style.opacity]="disable_fillmarks_button?'0.5':'1'"
+    >
+      {{ 'PGEASSESSMENT.btn_eng' | translate }}
+    </ion-button>
+
+    <ion-button
+      (click)="pge_fillmarks_btnclick(s,'math')"
+      [style.opacity]="disable_fillmarks_button?'0.5':'1'"
+    >
+      {{ 'PGEASSESSMENT.btn_math' | translate }}
+    </ion-button>
+
+    <ion-button
+      (click)="pge_fillmarks_btnclick(s,'odia')"
+      [style.opacity]="disable_fillmarks_button?'0.5':'1'"
+    >
+      {{ 'PGEASSESSMENT.btn_odia' | translate }}
+    </ion-button>
+  </div> -->
+
+  <div class="activity">
+    <ion-card
+      (click)="pge_fillmarks_btnclick(studentData,'eng')"
+      [style.opacity]="disable_fillmarks_button?'0.5':'1'"
+      class="box-2"
+    >
+      <div class="flex-2">
+        <img src="../../../assets/img/hbl/satisfaction.png" />
+        <h2>{{ 'PGEASSESSMENT.btn_eng' | translate }}</h2>
+      </div>
+    </ion-card>
+
+    <ion-card
+      (click)="pge_fillmarks_btnclick(studentData,'math')"
+      [style.opacity]="disable_fillmarks_button?'0.5':'1'"
+      class="box-2"
+    >
+      <div class="flex-2">
+        <img src="../../../assets/img/hbl/calculating.png" />
+        <h2>{{ 'PGEASSESSMENT.btn_math' | translate }}</h2>
+      </div>
+    </ion-card>
+
+    <ion-card
+      (click)="pge_fillmarks_btnclick(studentData,'odia')"
+      [style.opacity]="disable_fillmarks_button?'0.5':'1'"
+      class="box-2"
+    >
+      <div class="flex-2">
+        <img src="../../../assets/img/hbl/english.png" />
+        <h2>{{ 'PGEASSESSMENT.btn_odia' | translate }}</h2>
+      </div>
+    </ion-card>
+  </div>
+</ion-content>
+
+<!-- <ion-header no-border [ngClass]="(toolbarshadow)?'':'shadow'">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title> {{ 'PGEASSESSMENT.title' | translate }} </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [scrollEvents]="true" (ionScroll)="logScrolling($event)">
+  <div class="card shadow">
+    <div>
+      <div class="wrapper">
+        <div
+          class="item"
+          (click)="month_onchange(q.value)"
+          *ngFor="let q of month_list"
+          [ngClass]='(selected_month==q.value)?"selected-chip":"unselected-chip"'
+        >
+          <p class="data">{{q.text}}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <ion-card class="card1" *ngFor="let s of student_list">
+    <p class="data-large">{{s.studentname}}</p>
+
+    <div class="hfse">
+      <ion-button
+        (click)="pge_fillmarks_btnclick(s,'eng')"
+        [style.opacity]="disable_fillmarks_button?'0.5':'1'"
+      >
+        {{ 'PGEASSESSMENT.btn_eng' | translate }}
+      </ion-button>
+
+      <ion-button
+        (click)="pge_fillmarks_btnclick(s,'math')"
+        [style.opacity]="disable_fillmarks_button?'0.5':'1'"
+      >
+        {{ 'PGEASSESSMENT.btn_math' | translate }}
+      </ion-button>
+
+      <ion-button
+        (click)="pge_fillmarks_btnclick(s,'odia')"
+        [style.opacity]="disable_fillmarks_button?'0.5':'1'"
+      >
+        {{ 'PGEASSESSMENT.btn_odia' | translate }}
+      </ion-button>
+    </div>
+  </ion-card> -->
+
+<!-- <div class='card shadow'>
+      <div class=''>
+         
+          <p class='data-large'>{{ 'PGEASSESSMENT.select_month' | translate }}</p>
+          <div style='flex-wrap: wrap' class='horizontal-flexbox'>
+              <div (click)='month_onchange(q.value)' *ngFor='let q of month_list' [ngClass]='(selected_month==q.value)?"selected-chip":"unselected-chip"'>
+                  <p class='data'>{{q.text}}</p>
+              </div>
+          </div>
+      </div>
+  </div> -->
+
+<!-- <div class='card-np shadow' [style.opacity]="disable_fillmarks_button?'0.5':'1'">
+      <div class='marks-buttonHeading green'>
+          <div>
+               <ion-icon style="font-size: 1.8rem;margin: 0 10px" name='paper'></ion-icon> 
+              <p class='data-large white text-center pMargin'>{{ 'PGEASSESSMENT.btn_eng' | translate }}</p>
+          </div>
+      </div>
+
+      <div class='m20'>
+        <div *ngIf='pge_eng_l1.length <= 0 && pge_eng_l2.length <= 0 && pge_eng_l3.length <= 0 && pge_eng_l4.length <= 0 && pge_eng_l5.length <= 0'>
+          {{'PGEASSESSMENT.no_data_found' | translate}}
+        </div>
+
+          <div *ngIf='pge_eng_l1!= null && pge_eng_l1.length > 0'>
+              <p class='data-large'>{{ 'PGEASSESSMENT.level1' | translate }}</p>
+              <div *ngFor="let eng_l1 of pge_eng_l1;">
+                  <div (click)='pge_fillmarks_btnclick(eng_l1, "eng")' class='mbot10 marks-button shadow hfsb'>
+                      <p class='data pMargin'>{{eng_l1.studentname | uppercase}}</p>
+                      <ion-icon class="data-large gray" name='ios-arrow-dropright'></ion-icon>
+                  </div>
+              </div>
+          </div>
+
+          <div *ngIf='pge_eng_l2!= null && pge_eng_l2.length > 0'>
+              <p class='data-large'>{{ 'PGEASSESSMENT.level2' | translate }}</p>
+              <div *ngFor="let eng_l2 of pge_eng_l2;">
+                  <div (click)='pge_fillmarks_btnclick(eng_l2, "eng")' class='mbot10 marks-button shadow hfsb'>
+                      <p class='data pMargin'>{{eng_l2.studentname | uppercase}}</p>
+                      <ion-icon class="data-large gray" name='ios-arrow-dropright'></ion-icon>
+                  </div>
+              </div>
+          </div>
+
+          <div *ngIf='pge_eng_l3!= null && pge_eng_l3.length > 0'>
+              <p class='data-large'>{{ 'PGEASSESSMENT.level3' | translate }}</p>
+              <div *ngFor="let eng_l3 of pge_eng_l3;">
+                  <div (click)='pge_fillmarks_btnclick(eng_l3, "eng")' class='mbot10 marks-button shadow hfsb'>
+                      <p class='data pMargin'>{{eng_l3.studentname | uppercase}}</p>
+                      <ion-icon class="data-large gray" name='ios-arrow-dropright'></ion-icon>
+                  </div>
+              </div>
+          </div>
+
+
+          <div *ngIf='pge_eng_l4!= null && pge_eng_l4.length > 0'>
+              <p class='data-large'>{{ 'PGEASSESSMENT.level4' | translate }}</p>
+              <div *ngFor="let eng_l4 of pge_eng_l4;">
+                  <div (click)='pge_fillmarks_btnclick(eng_l4, "eng")' class='mbot10 marks-button shadow hfsb'>
+                      <p class='data pMargin'>{{eng_l4.studentname | uppercase}}</p>
+                      <ion-icon class="data-large gray" name='ios-arrow-dropright'></ion-icon>
+                  </div>
+              </div>
+          </div>
+
+          <div *ngIf='pge_eng_l5!= null && pge_eng_l5.length > 0'>
+              <p class='data-large'>{{ 'PGEASSESSMENT.level5' | translate }}</p>
+              <div *ngFor="let eng_l5 of pge_eng_l5;">
+                  <div (click)='pge_fillmarks_btnclick(eng_l5, "eng")' class='mbot10 marks-button shadow hfsb'>
+                      <p class='data pMargin'>{{eng_l5.studentname | uppercase}}</p>
+                      <ion-icon class="data-large gray" name='ios-arrow-dropright'></ion-icon>
+                  </div>
+              </div>
+          </div>
+
+      </div>
+
+  </div> -->
+
+<!-- <div class='card-np shadow' [style.opacity]="disable_fillmarks_button?'0.5':'1'">
+      <div class='marks-buttonHeading purple'>
+          <div>
+               <ion-icon style="font-size: 1.8rem;margin: 0 10px" name='paper'></ion-icon> 
+              <p class='data-large white text-center pMargin'>{{ 'PGEASSESSMENT.btn_math' | translate }}</p>
+          </div>
+      </div>
+
+      <div class='m20'>
+        <div *ngIf='pge_math_l1.length <= 0 && pge_math_l2.length <= 0 && pge_math_l3.length <= 0 && pge_math_l4.length <= 0 && pge_math_l5.length <= 0'>
+          {{'PGEASSESSMENT.no_data_found' | translate}}
+        </div>
+
+        <div *ngIf='pge_math_l1!= null && pge_math_l1.length > 0'>
+            <p class='data-large'>{{ 'PGEASSESSMENT.level1' | translate }}</p>
+            <div *ngFor="let math_l1 of pge_math_l1;">
+                <div (click)='pge_fillmarks_btnclick(math_l1, "math")' class='mbot10 marks-button shadow hfsb'>
+                    <p class='data pMargin'>{{math_l1.studentname | uppercase}}</p>
+                    <ion-icon class="data-large gray" name='ios-arrow-dropright'></ion-icon>
+                </div>
+            </div>
+        </div>
+
+        <div *ngIf='pge_math_l2!= null && pge_math_l2.length > 0'>
+            <p class='data-large'>{{ 'PGEASSESSMENT.level2' | translate }}</p>
+            <div *ngFor="let math_l2 of pge_math_l2;">
+                <div (click)='pge_fillmarks_btnclick(math_l2, "math")' class='mbot10 marks-button shadow hfsb'>
+                    <p class='data pMargin'>{{math_l2.studentname | uppercase}}</p>
+                    <ion-icon class="data-large gray" name='ios-arrow-dropright'></ion-icon>
+                </div>
+            </div>
+        </div>
+
+        <div *ngIf='pge_math_l3!= null && pge_math_l3.length > 0'>
+            <p class='data-large'>{{ 'PGEASSESSMENT.level3' | translate }}</p>
+            <div *ngFor="let math_l3 of pge_math_l3;">
+                <div (click)='pge_fillmarks_btnclick(math_l3, "math")' class='mbot10 marks-button shadow hfsb'>
+                    <p class='data pMargin'>{{math_l3.studentname | uppercase}}</p>
+                    <ion-icon class="data-large gray" name='ios-arrow-dropright'></ion-icon>
+                </div>
+            </div>
+        </div>
+
+        <div *ngIf='pge_math_l4!= null && pge_math_l4.length > 0'>
+            <p class='data-large'>{{ 'PGEASSESSMENT.level4' | translate }}</p>
+            <div *ngFor="let math_l4 of pge_math_l4;">
+                <div (click)='pge_fillmarks_btnclick(math_l4, "math")' class='mbot10 marks-button shadow hfsb'>
+                    <p class='data pMargin'>{{math_l4.studentname | uppercase}}</p>
+                    <ion-icon class="data-large gray" name='ios-arrow-dropright'></ion-icon>
+                </div>
+            </div>
+        </div>
+
+        <div *ngIf='pge_math_l5!= null && pge_math_l5.length > 0'>
+            <p class='data-large'>{{ 'PGEASSESSMENT.level5' | translate }}</p>
+            <div *ngFor="let math_l5 of pge_math_l5;">
+                <div (click)='pge_fillmarks_btnclick(math_l5, "math")' class='mbot10 marks-button shadow hfsb'>
+                    <p class='data pMargin'>{{math_l5.studentname | uppercase}}</p>
+                    <ion-icon class="data-large gray" name='ios-arrow-dropright'></ion-icon>
+                </div>
+            </div>
+        </div>
+      </div>
+  </div> -->
+
+<!-- <div class='card-np shadow' [style.opacity]="disable_fillmarks_button?'0.5':'1'">
+      <div class='marks-buttonHeading orange'>
+          <div>
+               <ion-icon style="font-size: 1.8rem;margin: 0 10px" name='paper'></ion-icon> 
+              <p class='data-large white text-center'>{{ 'PGEASSESSMENT.btn_odia' | translate }}</p>
+          </div>
+      </div>
+
+      <div class='m20'>
+        <div *ngIf='pge_odia_l1.length <= 0 && pge_odia_l2.length <= 0 && pge_odia_l3.length <= 0 && pge_odia_l4.length <= 0 && pge_odia_l5.length <= 0'>
+            {{'PGEASSESSMENT.no_data_found' | translate}}
+        </div>
+
+        <div *ngIf='pge_odia_l1!= null && pge_odia_l1.length > 0'>
+            <p class='data-large'>{{ 'PGEASSESSMENT.level1' | translate }}</p>
+            <div *ngFor="let odia_l1 of pge_odia_l1;">
+                <div (click)='pge_fillmarks_btnclick(odia_l1, "odia")' class='mbot10 marks-button shadow hfsb'>
+                    <p class='data pMargin'>{{odia_l1.studentname | uppercase}}</p>
+                    <ion-icon class="data-large gray" name='ios-arrow-dropright'></ion-icon>
+                </div>
+            </div>
+        </div>
+
+        <div *ngIf='pge_odia_l2!= null && pge_odia_l2.length > 0'>
+            <p class='data-large'>{{ 'PGEASSESSMENT.level2' | translate }}</p>
+            <div *ngFor="let odia_l2 of pge_odia_l2;">
+                <div (click)='pge_fillmarks_btnclick(odia_l2, "odia")' class='mbot10 marks-button shadow hfsb'>
+                    <p class='data pMargin'>{{odia_l2.studentname | uppercase}}</p>
+                    <ion-icon class="data-large gray" name='ios-arrow-dropright'></ion-icon>
+                </div>
+            </div>
+        </div>
+
+        <div *ngIf='pge_odia_l3!= null && pge_odia_l3.length > 0'>
+            <p class='data-large'>{{ 'PGEASSESSMENT.level3' | translate }}</p>
+            <div *ngFor="let odia_l3 of pge_odia_l3;">
+                <div (click)='pge_fillmarks_btnclick(odia_l3, "odia")' class='mbot10 marks-button shadow hfsb'>
+                    <p class='data pMargin'>{{odia_l3.studentname | uppercase}}</p>
+                    <ion-icon class="data-large gray" name='ios-arrow-dropright'></ion-icon>
+                </div>
+            </div>
+        </div>
+
+        <div *ngIf='pge_odia_l4!= null && pge_odia_l4.length > 0'>
+            <p class='data-large'>{{ 'PGEASSESSMENT.level4' | translate }}</p>
+            <div *ngFor="let odia_l4 of pge_odia_l4;">
+                <div (click)='pge_fillmarks_btnclick(odia_l4, "odia")' class='mbot10 marks-button shadow hfsb'>
+                    <p class='data pMargin'>{{odia_l4.studentname | uppercase}}</p>
+                    <ion-icon class="data-large gray" name='ios-arrow-dropright'></ion-icon>
+                </div>
+            </div>
+        </div>
+
+        <div *ngIf='pge_odia_l5!= null && pge_odia_l5.length > 0'>
+            <p class='data-large'>{{ 'PGEASSESSMENT.level5' | translate }}</p>
+            <div *ngFor="let odia_l5 of pge_odia_l5;">
+                <div (click)='pge_fillmarks_btnclick(odia_l5, "odia")' class='mbot10 marks-button shadow hfsb'>
+                    <p class='data pMargin'>{{odia_l5.studentname | uppercase}}</p>
+                    <ion-icon class="data-large gray" name='ios-arrow-dropright'></ion-icon>
+                </div>
+            </div>
+        </div>
+
+      </div>
+  </div> -->
+
+<!-- <div class='card shadow' [style.opacity]="disable_fillmarks_button?'0.5':'1'">
+    <div class='marks-button orange'>
+      <div>
+          <p class='white data text-center'>{{ 'PGEASSESSMENT.btn_math' | translate }}</p>
+      </div>
+    </div>
+    <div>
+      <div>{{ 'PGEASSESSMENT.level1' | translate }}</div>
+      <div *ngFor="let math_l1 of pge_math_l1;">
+        <div>{{math_l1.studentname | uppercase}}</div>
+      </div>
+    </div>
+    <div>
+      <div>{{ 'PGEASSESSMENT.level2' | translate }}</div>
+      <div *ngFor="let math_l2 of pge_math_l2;">
+        <div>{{math_l2.studentname | uppercase}}</div>
+      </div>
+    </div>
+    <div>
+      <div>{{ 'PGEASSESSMENT.level3' | translate }}</div>
+      <div *ngFor="let math_l3 of pge_math_l3;">
+        <div>{{math_l3.studentname | uppercase}}</div>
+      </div>
+    </div>
+    <div>
+      <div>{{ 'PGEASSESSMENT.level4' | translate }}</div>
+      <div *ngFor="let math_l4 of pge_math_l4;">
+        <div>{{math_l4.studentname | uppercase}}</div>
+      </div>
+    </div>
+    <div>
+      <div>{{ 'PGEASSESSMENT.level5' | translate }}</div>
+      <div *ngFor="let math_l5 of pge_math_l5;">
+        <div>{{math_l5.studentname | uppercase}}</div>
+      </div>
+    </div>
+  </div>
+  <div class='card shadow'>
+    <div class='marks-button orange shadow' [style.opacity]="disable_fillmarks_button?'0.5':'1'">
+      <div>
+          <p class='white data'>{{ 'PGEASSESSMENT.btn_odia' | translate }}</p>
+      </div>
+    </div>
+    <div>
+      <div>{{ 'PGEASSESSMENT.level1' | translate }}</div>
+      <div *ngFor="let odia_l1 of pge_odia_l1;">
+        <div>{{odia_l1.studentname | uppercase}}</div>
+      </div>
+    </div>
+    <div>
+      <div>{{ 'PGEASSESSMENT.level2' | translate }}</div>
+      <div *ngFor="let odia_l2 of pge_odia_l2;">
+        <div>{{odia_l2.studentname | uppercase}}</div>
+      </div>
+    </div>
+    <div>
+      <div>{{ 'PGEASSESSMENT.level3' | translate }}</div>
+      <div *ngFor="let odia_l3 of pge_odia_l3;">
+        <div>{{odia_l3.studentname | uppercase}}</div>
+      </div>
+    </div>
+    <div>
+      <div>{{ 'PGEASSESSMENT.level4' | translate }}</div>
+      <div *ngFor="let odia_l4 of pge_odia_l4;">
+        <div>{{odia_l4.studentname | uppercase}}</div>
+      </div>
+    </div>
+    <div>
+      <div>{{ 'PGEASSESSMENT.level5' | translate }}</div>
+      <div *ngFor="let odia_l5 of pge_odia_l5;">
+        <div>{{odia_l5.studentname | uppercase}}</div>
+      </div>
+    </div>
+  </div>
+  <div class='shadow card' *ngFor='let s of student_list'>
+    <p class='data-large'>{{s.studentname}}</p>
+    <div class='hbar'></div>
+    <div class='hffs gray'>
+      <ion-icon class='m10 data-large' name='paper'></ion-icon>
+      <p class='data'>{{ 'PGEASSESSMENT.fill_marks' | translate }}</p>
+    </div>
+    <div class='hfse'>
+      <div (click)="pge_fillmarks_btnclick(s,'eng')" class='marks-button green shadow' [style.opacity]="disable_fillmarks_button?'0.5':'1'">
+        <div>
+            <p class='data white'>{{ 'PGEASSESSMENT.btn_eng' | translate }}</p>
+        </div>
+      </div>
+      <div (click)="pge_fillmarks_btnclick(s,'math')" class='marks-button orange shadow' [style.opacity]="disable_fillmarks_button?'0.5':'1'">
+        <div>
+          <p class='white data'>{{ 'PGEASSESSMENT.btn_math' | translate }}</p>
+        </div>
+      </div>
+      <div (click)="pge_fillmarks_btnclick(s,'odia')" class='marks-button orange shadow' [style.opacity]="disable_fillmarks_button?'0.5':'1'">
+        <div>
+          <p class='white data'>{{ 'PGEASSESSMENT.btn_odia' | translate }}</p>
+        </div>
+      </div>
+    </div>
+  </div> -->
+
+<!-- <ion-grid>
+  <ion-row>
+    <ion-item class="full_width">
+      <ion-label>Month</ion-label>
+      <ion-select placeholder="Select One" (ionChange)="month_onchange($event.detail.value)">
+        <ion-select-option *ngFor="let qlist of month_list" [value]="qlist.value" [disabled]="qlist.disabled">{{ qlist.text }}</ion-select-option>
+      </ion-select>
+    </ion-item>
+  </ion-row>
+  <ion-card class="">
+    <ion-list>
+      {{student_list.length}} students found in PGE program
+      <ion-item *ngFor="let slist of student_list;" class="ionitem">
+        <ion-grid>
+          <ion-row>
+            <ion-col>
+              <ion-label>{{ slist.studentname }} <p> {{ slist.program }}</p></ion-label>
+            </ion-col>
+          </ion-row>
+          <ion-row class="right-align">
+            <ion-button icon-left size="medium" color="warning" (click)="pge_fillmarks_btnclick(slist,'eng')" [disabled]="disable_fillmarks_button" float-right tappable class="explore-btn">
+              <ion-icon name="paper"></ion-icon>
+              Fill Mark(Eng.)
+            </ion-button>
+          </ion-row>
+          <ion-row class="right-align">
+            <ion-button icon-left size="medium" color="warning" (click)="pge_fillmarks_btnclick(slist,'math')" [disabled]="disable_fillmarks_button" float-right tappable class="explore-btn">
+              <ion-icon name="paper"></ion-icon>
+              Fill Mark(Math)
+            </ion-button>
+          </ion-row>
+        </ion-grid>
+      </ion-item>
+    </ion-list>
+  </ion-card>
+</ion-grid> -->
+<!-- </ion-content> -->

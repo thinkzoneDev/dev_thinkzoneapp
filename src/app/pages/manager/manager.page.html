@@ -1,0 +1,101 @@
+<ion-header no-border [ngClass]="(toolbarshadow)?'':'shadow'">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{'HOME.gallery' | translate}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <!-- FOLDER LIST  -->
+
+  <ion-card *ngFor="let link of folderlist" (click)="folder_clicked(link)">
+    <img class="img-size" src="../../../assets/img/folder.png" />
+    <p class="displayname">{{link}}</p>
+  </ion-card>
+
+  <!-- FILE LIST  -->
+
+  <div size="6" *ngFor="let link of links">
+    <ion-card *ngIf="link.type == 'file'">
+      <div (click)="file_icon_click(link)" class="imagediv">
+        <img
+          class="img-size"
+          src="../../../assets/img/hbl/pdf-file.png"
+          *ngIf="link.filetype != undefined && (link.filetype.toLowerCase() == 'pdf')"
+        />
+        <img
+          class="img-size"
+          src="../../../assets/img/filetypeicons/filetype_jpeg.png"
+          *ngIf="link.filetype != undefined && (link.filetype.toLowerCase() == 'jpeg' || link.filetype.toLowerCase() == 'jpg')"
+        />
+        <img
+          class="img-size"
+          src="../../../assets/img/filetypeicons/filetype_doc.png"
+          *ngIf="link.filetype != undefined && (link.filetype.toLowerCase() == 'docx' || link.filetype.toLowerCase() == 'doc')"
+        />
+        <img
+          class="img-size"
+          src="../../../assets/img/filetypeicons/filetype_zip.png"
+          *ngIf="link.filetype != undefined && (link.filetype.toLowerCase() == 'zip')"
+        />
+        <img
+          class="img-size"
+          src="../../../assets/img/filetypeicons/filetype_xls.png"
+          *ngIf="link.filetype != undefined && (link.filetype.toLowerCase() == 'csv' || link.filetype.toLowerCase() == 'xlsx' || link.filetype.toLowerCase() == 'xls')"
+        />
+        <img
+          class="img-size"
+          src="../../../assets/img/filetypeicons/filetype_txt.png"
+          *ngIf="link.filetype != undefined && (link.filetype.toLowerCase() == 'txt')"
+        />
+        <img
+          class="img-size"
+          src="../../../assets/img/filetypeicons/filetype_avi.png"
+          *ngIf="link.filetype != undefined && (link.filetype.toLowerCase() == 'avi')"
+        />
+        <img
+          class="img-size"
+          src="../../../assets/img/filetypeicons/filetype_bmp.png"
+          *ngIf="link.filetype != undefined && (link.filetype.toLowerCase() == 'bmp' || link.filetype.toLowerCase() == 'gif')"
+        />
+        <img
+          class="img-size"
+          src="../../../assets/img/filetypeicons/filetype_file.png"
+          *ngIf="link.filetype != undefined && (link.filetype.toLowerCase() == 'file')"
+        />
+        <img
+          class="img-size"
+          src="../../../assets/img/filetypeicons/filetype_mp3.png"
+          *ngIf="link.filetype != undefined && (link.filetype.toLowerCase() == 'mp3')"
+        />
+        <img
+          class="img-size"
+          src="../../../assets/img/filetypeicons/filetype_mpeg.png"
+          *ngIf="link.filetype != undefined && (link.filetype.toLowerCase() == 'mpeg' || link.filetype.toLowerCase() == 'mp4')"
+        />
+        <img
+          class="img-size"
+          src="../../../assets/img/filetypeicons/filetype_ppt.png"
+          *ngIf="link.filetype != undefined && (link.filetype.toLowerCase() == 'pptx' || link.filetype.toLowerCase() == 'ppt')"
+        />
+        <img
+          class="img-size"
+          src="../../../assets/img/filetypeicons/filetype_jpeg.png"
+          *ngIf="link.filetype != undefined && (link.filetype.toLowerCase() == 'png')"
+        />
+        <img
+          class="img-size"
+          src="../../../assets/img/filetypeicons/folder.jpg"
+          *ngIf="link.filetype != undefined && (link.filetype.toLowerCase() == 'directory')"
+        />
+      </div>
+
+      <p class="displayname" (click)="file_icon_click(link)">
+        {{link.displayname}}
+      </p>
+      <ion-icon name="close" (click)="file_icon_delete_click(link)"></ion-icon>
+    </ion-card>
+  </div>
+</ion-content>

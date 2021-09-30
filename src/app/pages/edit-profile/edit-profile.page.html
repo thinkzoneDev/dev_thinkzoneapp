@@ -1,0 +1,190 @@
+<ion-header>
+  <ion-toolbar (click)="checkQuizStatus()">
+    <ion-row>
+      <button (click)="checkQuizStatus()">
+        <ion-icon name="arrow-back"></ion-icon>
+      </button>
+      <ion-title>{{ 'PROFILE.edit_profile' | translate }}</ion-title>
+    </ion-row>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="container">
+    <div class="profile">
+      <div class="outer">
+        <img
+          [src]="image_preview != null ? image_preview : 'assets/img/hbl/default-user.png'"
+        />
+        <!-- <div class="inner" (click)="openOptionSelection()">
+          <ion-icon name="camera" class="camera-icon"></ion-icon>
+        </div> -->
+      </div>
+    </div>
+
+    <ion-card>
+      <ion-item lines="none">
+        <ion-label position="floating"
+          >{{ 'PROFILE.name' | translate }}</ion-label
+        >
+        <ion-input value="{{_name}}" [(ngModel)]="name" type="text"></ion-input>
+      </ion-item>
+    </ion-card>
+
+    <ion-card>
+      <ion-item lines="none">
+        <ion-radio-group>
+          <ion-label>{{ 'PROFILE.gender' | translate }}</ion-label>
+
+          <div class="wrapper">
+            <ion-item lines="none">
+              <ion-label>{{ 'PROFILE.male' | translate }}</ion-label>
+              <ion-radio
+                slot="start"
+                (click)='gender="male"'
+                [ngClass]='(gender=="male")?"selected-chip":"unselected-chip"'
+              ></ion-radio>
+            </ion-item>
+            <ion-item lines="none">
+              <ion-label>{{ 'PROFILE.female' | translate }}</ion-label>
+              <ion-radio
+                slot="start"
+                (click)='gender="female"'
+                [ngClass]='(gender=="female")?"selected-chip":"unselected-chip"'
+              ></ion-radio>
+            </ion-item>
+          </div>
+        </ion-radio-group>
+      </ion-item>
+    </ion-card>
+
+    <ion-card>
+      <ion-item lines="none">
+        <ion-label position="floating"
+          >{{ 'PROFILE.phone' | translate }}</ion-label
+        >
+        <ion-input
+          [(ngModel)]="phone"
+          type="number"
+          minlength="10"
+          maxlength="10"
+        ></ion-input>
+      </ion-item>
+    </ion-card>
+
+    <ion-card>
+      <ion-item lines="none">
+        <ion-label>{{ 'PROFILE.DOB' | translate }}</ion-label>
+        <ion-icon name="calendar"></ion-icon>
+        <ion-datetime
+          [(ngModel)]="dob"
+          value="{{dob}}"
+          display-format=" DD/MM/YYYY "
+          picker-format="DD, MM, YYYY"
+        ></ion-datetime>
+      </ion-item>
+    </ion-card>
+
+    <ion-card>
+      <ion-item lines="none">
+        <ion-select
+          cancelText="Cancel"
+          okText="Ok"
+          multiple="false"
+          style="min-width: 100%; color: black"
+          placeholder="{{ 'PROFILE.education' | translate }}"
+          [(ngModel)]="selected_qualification"
+          value="{{selected_qualification}}"
+          interface="action-sheet"
+        >
+          <ion-select-option
+            *ngFor="let item of edu_list"
+            value="{{item.education}}"
+            >{{ item.education }}</ion-select-option
+          >
+        </ion-select>
+      </ion-item>
+    </ion-card>
+
+    <div class="card"><h2>{{ 'PROFILE.address' | translate }}</h2></div>
+    <!-- State selection -->
+    <ion-card>
+      <ion-item lines="none">
+        <ion-select
+          cancelText="Cancel"
+          okText="Ok"
+          multiple="false"
+          style="min-width: 100%; color: black"
+          placeholder="{{ 'PROFILE.state' | translate }}"
+          [(ngModel)]="selected_stateid"
+          value="{{selected_stateid}}"
+          interface="action-sheet"
+        >
+          <ion-select-option value="20">ODISHA</ion-select-option>
+        </ion-select>
+      </ion-item>
+    </ion-card>
+
+    <!-- Disctrict Selection -->
+    <ion-card>
+      <ion-item lines="none">
+        <ion-select
+          cancelText="Cancel"
+          okText="Ok"
+          multiple="false"
+          style="min-width: 100%; color: black"
+          placeholder="{{ 'PROFILE.district' | translate }}"
+          (ionChange)="district_onchange($event)"
+          [(ngModel)]="selected_districtid"
+          value="{{selected_districtid}}"
+          interface="action-sheet"
+        >
+          <ion-select-option
+            *ngFor="let district of all_districts"
+            [value]="district._id"
+            >{{ district.districtname | uppercase }}</ion-select-option
+          >
+        </ion-select>
+      </ion-item>
+    </ion-card>
+
+    <ion-card>
+      <ion-item lines="none">
+        <ion-select
+          cancelText="Cancel"
+          okText="Ok"
+          multiple="false"
+          style="min-width: 100%; color: black"
+          placeholder="{{ 'PROFILE.block' | translate }}"
+          (ionChange)="block_onchange($event)"
+          [(ngModel)]="selected_blockid"
+          value="{{selected_blockid}}"
+          interface="action-sheet"
+        >
+          <ion-select-option
+            *ngFor="let block of all_blocks"
+            [value]="block._id"
+            >{{ block.blockname | uppercase }}</ion-select-option
+          >
+        </ion-select>
+      </ion-item>
+    </ion-card>
+
+    <!-- <ion-card>
+      <ion-item lines="none">
+        <ion-label position="floating"
+          >{{ 'PROFILE.locality' | translate }}</ion-label
+        >
+        <ion-input
+          [(ngModel)]="block"
+          value="{{block}}"
+          type="text"
+        ></ion-input>
+      </ion-item>
+    </ion-card> -->
+
+    <ion-button (click)="save_button_click()" expand="block">
+      {{ 'PROFILE.save' | translate }}<ion-icon name="save"></ion-icon>
+    </ion-button>
+  </div>
+</ion-content>

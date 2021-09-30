@@ -1,0 +1,49 @@
+<ion-header no-border [ngClass]="(toolbarshadow)?'':'shadow'">
+  <ion-toolbar (click)="closeModal()">
+    <ion-row>
+      <button (click)="closeModal()">
+        <ion-icon name="arrow-back"></ion-icon>
+      </button>
+      <ion-title>View Payments</ion-title>
+    </ion-row>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div *ngIf="records!=null && records.length>0" class="container">
+    <div class="wrapper">
+      <h2>{{records[0].studentname}}</h2>
+
+      <div class="content">
+        <p>
+          Program-<span style="text-transform: uppercase"
+            >{{records[0].program}}</span
+          >
+        </p>
+        <p>Class-{{records[0].class}}</p>
+      </div>
+      <p>Reg. Date-{{getReadableDate(records[0].registration_date)}}</p>
+    </div>
+
+    <ion-card *ngFor="let r of records;let i=index">
+      <p>Payment #{{i+1}}</p>
+      <hr />
+      <p>
+        <b>₹<span>{{r.amount}}</span></b>
+      </p>
+      <p>Payment date: <span>{{r.displaydate}}</span></p>
+      <p>
+        Payment type:
+        <span>{{(r.payment_type==null)?'n/a':r.payment_type}}</span>
+      </p>
+    </ion-card>
+    <div class="btn">
+      <ion-button (click)="closeModal()"> OKAY </ion-button>
+    </div>
+  </div>
+
+  <div *ngIf="records!=null && records.length==0" class="error">
+    <p>{{errormessage}}</p>
+    <ion-button (click)="closeModal()"> OKAY </ion-button>
+  </div>
+</ion-content>

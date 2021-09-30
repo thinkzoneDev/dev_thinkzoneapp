@@ -1,0 +1,43 @@
+
+<ion-header no-border [ngClass]="'shadow'">
+  <ion-toolbar class="material-toolbar" color="--ion-color-cushead">
+      <ion-buttons slot="start">
+          <ion-back-button></ion-back-button>
+      </ion-buttons>
+      <ion-title style="text-align: center;">
+        {{ 'HOME.tools' | translate }}
+      </ion-title>
+      </ion-toolbar>
+      </ion-header>
+<ion-content padding>
+  <ion-row>
+    <ion-col class="box" (click)="onDictionary()">
+        <img src="/assets/img/dictionary.jpg" alt="" class="cardimg" />
+        <p class='data hometitle'>{{ 'HOME.dictionary' | translate }}</p>
+    </ion-col>
+    <ion-col class="box" [routerLink]="'/manager-box'">
+        <img src="/assets/img/gallery.png" alt="" class="cardimg" />
+        <p class='data hometitle'>{{ 'HOME.gallery' | translate }}</p>
+    </ion-col>
+</ion-row>
+<ion-row>
+    <ion-col class="box" (click)="onPrivacy()">
+        <img src="/assets/img/Training-Icon.png" alt="" class="cardimg" />
+        <p class='data hometitle'>{{ 'HOME.hrpolicy' | translate }}</p>
+    </ion-col>
+</ion-row>
+
+<!-- <ion-row>
+  
+  <ion-col class="box" (click)="onFeedback()" size="6">
+ 
+      <img src="/assets/img/Payment-Icon.png" alt="" class="cardimg" />
+      <p class='data hometitle'>Feedback</p>
+     
+  </ion-col>
+  <ion-col >
+    
+  </ion-col>
+</ion-row> -->
+
+</ion-content>

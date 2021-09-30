@@ -1,0 +1,54 @@
+<ion-header no-border [ngClass]="(toolbarshadow)?'':'shadow'">
+    <ion-toolbar class="material-toolbar" color="--ion-color-cushead">
+        <ion-back-button class="white"></ion-back-button>
+        <ion-row>
+            <div class="ass_student_info_container">
+                <div class="ass_student_heading">{{ studentname | uppercase }}</div>
+                <div class="ass_title_program">{{ stage | titlecase }} | {{ program | uppercase }} | Level:{{ level }}<span *ngIf="subject != 'na' && subject != '' && subject != null && subject != undefined"> | {{ subject | titlecase }}</span></div>
+                <div class="">
+                    <ion-button color="light" (click)="closeModal('cancel')">Close</ion-button>
+                </div>
+            </div>
+        </ion-row>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content [scrollEvents]="true" (ionScroll)="logScrolling($event)">
+    <div class="card-margin">
+        <!-- No records found area -->
+        <div class="no_records_found" *ngIf="assessment_set.length<=0">
+            <table>
+                <tr>
+                    <td>
+                        <ion-icon name="alert" class="icon_size"></ion-icon>
+                    </td>
+                    <td>No records found !</td>
+                </tr>
+            </table>
+        </div>
+        <!-- Records area -->
+        <div class="" *ngIf="assessment_set.length>0">
+            <ion-list>
+                <ion-item *ngFor="let ass of assessment_set; let i=index;">
+                    <table>
+                        <tr>
+                            <td>
+                                <ion-label text-wrap class="list_title">Q: {{ ass.question }}</ion-label>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <ion-label *ngIf="ass.answer == 'yes'" class="list_subtitle_yes">
+                                    <ion-icon name="checkmark"></ion-icon>
+                                </ion-label>
+                                <ion-label *ngIf="ass.answer == 'no'" class="list_subtitle_no">
+                                    <ion-icon name="close"> </ion-icon>
+                                </ion-label>
+                            </td>
+                        </tr>
+                    </table>
+                </ion-item>
+            </ion-list>
+        </div>
+    </div>
+</ion-content>

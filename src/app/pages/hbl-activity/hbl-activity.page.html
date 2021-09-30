@@ -1,0 +1,46 @@
+<ion-header no-border [ngClass]="(toolbarshadow)?'':'shadow'">
+  <ion-toolbar>
+    <ion-row>
+      <ion-buttons>
+        <ion-back-button></ion-back-button>
+      </ion-buttons>
+      <ion-title>{{ 'HBLACTIVITY.title' | translate }}</ion-title>
+    </ion-row>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div *ngIf="no_file" class="no_file">
+    <p>No Activity found</p>
+  </div>
+  <div class="container">
+    <ion-card *ngFor="let link of links" (click)="openPdfviewer(link)">
+      <img
+        *ngIf="link.filetype != undefined && link.filetype.toLowerCase() == 'pdf'"
+        src="../../../assets/img/hbl/pdf-file.png"
+      />
+      <img
+        *ngIf="link.filetype != undefined && link.filetype.toLowerCase() == 'jpeg'"
+        class="img-size"
+        src="../../../assets/img/hbl/jpg.png "
+      />
+      <img
+        *ngIf=" link.filetype != undefined && link.filetype.toLowerCase() == 'docx'"
+        class="img-size"
+        src="../../../assets/img/hbl/docx.png"
+      />
+      <img
+        *ngIf="link.filetype != undefined && link.filetype.toLowerCase() == 'zip'"
+        class="img-size"
+        src="../../../assets/img/hbl/file.png"
+      />
+      <img
+        *ngIf="link.filetype != undefined && link.filetype.toLowerCase() == 'txt'"
+        class="img-size"
+        src="../../../assets/img/hbl/txt.png"
+      />
+
+      <h2 (click)="openPdfviewer()">{{link.displayname.split(".")[0]}}</h2>
+    </ion-card>
+  </div>
+</ion-content>

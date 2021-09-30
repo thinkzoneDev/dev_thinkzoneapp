@@ -1,0 +1,22 @@
+<ion-header no-border [ngClass]="(toolbarshadow)?'':'shadow'">
+  <ion-toolbar>
+    <ion-title>{{ _serverip }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="container">
+    <ion-card>
+      <ion-card-content>
+        <ion-button (click)="fetch_offline_data()" expand="block"
+          >Start Syncing<ion-icon name="sync"></ion-icon
+        ></ion-button>
+        <p>{{count_str}}</p>
+      </ion-card-content>
+
+      <ion-button (click)="closeModal()">
+        OK<ion-icon name="close"></ion-icon>
+      </ion-button>
+    </ion-card>
+  </div>
+</ion-content>

@@ -1,0 +1,174 @@
+<!-- Code Commented By abinash Shasini on 16/07/2021 Design change -->
+<ion-header no-border [ngClass]="(toolbarshadow)?'':'shadow'">
+  <ion-toolbar (click)="closeModal()">
+    <ion-row
+      ><button (click)="closeModal()">
+        <ion-icon name="arrow-back"></ion-icon>
+      </button>
+      <ion-title> {{ 'ASSESSMENT.title' | translate }} </ion-title>
+    </ion-row>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [scrollEvents]="true" (ionScroll)="logScrolling($event)">
+  <div class="wrapper">
+    <ion-card
+      class="item"
+      (click)="quarter_onchange(q.value)"
+      *ngFor="let q of quarter_list"
+      [ngClass]='(selected_quarter==q.value)?"selected-chip":"unselected-chip"'
+    >
+      <p class="data">{{q.text}}</p>
+    </ion-card>
+  </div>
+
+  <!-- <div class="card" *ngFor="let s of student_list">
+    <p>{{s.studentname}}</p>
+
+    <ion-button
+      (click)="ece_fillmarks_btnclick(s)"
+      [style.opacity]="disable_fillmarks_button?'0.5':'1'"
+    >
+      {{ 'ASSESSMENT.fill_marks' | translate }}
+    </ion-button>
+  </div> -->
+</ion-content>
+
+<!-- <ion-header no-border [ngClass]="(toolbarshadow)?'':'shadow'">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title> {{ 'ASSESSMENT.title' | translate }} </ion-title>
+  </ion-toolbar>
+</ion-header> -->
+
+<!--<ion-content [scrollEvents]="true" (ionScroll)="logScrolling($event)">
+   Module Selector -->
+<!-- <p class='data-large headingAssement'>{{ 'ASSESSMENT.select_quarter' | translate }}</p>
+            <div style='flex-wrap: wrap' class='horizontal-flexbox justifyBetween'>
+                <div (click)='quarter_onchange(q.value)' *ngFor='let q of quarter_list' [ngClass]='(selected_quarter==q.value)?"selected-chip":"unselected-chip"'>
+                    <p class='data'>{{q.text}}</p>
+                </div>
+            </div> -->
+<!-- <div class="shadow">
+    <div class="wrapper">
+      <div
+        class="item"
+        (click)="quarter_onchange(q.value)"
+        *ngFor="let q of quarter_list"
+        [ngClass]='(selected_quarter==q.value)?"selected-chip":"unselected-chip"'
+      >
+        <p class="data">{{q.text}}</p>
+      </div>
+    </div>
+  </div> -->
+
+<!-- 
+    <div class='card shadow'>
+        <p class='data-large mar0Pad6'><span class="headingAssement"><p>{{student_list.length}} students found.</p></span><span style="font-size: 14px;"> </span></p>
+    </div>
+    <div *ngFor='let s of student_list'>
+        <div *ngIf="s.ec_level > 0" class='shadow card horAlign' style="padding: 14px;" [ngClass]="(s.assessmentdetails.length > 0) ? 'greenbg' : 'redbg'">
+            <div>
+                <p class='data-large paraAlign' style="text-transform:capitalize;">
+                  <ion-row>
+                      {{s.studentname}}
+                  </ion-row>
+                </p>
+                <p class='data-small'>{{ 'ASSESSMENT.level' | translate }}: {{s.ec_level}}</p>
+            </div>
+            <div  *ngIf="s.assessmentdetails.length <= 0" (click)=" ece_fillmarks_btnclick(s)"  class='marks-button' [style.opacity]="disable_fillmarks_button? '0.5': '1' ">
+                <div class='horizontal-flexbox'>
+                    <ion-icon class='data-xlarge white' name='paper'></ion-icon>
+                    <p class='data white m0'>{{ 'ASSESSMENT.fill_marks' | translate }}</p>
+                </div>
+            </div>
+            <div  *ngIf="s.assessmentdetails.length > 0" (click)="view_assessment_btnclick(s)"  class='marks-button'>
+                <div class='horizontal-flexbox'>
+                    <ion-icon class='data-xlarge white' name='paper'></ion-icon>
+                    <p class='data white m0'>View</p>
+                </div>
+            </div>
+        </div>
+    </div>
+     -->
+
+<!-- <div *ngFor="let s of student_list_assessment_yes">
+        <div
+            *ngIf="s.ec_level > 0"
+            class="shadow card horAlign"
+            style="padding: 14px"
+            [ngClass]="'greenbg'"
+        >
+            <div style="width: 70%">
+                <p
+                    class="data-large paraAlign"
+                    style="text-transform: capitalize"
+                >
+                    <ion-row> {{s.studentname}} </ion-row>
+                </p>
+                <p class="data-small">
+                    {{ 'ASSESSMENT.level' | translate }}: {{s.ec_level}}
+                </p>
+            </div>
+            <div (click)="view_assessment_btnclick(s)" class="viewmarks-button">
+                <div class="horizontal-flexbox">
+                    <ion-icon
+                        class="data-xlarge white"
+                        name="information-circle-outline"
+                    ></ion-icon>
+                    <p class="data white m0">View</p>
+                </div>
+            </div>
+        </div>
+    </div> -->
+
+<!-- <div *ngFor="let s of student_list_assessment_no">
+        <div
+            *ngIf="s.ec_level > 0"
+            class="shadow card horAlign"
+            style="padding: 14px"
+            [ngClass]="'redbg'"
+        >
+            <div style="width: 70%">
+                <p
+                    class="data-large paraAlign"
+                    style="text-transform: capitalize"
+                >
+                    <ion-row> {{s.studentname}} </ion-row>
+                </p>
+                <p class="data-small">
+                    {{ 'ASSESSMENT.level' | translate }}: {{s.ec_level}}
+                </p>
+            </div>
+            <div
+                (click)=" ece_fillmarks_btnclick(s)"
+                class="fillmarks-button"
+                [style.opacity]="disable_fillmarks_button? '0.5': '1' "
+            >
+                <div class="horizontal-flexbox">
+                    <ion-icon
+                        class="data-xlarge white"
+                        name="log-in"
+                    ></ion-icon>
+                    <p class="data white m0">
+                        {{ 'ASSESSMENT.fill_marks' | translate }}
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div> -->
+
+<!-- <div class="card" *ngFor="let s of student_list">
+    <p>{{s.studentname}}</p>
+    <div class="btn">
+      <ion-button
+        (click)="ece_fillmarks_btnclick(s)"
+        [style.opacity]="disable_fillmarks_button?'0.5':'1'"
+      >
+        {{ 'ASSESSMENT.fill_marks' | translate }}
+      </ion-button>
+    </div>
+  </div>
+</ion-content> -->

@@ -1,0 +1,62 @@
+<ion-header no-border [ngClass]="(toolbarshadow)?'':'shadow'">
+  <ion-toolbar>
+    <ion-row>
+      <ion-buttons>
+        <ion-back-button></ion-back-button>
+      </ion-buttons>
+      <ion-title>Search</ion-title>
+    </ion-row>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card>
+    <div class="Wrapper">
+      <img src="../../assets/img/hbl/dictionary-page.png" />
+      <h2>Dictionary</h2>
+    </div>
+    <div class="search-bar">
+      <ion-searchbar
+        animated
+        [(ngModel)]="search_word"
+        showCancelButton="focus"
+        cancelButtonText="Custom Cancel"
+        placeholder="Search your Words"
+      ></ion-searchbar>
+      <ion-button (click)="search_btn_click()"
+        ><ion-icon name="search"></ion-icon
+      ></ion-button>
+    </div>
+  </ion-card>
+
+  <div style="height: 40%" [hidden]="hide_suggestion_div" class="container">
+    <h2>Suggested Words:</h2>
+    <div>
+      <ion-item
+        *ngFor="let suggested of suggested_word"
+        (click)="suggested_word_click(suggested)"
+      >
+        <ion-label>{{suggested}}</ion-label>
+      </ion-item>
+    </div>
+  </div>
+
+  <div [hidden]="hide_result_div" class="container">
+    <h2>Search Result:</h2>
+
+    <div class="content">
+      <div class="border">
+        <div class="button" (click)="play_audio()" *ngIf="audio_url">
+          <ion-icon name="volume-high"></ion-icon>
+        </div>
+      </div>
+
+      <div *ngFor="let res of search_result">
+        <h1>{{ res.hwi.hw }} ({{res.fl}})</h1>
+        <p *ngFor="let meaning of res.shortdef">{{meaning}}</p>
+        <h2>Similar matches:</h2>
+        <h3>{{res.meta.stems}}</h3>
+      </div>
+    </div>
+  </div>
+</ion-content>

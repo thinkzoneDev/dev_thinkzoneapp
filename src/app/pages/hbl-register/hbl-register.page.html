@@ -1,0 +1,178 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-row>
+      <ion-title>{{ 'HBLREGISTER.title' | translate }}</ion-title>
+      <button (click)="closeModal('cancel')">
+        <ion-icon name="close"></ion-icon>
+      </button>
+    </ion-row>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="container">
+    <ion-card>
+      <ion-item lines="none">
+        <ion-label position="floating"
+          >{{ 'HBLREGISTER.student_name' | translate }}</ion-label
+        >
+        <ion-input
+          value="{{_studentname}}"
+          [(ngModel)]="studentname"
+          type="text"
+        ></ion-input>
+      </ion-item>
+    </ion-card>
+
+    <ion-card>
+      <ion-item lines="none">
+        <ion-label position="floating"
+          >{{ 'HBLREGISTER.guardian' | translate }}</ion-label
+        >
+        <ion-input
+          value="{{_parentsname}}"
+          [(ngModel)]="parentsname"
+          type="text"
+        ></ion-input>
+      </ion-item>
+    </ion-card>
+
+    <ion-card>
+      <ion-item lines="none">
+        <ion-radio-group>
+          <ion-label>{{ 'HBLREGISTER.gender' | translate }}</ion-label>
+
+          <div class="wrapper">
+            <ion-item lines="none">
+              <ion-label>{{ 'HBLREGISTER.male' | translate }}</ion-label>
+              <ion-radio
+                slot="start"
+                (click)='gender="male"'
+                [ngClass]='(gender=="male")?"selected-chip":"unselected-chip"'
+              ></ion-radio>
+            </ion-item>
+            <ion-item lines="none">
+              <ion-label>{{ 'HBLREGISTER.female' | translate }}</ion-label>
+              <ion-radio
+                slot="start"
+                (click)='gender="female"'
+                [ngClass]='(gender=="female")?"selected-chip":"unselected-chip"'
+              ></ion-radio>
+            </ion-item>
+          </div>
+        </ion-radio-group>
+      </ion-item>
+    </ion-card>
+
+    <!-- <ion-card>
+      <ion-item lines="none">
+        <ion-select
+          cancelText="Cancel"
+          okText="Ok"
+          multiple="false"
+          style="min-width: 100%; color: black"
+          placeholder="{{ 'HBLREGISTER.select_school' | translate }}"
+          [(ngModel)]="selected_school"
+          value="{{selected_school}}"
+        >
+          <ion-select-option
+            *ngFor="let school of school_list"
+            value="{{school.schoolname}}"
+            >{{ school.schoolname | uppercase }}</ion-select-option
+          >
+        </ion-select>
+      </ion-item>
+    </ion-card> -->
+
+    <ion-card>
+      <ion-item lines="none">
+        <ion-label position="floating"
+          >{{ 'HBLREGISTER.phone' | translate }}</ion-label
+        >
+        <ion-input
+          [(ngModel)]="phone"
+          type="number"
+          minlength="10"
+          maxlength="10"
+        ></ion-input>
+      </ion-item>
+    </ion-card>
+
+    <ion-card>
+      <ion-item lines="none">
+        <ion-label>{{ 'HBLREGISTER.dob' | translate }}</ion-label>
+        <ion-icon name="calendar"></ion-icon>
+        <ion-datetime
+          value="{{_dob}}"
+          display-format=" DD/MM/YYYY "
+          picker-format="DD, MM, YYYY"
+          (ionChange)="dob_onhange($event.detail.value)"
+        ></ion-datetime>
+      </ion-item>
+    </ion-card>
+
+    <!-- <ion-card>
+      <ion-item lines="none">
+        <ion-label>{{ 'HBLREGISTER.reg_date' | translate }}</ion-label>
+        <ion-icon name="calendar"></ion-icon>
+        <ion-datetime
+          value="{{_registration_date}}"
+          display-format="DD/MM/YYYY"
+          picker-format="DD, MM, YYYY"
+          (ionChange)="regdate_onhange($event.detail.value)"
+        ></ion-datetime>
+      </ion-item>
+    </ion-card> -->
+
+    <ion-card *ngIf="isFellow">
+      <ion-item lines="none">
+        <ion-radio-group>
+          <ion-label>{{ 'HBLREGISTER.program' | translate }}</ion-label>
+          <div class="wrapper">
+            <ion-item lines="none">
+              <ion-label>ECE</ion-label>
+              <ion-radio
+                slot="start"
+                (click)='select_program_onchange("ece")'
+                [ngClass]='(program=="ece")?"selected-chip":"unselected-chip"'
+              ></ion-radio>
+            </ion-item>
+            <ion-item lines="none">
+              <ion-label>PGE</ion-label>
+              <ion-radio
+                slot="start"
+                (click)='select_program_onchange("pge")'
+                [ngClass]='(program=="pge")?"selected-chip":"unselected-chip"'
+              ></ion-radio>
+            </ion-item>
+          </div>
+        </ion-radio-group>
+      </ion-item>
+    </ion-card>
+
+    <ion-card *ngIf="is_selected">
+      <ion-item lines="none">
+        <ion-select
+          interface="popover"
+          multiple="false"
+          cancelText="Cancel"
+          okText="Ok"
+          placeholder="{{selected_class_text}}"
+          [(ngModel)]="selected_class"
+          value="{{selected_class}}"
+          style="min-width: 100%; color: black"
+        >
+          <ion-select-option
+            *ngFor="let classval of class_list"
+            value="{{classval}}"
+            >{{classval}}</ion-select-option
+          >
+        </ion-select>
+      </ion-item>
+    </ion-card>
+
+    <ion-button (click)="register_button_click()" expand="block">
+      {{ 'HBLREGISTER.btn_save' | translate }}<ion-icon name="save"></ion-icon>
+    </ion-button>
+  </div>
+</ion-content>

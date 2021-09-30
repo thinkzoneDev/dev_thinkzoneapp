@@ -1,0 +1,194 @@
+<ion-header no-border [ngClass]="(toolbarshadow)?'':'shadow'">
+  <ion-toolbar>
+    <ion-row>
+      <ion-buttons>
+        <ion-back-button></ion-back-button>
+      </ion-buttons>
+      <ion-title>{{ 'PGEACTIVITY.title_math' | translate }}</ion-title>
+    </ion-row>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [scrollEvents]="true" (ionScroll)="logScrolling($event)">
+  <!-- Level Panel -->
+  <div>
+    <div class="m10">
+      <!-- <ion-grid class="width100">
+        <ion-row class="leveltxt1">
+          <ion-col size="4"
+            ><span
+              style="margin-left: 10px; vertical-align: -webkit-baseline-middle"
+              >{{ 'PGEACTIVITY.level' | translate }}</span
+            ></ion-col
+          >
+          <ion-col size="8">
+            <ion-select
+              interface="action-sheet"
+              mode="md"
+              placeholder="Please Select your clas"
+              value="{{ level }}"
+              (ionChange)="level_change($event.target.value)"
+              class="leveltxt2"
+            >
+              [(ngModel)]="selectedLanguage" (ionChange)="languageChanged($event.target.value)">
+              <ion-select-option value="1"
+                >{{ 'PGEACTIVITY.1' | translate }}</ion-select-option
+              >
+              <ion-select-option value="2"
+                >{{ 'PGEACTIVITY.2' | translate }}</ion-select-option
+              >
+              <ion-select-option value="3"
+                >{{ 'PGEACTIVITY.3' | translate }}</ion-select-option
+              >
+              <ion-select-option value="4"
+                >{{ 'PGEACTIVITY.4' | translate }}</ion-select-option
+              >
+              <ion-select-option value="5"
+                >{{ 'PGEACTIVITY.5' | translate }}</ion-select-option
+              >
+            </ion-select>
+          </ion-col>
+        </ion-row>
+      </ion-grid> -->
+
+      <div class="container">
+        <ion-select
+          interface="action-sheet"
+          placeholder="Select The Class"
+          (ionChange)="level_change($event.target.value)"
+        >
+          <ion-select-option value="1" selected
+            >class - {{ 'PGEACTIVITY.1' | translate }}</ion-select-option
+          >
+          <ion-select-option value="2"
+            >class - {{ 'PGEACTIVITY.2' | translate }}</ion-select-option
+          >
+          <ion-select-option value="3"
+            >class - {{ 'PGEACTIVITY.3' | translate }}
+          </ion-select-option>
+          <ion-select-option value="4"
+            >class - {{ 'PGEACTIVITY.4' | translate }}</ion-select-option
+          >
+          <ion-select-option value="5"
+            >class - {{ 'PGEACTIVITY.5' | translate }}</ion-select-option
+          >
+        </ion-select>
+      </div>
+
+      <!-- Month Panel  -->
+      <!-- <p class="data-large weekmonthHead">
+        {{ 'PGEACTIVITY.month_title' | translate}}
+      </p> -->
+      <!-- <div style="flex-wrap: wrap" class="horizontal-flexboxx monthDiv">
+        <ion-grid>
+          <ion-row>
+            <ion-card
+              expand="block"
+              class="buttoncard"
+              (click)="month_onclick('1')"
+            >
+              <ion-item mode="ios" no-lines lines="none">
+                <img
+                  src="./../../../assets/img/pgeactivity/1-4.png"
+                  class="buttoncardicon"
+                />
+                <span class="buttoncardtext"
+                  >{{ 'PGEACTIVITY.skill1_4' | translate }}</span
+                >
+                <span class=""></span>
+              </ion-item>
+            </ion-card>
+          </ion-row>
+
+          <ion-row>
+            <ion-card
+              expand="block"
+              class="buttoncard"
+              (click)="month_onclick('2')"
+            >
+              <ion-item mode="ios" no-lines lines="none">
+                <img
+                  src="./../../../assets/img/pgeactivity/5-8.png"
+                  class="buttoncardicon"
+                />
+                <span class="buttoncardtext"
+                  >{{ 'PGEACTIVITY.skill5_8' | translate }}</span
+                >
+                <span class=""></span>
+              </ion-item>
+            </ion-card>
+          </ion-row>
+
+          <ion-row>
+            <ion-card
+              expand="block"
+              class="buttoncard"
+              (click)="month_onclick('3')"
+            >
+              <ion-item mode="ios" no-lines lines="none">
+                <img
+                  src="./../../../assets/img/pgeactivity/9-12.png"
+                  class="buttoncardicon"
+                />
+                <span class="">{{ 'PGEACTIVITY.skill9_12' | translate }}</span>
+                <span class="buttoncardtext"></span>
+              </ion-item>
+            </ion-card>
+          </ion-row>
+
+          <ion-row>
+            <ion-card
+              expand="block"
+              class="buttoncard"
+              (click)="month_onclick('4')"
+            >
+              <ion-item mode="ios" no-lines lines="none">
+                <img
+                  src="./../../../assets/img/pgeactivity/13-16.png"
+                  class="buttoncardicon"
+                />
+                <span class="">{{ 'PGEACTIVITY.skill13_16' | translate }}</span>
+                <span class="buttoncardtext"></span>
+              </ion-item>
+            </ion-card>
+          </ion-row>
+
+          <ion-row>
+            <ion-card
+              expand="block"
+              class="buttoncard"
+              (click)="month_onclick('5')"
+            >
+              <ion-item mode="ios" no-lines lines="none">
+                <img
+                  src="./../../../assets/img/pgeactivity/17-20.png"
+                  class="buttoncardicon"
+                />
+                <span class="buttoncardtext"
+                  >{{ 'PGEACTIVITY.skill17_20' | translate }}</span
+                >
+                <span class=""></span>
+              </ion-item>
+            </ion-card>
+          </ion-row>
+        </ion-grid>
+      </div> -->
+
+      <!-- Skill Panel  -->
+      <!-- <p class='data-large weekmonthHead'>{{ 'PGEACTIVITY.month_title' | translate}}</p> -->
+
+      <ion-card
+        expand="block"
+        *ngFor="let skill of skill_list; let i =index;"
+        (click)="skill_on_click(skill,i)"
+      >
+        <ion-item mode="ios" no-lines lines="none">
+          <div class="block">
+            <img src="./../../../assets/img/hbl/maths.png" />
+          </div>
+          <span>{{ skill.skillsetname }}</span>
+        </ion-item>
+      </ion-card>
+    </div>
+  </div>
+</ion-content>

@@ -1,0 +1,67 @@
+.material-toolbar {
+    background: #002b45 !important;
+}
+
+.marginBottom {
+    margin-bottom: 0;
+}
+
+.gridStyle {
+    margin-bottom: 10px;
+    height: 410px;
+    overflow: auto;
+}
+
+.verAlign {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.buttonwidth {
+    width: 50%;
+    height: 46px;
+    background-color: #fff;
+    color: gray;
+}
+
+.buttoncomplete {
+    width: 100%;
+    height: 60px;
+    background-color: green;
+    color: #fff;
+    text-transform: capitalize;
+    font-size: 16px;
+    font-weight: 800;
+}
+
+.explore-btn {
+    width: 100%;
+}
+
+.verAlign {
+    display: flex;
+    align-items: center;
+    flex-flow: row-reverse;
+    font-size: 12px;
+}
+
+.padLeft {
+    padding-left: 6px;
+}
+
+.padLR {
+    padding: 0px 8px;
+}
+
+ion-button .button-solid {
+    --box-shadow: none !important;
+}
+
+.noContents{
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

@@ -1,0 +1,167 @@
+.horizontal-flexbox {
+    margin-top: 15px;
+    display: flex;
+    flex-flow: row;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+@keyframes white-to-blue {
+    0% {
+        background: white;
+        color: #2196f3;
+    }
+    100% {
+        background: #2196f3;
+        color: white;
+    }
+}
+
+.selected-chip {
+    animation: white-to-blue 0.6s;
+    animation-fill-mode: forwards;
+    border-radius: 20px;
+    text-align: center;
+    color: white;
+    background: #2196f3;
+    min-width: 80px;
+    min-height: 20px;
+}
+
+@keyframes blue-to-white {
+    0% {
+        color: white;
+        background: #2196f3;
+    }
+    100% {
+        color: #2196f3;
+        background: white;
+    }
+}
+
+.unselected-chip {
+    animation: blue-to-white 0.6s;
+    animation-fill-mode: forwards;
+    border-radius: 20px;
+    text-align: center;
+    color: #2196f3;
+    border: 1px #2196f3 solid;
+    min-width: 80px;
+    min-height: 20px;
+}
+
+.shadow {
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.014), 0 6px 6px rgba(0, 0, 0, 0.21);
+}
+
+.hidden {
+    transition: max-height 0.6s ease-in-out;
+    height: 0px;
+    max-height: 0px;
+    overflow: hidden;
+}
+
+.revealer {
+    transition: max-height 0.6s ease-in-out;
+    height: auto;
+    max-height: 500px;
+}
+
+.hidden div {
+    transition: opacity 0.6s;
+    transition-delay: 0.4s;
+    opacity: 0;
+}
+
+.revealer div {
+    transition: opacity 0.6s;
+    transition-delay: 0.4s;
+    opacity: 1;
+}
+
+.group {
+    margin-top: 20px;
+    border-radius: 4px;
+    color: gray;
+    padding: 30px
+}
+
+.card {
+    margin: 20px;
+    border-radius: 4px;
+    padding: 30px;
+    color: gray;
+}
+
+.animated ion-label {
+    color: gray;
+}
+
+table {
+    border-collapse: collapse;
+    margin: 10px;
+}
+
+.ass1_title {
+    font-size: 17px;
+    font-weight: bold;
+    color: purple;
+    margin-left: 25px;
+}
+
+.ass1_studentname {
+    font-size: 14px;
+    font-weight: bold;
+    color: #a904a9;
+    margin-left: 80px;
+}
+
+.ass_title_program {
+    font-size: 10px;
+    color: gray;
+}
+
+.list_title {
+    font-weight: bold;
+    color: #003380;
+    font-size: 13px;
+}
+
+.list_subtitle_yes {
+    font-weight: bold;
+    color: green;
+    font-size: 35px;
+}
+
+.list_subtitle_no {
+    font-weight: bold;
+    color: red;
+    font-size: 35px;
+}
+
+.ass_student_info_container {
+    padding: 5px 30px;
+}
+
+.ass_student_heading {
+    font-size: 15px;
+    font-weight: bold;
+    color: #8d430d;
+}
+
+.no_records_found {
+    font-size: 15px;
+    font-weight: bold;
+    color: red;
+    padding: 50px;
+    border: 1px solid #cfcfcf;
+}
+
+.icon_size {
+    font-size: 35px;
+    ;
+}
+
+.material-toolbar {
+    background: #002b45 !important;
+}

@@ -1,0 +1,38 @@
+<ion-header no-border [ngClass]="'shadow'">
+    <ion-toolbar class='material-toolbar' color="--ion-color-reghead">
+        <ion-row style="position: relative">
+            <ion-title class='page-title-absolute'>
+                <p class="marginBottom white">{{ 'WORKSHOP.content' | translate }}</p>
+            </ion-title>
+            <ion-back-button style="color:#ffffff"></ion-back-button>
+        </ion-row>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+    <div *ngIf='!content' class="noContents">
+        <p class='data-large red text-center'>No Contents found !</p>
+    </div>
+    <ion-card class="gridStyle" *ngIf="content">
+        <div class="text-center pt-5" style="text-align: justify;">
+            <p style="padding:10px;">
+                {{ content }}
+            </p>
+        </div>
+    </ion-card>
+    <ion-card class="videoCard" *ngIf="content">
+        <div class="d-flex justify-content-around align-items-center">
+            <div class="verAlign">
+                <ion-label class="padLeft">Work Sheets</ion-label>
+                <a href="javascript:void(0);">
+                    <ion-icon name="paper" class="paper data-xlarge" color='primary' style="display: block;"></ion-icon>
+                </a>
+            </div>
+        </div>
+    </ion-card>
+    <ion-row class="padLR" *ngIf="content">
+        <ion-button (click)="complete_session_button_click()" icon-left size="medium" color="primary" float-right tappable class="explore-btn">
+            Complete Session
+        </ion-button>
+    </ion-row>
+</ion-content>

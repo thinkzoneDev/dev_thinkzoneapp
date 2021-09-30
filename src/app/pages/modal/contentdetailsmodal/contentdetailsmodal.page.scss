@@ -1,0 +1,24 @@
+ion-content {
+  // --background: transparent;
+
+  .container {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: 100%;
+    flex-direction: column;
+    .img {
+      img {
+        width: 100px;
+        height: 100px;
+      }
+    }
+    ion-button {
+      --background: #4286f4;
+      width: 70%;
+      ion-icon {
+        margin-right: 10px;
+      }
+    }
+  }
+}

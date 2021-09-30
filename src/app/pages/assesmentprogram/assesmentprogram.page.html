@@ -1,0 +1,43 @@
+<ion-header no-border [ngClass]="(toolbarshadow)?'':'shadow'">
+    <ion-toolbar class='material-toolbar' color="--ion-color-cushead">
+        <ion-row>
+            <ion-title class='page-title-absolute'>
+                <p class="pMargin" style="color:#ffffff">{{ 'TRAINING.title' | translate}}</p>
+            </ion-title>
+            <ion-back-button style="color:#ffffff"></ion-back-button>
+        </ion-row>
+    </ion-toolbar>
+</ion-header>
+<!-- <ion-content [scrollEvents]="true" (ionScroll)="logScrolling($event)">
+    <div class="completegrid">
+        <ion-grid class="dashgrid">
+            <ion-row>
+                <div style='flex-wrap: wrap' class='horizontal-flexbox justifyBetween' *ngFor='let q of level_list'>
+                    <div class='chip-style'>
+                        <p class='data'>{{q.text}}</p>
+                    </div>
+                </div>
+            </ion-row>
+        </ion-grid>
+    </div>
+</ion-content> -->
+<ion-content [scrollEvents]="true" (ionScroll)="logScrolling($event)">
+    <div class='card shadow'>
+        <div class='m10'>
+            <!--  Module Selector -->
+            <p class='data-large headingAssement'>Select {{ 'ECEACTIVITY.month' | translate }}</p>
+            <!-- <div style='flex-wrap: wrap' class='horizontal-flexbox'>
+                <div (click)='month_onchange(q.value)' *ngFor='let q of month_list'   [ngClass]='(selected_month==q.value)?"selected-chip":"unselected-chip"'>
+                    <p class='data'>{{q.text}}</p>
+                </div>
+            </div> -->
+            <div style='flex-wrap: wrap' class='horizontal-flexbox justifyBetween' *ngFor='let q of level_list'>
+                <div class='chip-style' (click)='month_onchange(q.value)' disabled>
+                    <p class='data'>{{q.text}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</ion-content>
+
+

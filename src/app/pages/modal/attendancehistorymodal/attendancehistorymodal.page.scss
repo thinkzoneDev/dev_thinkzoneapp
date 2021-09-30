@@ -1,0 +1,201 @@
+ion-header {
+  ion-toolbar {
+    --background: #373b44;
+    --background: -webkit-linear-gradient(to right, #4286f4, #373b44);
+    --background: linear-gradient(to right, #4286f4, #373b44);
+
+    ion-back-button {
+      color: white;
+    }
+
+    ion-title {
+      text-align: center;
+      font-size: 1.2rem;
+      font-weight: 400;
+      letter-spacing: 1px;
+      font-family: Arial, Helvetica, sans-serif;
+      color: white;
+      margin-right: -48px;
+    }
+
+    button {
+      border-radius: 50%;
+      box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 43px;
+      width: 43px;
+      background: #4286f4;
+      margin-right: 10px;
+      ion-icon {
+        margin: auto;
+        font-size: 2rem;
+        color: white;
+      }
+    }
+  }
+}
+
+ion-content {
+  --background: #eff4ff;
+  .spacer {
+    height: 30%;
+    background: white;
+    position: relative;
+    color: black;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+    margin: 10px auto;
+    width: 96%;
+
+    .outline {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      height: 100%;
+
+      .btn {
+        display: flex;
+        justify-content: center;
+      }
+
+      .main-wrapper {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        align-items: center;
+        height: 100%;
+
+        .wrapper {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          flex-direction: column;
+          height: 100%;
+
+          h2 {
+            margin-top: 20px;
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 1.2rem;
+            font-weight: 500;
+            color: black;
+          }
+
+          .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: white;
+            transform: rotate(45deg);
+            width: 71px;
+            height: 71px;
+            border-radius: 20px;
+
+            h2 {
+              transform: rotate(-45deg);
+              font-family: Arial, Helvetica, sans-serif;
+              font-size: 2rem;
+              font-weight: 500;
+              color: white;
+              margin: 0;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .student-list {
+    margin: 10px 0px;
+    padding: 0;
+
+    ion-card {
+      background: white;
+      margin: 5px auto;
+      min-height: 70px;
+      width: 96%;
+      display: grid;
+      grid-template-columns: 20% 65% 15%;
+
+      .serial_number {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: #2f52a1;
+        border-radius: 50%;
+        height: 45px;
+        margin: auto;
+        width: 45px;
+        box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+
+        h2 {
+          font-size: 1.2rem;
+          color: white;
+          font-weight: 400;
+          margin: 0;
+          font-family: Arial, Helvetica, sans-serif;
+        }
+      }
+
+      .text {
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        h2 {
+          font-size: 1.2rem;
+          font-weight: 400;
+          letter-spacing: 1px;
+          font-family: Arial, Helvetica, sans-serif;
+          color: black;
+          margin: 0;
+        }
+      }
+
+      .mark {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        height: 100%;
+        background: white;
+
+        ion-icon {
+          font-size: 1.7rem;
+          font-weight: 900;
+        }
+      }
+    }
+  }
+
+  .holiday {
+    min-height: 180px;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+    margin: 10px auto;
+    width: 96%;
+    background: white;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-direction: column;
+
+    border-radius: 7px;
+
+    ion-icon {
+      font-size: 4rem;
+      color: #ff2b2b;
+    }
+
+    h2 {
+      text-align: center;
+      font-size: 1.2rem;
+      font-weight: 400;
+      letter-spacing: 1px;
+      font-family: Arial, Helvetica, sans-serif;
+      color: black;
+    }
+
+    br {
+      margin: 10px 0px;
+    }
+  }
+}

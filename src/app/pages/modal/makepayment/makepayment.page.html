@@ -1,0 +1,294 @@
+<!-- First change  -->
+<!-- 
+<ion-content> 
+  <ion-card>
+    <div class='data-card shadow'>
+      <form style='margin: 10px' [formGroup]="makepaymentFormGroup" class="list-form">
+        <ion-item no-padding class="animated fadeInUp">
+          <ion-label style="color: gray" position="floating">Amount</ion-label>
+          <ion-input type="number" formControlName="amount"></ion-input>
+        </ion-item>
+        <p ion-text class="text08" *ngIf="makepaymentFormGroup.get('amount').touched && makepaymentFormGroup.get('amount').hasError('required')">
+          <ion-text color="danger">Invalid</ion-text>
+        </p>
+        <ion-item no-padding class="animated fadeInUp">
+          <ion-label style="color: gray" position="floating">Remark</ion-label>
+          <ion-input type="text" formControlName="remark"></ion-input>
+        </ion-item>
+        <p ion-text class="text08" *ngIf="makepaymentFormGroup.get('remark').touched && makepaymentFormGroup.get('remark').hasError('required')">
+          <ion-text color="danger">Invalid</ion-text>
+        </p>
+      </form>
+      <div style='margin-top: 10px' class='horizontal-flexbox'>
+        <div (click)="closeModal()" class='button outline'>
+          <p>Cancel</p>
+        </div>
+        <div (click)="makepayment()" class='button' [ngClass]='(makepaymentFormGroup.valid)?"solid-enabled shadow":"solid-disabled"'>
+          <p>Submit</p>
+        </div>
+      </div>
+    </div> 
+  </ion-card>
+</ion-content> 
+-->
+
+<!-- Second change  -->
+<!-- 
+<ion-content> 
+  <ion-card>
+    <ion-card-header color="warning">
+      <ion-card-title>Make Payment</ion-card-title>
+    </ion-card-header>
+    <ion-item no-padding class="animated fadeInUp">
+      <ion-label class="lbl">
+        <div>
+          <span>Reg. Date</span>
+          <span class="rspan">{{regdt}}</span>
+        </div>
+      </ion-label>
+    </ion-item>
+    <ion-item no-padding class="animated fadeInUp">
+      <ion-label class="lbl">
+        <div>
+          <span>Month</span>
+          <span class="rspan">{{running_month}}</span>
+        </div>  
+      </ion-label>
+    </ion-item>
+    <ion-item no-padding class="animated fadeInUp">
+      <ion-label class="lbl">
+        <div>
+          <span>Payble amount</span>
+          <span class="rspan">{{total_payable_amount}}</span>
+        </div> 
+        </ion-label>
+    </ion-item>
+    <ion-item no-padding class="animated fadeInUp">
+      <ion-label class="lbl">
+        <div>
+          <span>Paid amount</span>
+          <span class="rspan">{{total_paid_amount}}</span>
+        </div> 
+      </ion-label>
+    </ion-item>
+    <ion-item no-padding class="animated fadeInUp">
+      <ion-label class="lbl">
+        <div>
+          <span>Pending amount</span>
+          <span class="rspan">{{total_pending_amount}}</span>
+        </div> 
+      </ion-label>
+    </ion-item>
+    <ion-item no-padding class="">
+      <ion-label class="lbl">Pay mode</ion-label>
+      <ion-select *ngIf="is_first_transaction" (ionChange)="amount_type_onchange($event.detail.value)" interface="popover" placeholder="Select One" class="slct">
+        <ion-select-option value="annually">Annually</ion-select-option>
+        <ion-select-option value="semi-annually">Semi annually</ion-select-option>
+        <ion-select-option value="monthly">Monthly</ion-select-option>
+      </ion-select>
+      <ion-label  *ngIf="!is_first_transaction" class="lbl"> <span class="rspan">{{payment_type}}</span></ion-label>
+    </ion-item>
+    <ion-item no-padding class="animated fadeInUp">
+      <ion-label class="lbl">
+        <div>
+          <span>Fees</span>
+          <span class="rspan">Rs. {{pay_amount}} /- </span>
+        </div>
+      </ion-label>
+    </ion-item>
+    <ion-grid>
+        <ion-row>
+          <ion-col></ion-col>
+          <ion-col>
+            <ion-button color="medium" (click)="closeModal()">
+              <ion-icon slot="start" name="close"></ion-icon> Cancel
+            </ion-button>
+          </ion-col>
+          <ion-col>
+            <ion-button icon-left color="success" (click)="makepayment()" tappable>
+              <ion-icon name="save"></ion-icon> Submit
+            </ion-button>
+          </ion-col>
+          <ion-col></ion-col>
+        </ion-row>
+      </ion-grid>
+  </ion-card>
+</ion-content> 
+-->
+
+<!-- Third change  -->
+<!--
+<ion-content>
+  <div class='data-cardhead shadow blue-bg white horAlign'>
+      <div>
+          <p class=" fontColor pMargin">Name</p>
+          <p class="white" style="text-transform: capitalize;">{{res.studentname}}</p>
+          <p class="fontColor pMargin ">Class</p>
+          <p class="white ">{{(res.class == 0) ? 'NA' : res.class}}</p>
+      </div>
+      <div>
+          <p class=" fontColor pMargin ">Program</p>
+          <p class="white " style="text-transform: uppercase; ">{{res.program}}</p>
+          <p class="pMargin fontColor ">Reg. Date</p>
+          <p class="white pMargin " style="text-transform: capitalize; ">{{regdt}}</p>
+      </div>
+  </div>
+  <div *ngIf='is_first_transaction' class='data-card shadow'>
+      <div class='horizontal-flexbox'>
+          <div (click)='amount_type_onchange(m.value)' *ngFor='let m of modes' [ngClass]='(m.value==payment_type)?"selected-chip":"unselected-chip"'>
+              <p class='data pMargin'>{{m.text}}</p>
+          </div>
+      </div>
+  </div>
+
+  <div *ngIf='!is_first_transaction || payment_type!=""' class='data-card shadow'>
+      <p class='data-large colorBlack' style="padding-left:10px">Payment Details</p>
+      <div class='divider'></div>
+
+      <div class='slip-item'>
+          <p class='data width'>Payment Mode:</p>
+          <p class='data colorBlack' style="text-transform:capitalize;">{{payment_type}}</p>
+      </div>
+      <hr class="hr">
+      <div class='slip-item'>
+          <p class='data width'>Month:</p>
+          <p class='data colorBlack'>{{running_month}}</p>
+      </div>
+      <hr class="hr">
+      <div class='slip-item'>
+          <p class='data width'>Payable Amount:</p>
+          <ion-input  style="margin-bottom: 10px;
+          border: 1px solid;" [(ngModel)]="total_payable_amount"></ion-input>
+      </div>
+      <div class='slip-item'>
+          <p class='data width'>Paid Amount:</p>
+          <ion-input style="margin-bottom: 10px;
+          border: 1px solid;" [(ngModel)]="total_paid_amount"></ion-input>
+      </div>
+      <div class='slip-item'>
+          <p class='data width'>Pending Amount:</p>
+          <ion-input style=" border: 1px solid;" [(ngModel)]="total_pending_amount"></ion-input>
+      </div>
+      <hr class="hr">
+      <div class='data-large slip-item'>
+          <p class='data-large width colorBlack'><b>Total Fees:</b></p>
+          <p class='data-large colorBlack'>₹<span class='data-large colorBlack'>{{pay_amount}}</span></p>
+      </div>
+  </div>
+  <div class='data-card shadow'>
+      <div class='m10 horizontal-flexbox'>
+          <div (click)="closeModal()" class='button outline'>
+              <p class='data pMargin pad10'>Cancel</p>
+          </div>
+          <div (click)="makepayment()" class='button' [ngClass]='(is_first_transaction && payment_type=="")?"solid-disabled":"solid-enabled shadow"'>
+              <p class='data white pMargin pad10'>Submit</p>
+          </div>
+      </div>
+  </div>
+</ion-content>
+-->
+
+<!-- Fourth change  -->
+
+<ion-header no-border [ngClass]="(toolbarshadow)?'':'shadow'">
+  <ion-toolbar (click)="closeModal()">
+    <ion-row>
+      <button (click)="closeModal()">
+        <ion-icon name="arrow-back"></ion-icon>
+      </button>
+      <ion-title>Make Payments</ion-title>
+    </ion-row>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="container">
+    <div class="wrapper">
+      <h2>{{res.studentname}}</h2>
+
+      <div class="content">
+        <p>
+          Program-<span style="text-transform: uppercase">{{res.program}}</span>
+        </p>
+        <p>Class-{{(res.class == 0) ? 'NA' : res.class}}</p>
+      </div>
+      <p>Reg. Date-{{regdt}}</p>
+    </div>
+
+    <ion-card style="background-color: white; padding: 10px">
+      <p class="data-large colorBlack" style="padding-left: 10px">
+        Make Payment
+      </p>
+
+      <div *ngIf="is_first_transaction">
+        <ion-item>
+          <ion-label position="floating">Total amount</ion-label>
+          <ion-input
+            [(ngModel)]="total_payable_amount"
+            type="number"
+            inputmode="numeric"
+            mode="ios"
+            required="true"
+            max="99999"
+            min="10"
+            autofocus="true"
+          ></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="floating">Amount</ion-label>
+          <ion-input
+            [(ngModel)]="pay_amount"
+            type="number"
+            inputmode="numeric"
+            mode="ios"
+            required="true"
+            max="99999"
+            min="10"
+          ></ion-input>
+        </ion-item>
+        <div class="button">
+          <ion-button (click)="closeModal()" style="--background: #f44336">
+            Back</ion-button
+          >
+          <ion-button (click)="makepayment('1st')" style="--background: #4caf50"
+            >Submit
+          </ion-button>
+        </div>
+      </div>
+
+      <div *ngIf="!is_first_transaction">
+        <div
+          style="
+            font-size: 1rm;
+            font-weight: bold;
+            font-family: Arial, Helvetica, sans-serif;
+          "
+        >
+          <ion-grid>
+            <ion-row>
+              <ion-col>Total: Rs.{{ total_payable_amount }}</ion-col>
+              <ion-col>Paid: Rs.{{ total_paid_amount }}</ion-col>
+              <ion-col>Pending: Rs.{{ total_pending_amount }}</ion-col>
+            </ion-row>
+          </ion-grid>
+        </div>
+        <ion-item>
+          <ion-label position="floating">Amount</ion-label>
+          <ion-input
+            [(ngModel)]="pay_amount"
+            type="number"
+            inputmode="numeric"
+            mode="ios"
+            required="true"
+            max="99999"
+            min="10"
+            autofocus="true"
+          ></ion-input>
+        </ion-item>
+        <div class="btn">
+          <ion-button (click)="makepayment('')"> Submit </ion-button>
+        </div>
+      </div>
+    </ion-card>
+  </div>
+</ion-content>

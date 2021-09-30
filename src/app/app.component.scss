@@ -1,0 +1,230 @@
+// @import "~ionic4-auto-complete/auto-complete";
+// :host {
+//     /*ion-content {
+//         --background: linear-gradient(135deg, var(--ion-color-dark), var(--ion-color-primary));
+//     }*/
+//     ion-list {
+//         &.list-md {
+//             padding: 0;
+//         }
+//     }
+// }
+
+// .menu-bg {
+//     margin-left: -5px;
+// }
+
+// .version {
+//     font-size: 12px;
+//     color: gray;
+// }
+
+// .thinkzonename {
+//     // color: #0675f4;
+//     color: #222;
+//     font-size: 1.3rem;
+//     // margin: 16px;
+//     margin-bottom: 0;
+//     font-weight: 800;
+// }
+
+// .firstitemmenu {
+//     background-color: #001827;
+// }
+
+// .imcmn {
+//     max-width: 7% !important;
+// }
+
+// .menubackground {
+//     // background-color:#002b45;
+//     color: #ffffff;
+// }
+
+// .menubackground:hover {
+//     background-color: #001827;
+//     border-top-left-radius: 20px;
+//     border-bottom-left-radius: 20px;
+// }
+
+// .mainmenubackground {
+//     background-color: #002b45;
+//     height: 100vh;
+// }
+
+// .menuName {
+//     color: #ffffff;
+//     font-size: 14px;
+//     padding-left: 15px;
+// }
+// .iconwtsappcallfa {
+//     color: #ffffff;
+//     margin: 1.1em;
+// }
+// .iconwtsappcallsa {
+//     color: #ffffff;
+//     margin-bottom: -3px;
+//     margin-right: 5px;
+// }
+
+// .iconwtsapp {
+//     color: #ffffff;
+// }
+// .iconwtsapptext {
+//     margin-bottom: -3px;
+//     margin-right: 5px;
+// }
+
+//
+//Abinash Code
+ion-menu ion-content {
+  --background: var(--ion-item-background, var(--ion-background-color, #fff));
+}
+
+/* Remove background transitions for switching themes */
+ion-menu ion-item {
+  --transition: none;
+}
+
+ion-item.selected {
+  --color: var(--ion-color-primary);
+}
+
+/*
+   * Material Design Menu
+  */
+ion-menu.md ion-list {
+  padding: 20px 0;
+}
+
+ion-menu.md ion-list-header {
+  padding-left: 18px;
+  padding-right: 10px;
+  letter-spacing: 2px;
+  font-weight: 500;
+  display: flex;
+  justify-content: flex-start;
+}
+
+ion-menu.md ion-item {
+  --padding-start: 18px;
+
+  margin-right: 10px;
+
+  border-radius: 0 50px 50px 0;
+
+  font-weight: 400;
+
+  font-size: 0.8rem;
+}
+
+ion-menu.md ion-item.selected {
+  --background: rgba(var(--ion-color-primary-rgb), 0.14);
+}
+
+ion-menu.md ion-item.selected ion-icon {
+  color: var(--ion-color-primary);
+}
+
+ion-menu.md ion-list-header,
+ion-menu.md ion-item ion-icon {
+  color: #5f6368;
+}
+
+ion-menu.md ion-list:not(:last-of-type) {
+  border-bottom: 1px solid var(--ion-color-step-150, #d7d8da);
+}
+
+img {
+  width: 100%;
+  border: 1px solid grey;
+  border-radius: 50%;
+}
+
+.img-section {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: row;
+  margin-left: 3%;
+  .name_user {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 0;
+    padding: 0;
+    margin-left: 5px;
+
+    h2 {
+      color: black;
+      text-transform: capitalize;
+      font-weight: 500;
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 0.9rem;
+      margin-left: 10px;
+      letter-spacing: 1px;
+    }
+    p {
+      text-align: center;
+      font-size: 0.7rem;
+    }
+  }
+}
+
+.wrap {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0px 10px;
+  a {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: Arial, Helvetica, sans-serif;
+    text-transform: capitalize;
+    color: #5f6368;
+    margin: 0;
+    letter-spacing: 1px;
+    text-decoration: none;
+    cursor: pointer;
+    font-weight: 500;
+
+    ion-icon {
+      font-size: 1.5rem;
+      margin-right: 7px;
+      color: #43d854;
+    }
+  }
+}
+
+ion-footer {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 10px;
+  position: relative;
+  padding: 20px 0px;
+
+  ion-button {
+    --background: rgb(255, 67, 67);
+    width: 40%;
+
+    ion-icon {
+      margin-left: 5px;
+    }
+  }
+
+  p {
+    position: absolute;
+    top: 100%;
+    bottom: 0;
+    left: 10px;
+    font-size: 0.9rem;
+    font-family: Arial, Helvetica, sans-serif;
+    text-transform: capitalize;
+    color: #5f6368;
+    letter-spacing: 1px;
+    text-decoration: wavy;
+  }
+}

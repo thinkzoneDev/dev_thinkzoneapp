@@ -1,0 +1,565 @@
+<!-- New Code Added by Abinash Shasini On 10-06-2021 Student List page Design Change-->
+<ion-header no-border [ngClass]="(toolbarshadow)?'':'shadow'">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{ 'STUDENT.student_details' | translate }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [scrollEvents]="true" (ionScroll)="logScrolling($event)">
+  <div class="spacer">
+    <div *ngIf="isFellow" class="outline">
+      <div class="main-wrapper">
+        <div class="wrapper">
+          <div class="container"><h2>{{ totalCount }}</h2></div>
+          <h2>{{ 'STUDENT.total' | translate }}</h2>
+        </div>
+        <div class="wrapper">
+          <div class="container"><h2>{{ countPge }}</h2></div>
+          <h2>{{ 'STUDENT.pge' | translate }}</h2>
+        </div>
+        <div class="wrapper">
+          <div class="container"><h2>{{ countEce }}</h2></div>
+          <h2>{{ 'STUDENT.ece' | translate }}</h2>
+        </div>
+      </div>
+    </div>
+
+    <div *ngIf="isAnganwadiOrSchool" class="outline">
+      <div class="main-wrapper">
+        <div class="wrapper">
+          <div class="container"><h2>{{ totalCount }}</h2></div>
+          <h2>{{ 'STUDENT.total' | translate }}</h2>
+        </div>
+      </div>
+    </div>
+
+    <div class="custom-shape-divider-bottom-1619843386">
+      <svg
+        data-name="Layer 1"
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 1200 120"
+        preserveAspectRatio="none"
+      >
+        <path
+          d="M600,112.77C268.63,112.77,0,65.52,0,7.23V120H1200V7.23C1200,65.52,931.37,112.77,600,112.77Z"
+          class="shape-fill"
+        ></path>
+      </svg>
+    </div>
+  </div>
+
+  <div class="container-2">
+    <ion-searchbar
+      [(ngModel)]="searchText"
+      showCancelButton="never"
+      (keyup)="search_student($event)"
+      (ionClear)="ionClear()"
+      placeholder="Search student"
+    ></ion-searchbar>
+
+    <div
+      *ngFor="let student of student_list;let i=index;"
+      class="student-container"
+    >
+      <ion-card
+        *ngIf="!showAction[student.studentid]"
+        [ngClass]="(student.mainbaselinestatus == 'complete') ? 'greenbg' : 'redbg'"
+      >
+        <!-- <div class="serial_number"><h2>{{i+1}}</h2></div> -->
+        <div class="serial_number" (click)="callStudent(student)">
+          <ion-icon name="call"></ion-icon>
+        </div>
+        <div class="main">
+          <h3 (click)="goToAssesmentPage(student)">{{student.studentname}}</h3>
+
+          <div class="content" (click)="goToAssesmentPage(student)">
+            <div>
+              <p>
+                <span
+                  >{{ (student.program=='ece') ? ("Anganwadi") : ("Class -
+                  "+student.class ) }}</span
+                >
+              </p>
+            </div>
+
+            <div>
+              <h4>{{ student.program | uppercase }}</h4>
+            </div>
+          </div>
+
+          <div class="buttons">
+            <button (click)="fillResponse(student)">
+              <ion-icon name="create"></ion-icon>{{ 'HBL.hbl_responce' |
+              translate }}
+            </button>
+            <button
+              style="background: #30aa3e"
+              (click)="navigate_assessment(student)"
+            >
+              <ion-icon name="information-circle-outline"></ion-icon>{{
+              'HOME.progress' | translate }}
+            </button>
+          </div>
+        </div>
+
+        <div class="button">
+          <ion-icon
+            name="arrow-back"
+            *ngIf="!showAction[student.studentid]"
+            (click)="clearAll(student.studentid);showAction[student.studentid] = !showAction[student.studentid]"
+          ></ion-icon>
+        </div>
+        <div class="hbl-tag" *ngIf="student.studentcategory === 'hbl'">
+          <h2>HBL</h2>
+        </div>
+      </ion-card>
+
+      <ion-card
+        *ngIf="showAction[student.studentid]"
+        style="
+          display: flex;
+          justify-content: space-around;
+          align-items: center;
+        "
+      >
+        <ion-button (click)="checkStudentType(student)">
+          {{ 'STUDENT.edit' | translate }}<ion-icon
+            name="create"
+            style="color: white; margin-left: 5px"
+          ></ion-icon>
+        </ion-button>
+        <ion-button (click)="delete_button_click(student)">
+          {{ 'STUDENT.delete' | translate }}<ion-icon
+            name="trash"
+            style="color: white; margin-left: 5px"
+          ></ion-icon>
+        </ion-button>
+
+        <div class="button">
+          <ion-icon
+            name="arrow-forward"
+            *ngIf="showAction[student.studentid]"
+            (click)="clearAll(student.studentid);showAction[student.studentid] = !showAction[student.studentid]"
+          ></ion-icon>
+        </div>
+      </ion-card>
+    </div>
+  </div>
+</ion-content>
+<!-- Code Commented by Abinash Shasini On 10-06-2021 Student List page Design Change-->
+<!-- 
+<ion-header no-border [ngClass]="(toolbarshadow)?'':'shadow'">
+  <ion-toolbar class="material-toolbar" color="--ion-color-cushead">
+    <ion-buttons slot="start" style="color: #ffffff">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>
+      <p class="page-title">{{ 'STUDENT.student_details' | translate }}</p>
+    </ion-title>
+    <ion-buttons slot="end">
+      <ion-button size="large" shape="round">
+        <ion-icon
+          class="data-large"
+          name="notifications"
+          style="font-size: 25px; color: #ffffff; visibility: hidden"
+        ></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <ion-grid class="allcard" style="background-color: #002b45">
+    <ion-row class="textCenter alert" style="padding: 0">
+      <ion-col>
+        <div class="verAlign">
+          <ion-card style="background-color: #ffffff">
+            <h2 class="norotate">{{ totalCount }}</h2>
+          </ion-card>
+          <p style="color: #ffffff">{{ 'STUDENT.total' | translate }}</p>
+        </div>
+      </ion-col>
+      <ion-col>
+        <div class="verAlign">
+          <ion-card style="background-color: #ffffff">
+            <h2 class="norotate">{{countPge}}</h2>
+          </ion-card>
+          <p style="color: #ffffff">{{ 'STUDENT.pge' | translate }}</p>
+        </div>
+      </ion-col>
+      <ion-col>
+        <div class="verAlign">
+          <ion-card style="background-color: #ffffff">
+            <h2 class="norotate">{{countEce}}</h2>
+          </ion-card>
+          <p style="color: #ffffff">{{ 'STUDENT.ece' | translate }}</p>
+        </div>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  <ion-grid class="positionbtn">
+    <ion-row>
+      <ion-col>
+        <div class="color-button" (click)="open_register_modal(null, 'new')">
+          <p style="margin-bottom: 0px; color: white; padding: 15px">
+            {{ 'STUDENT.register' | translate }}
+          </p>
+        </div>
+      </ion-col>
+      <ion-col>
+        <div class="color-button" [routerLink]="['/skillchartall1']">
+          <p style="margin-bottom: 0px; color: white; padding: 15px">
+            {{ 'STUDENT.skillchart' | translate }}
+          </p>
+        </div>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  <ion-grid style="margin-top: 42px">
+    Search bar
+    <ion-searchbar
+      [(ngModel)]="searchText"
+      showCancelButton="never"
+      (keyup)="search_student($event)"
+      (ionClear)="ionClear()"
+      placeholder="Search student"
+    ></ion-searchbar>
+
+    Student list
+    <div *ngFor="let student of student_list">
+      <ion-row>
+        <ion-col>
+          <ion-card
+            class="cardMarPad"
+            [ngClass]="(student.isAssessmentTaken == true) ? 'greenbg' : 'redbg'"
+          >
+            <div class="d-flex justify-content-between">
+              <div
+                class="d-flex align-items-center w-100 justify-content-between"
+              >
+                <ion-label
+                  *ngIf="!showAction[student.studentid]"
+                  (click)="navigate_assessment(student)"
+                >
+                  <p class="data-large studentName" style="margin-bottom: 0px">
+                    <ion-row> {{student.studentname}} </ion-row>
+                  </p>
+                  <p class='guardian'>{{ 'EXPLORE.guardian' | translate }}: {{student.parentsname}}</p>
+                  <div>
+                    <p class="studentPgm">
+                      {{('EXPLORE.program' | translate ) +": "+(student.program
+                      | uppercase)}}
+                    </p>
+                    <p class="studentClass">
+                      {{ (student.program=='ece') ? ("Anganwadi") : ("Class -
+                      "+student.class ) }}
+                    </p>
+                    <p class="studentClass">
+                                            {{checkCompleted(student)}}
+                                        </p>
+                  </div>
+                  <p class='program'>{{ (student.program=='ece') ? (('EXPLORE.program' | translate ) +": ECE - Anganwadi") : ( ('EXPLORE.program' | translate ) +": "+(student.program | uppercase)+" - Class "+student.class )}}</p>
+                  <ion-row>
+                    <div class="studentinfodiv">
+                      {{ 'STUDENT.studentinfo' | translate }}
+                      <ion-icon name="information-circle-outline"></ion-icon>
+                    </div>
+                  </ion-row>
+                </ion-label>
+                <ion-icon
+                  name="arrow-back"
+                  *ngIf="!showAction[student.studentid]"
+                  (click)="clearAll(student.studentid);showAction[student.studentid] = !showAction[student.studentid]"
+                ></ion-icon>
+                <ion-icon
+                  name="arrow-forward"
+                  *ngIf="showAction[student.studentid]"
+                  (click)="clearAll(student.studentid);showAction[student.studentid] = !showAction[student.studentid]"
+                ></ion-icon>
+              </div>
+              <div
+                *ngIf="showAction[student.studentid]"
+                class="d-flex justify-content-between align-items-center"
+              >
+                <div
+                                    class="d-flex align-items-center padding27 backgroundBlue"
+                                    (click)="flipStudentDisplay(student);"
+                                >
+                                    <ion-icon
+                                        class="data-large white1"
+                                        [ngClass]='(!student.hidden)?"rotate-down":"rotate-up"'
+                                        name="ios-arrow-down"
+                                    ></ion-icon>
+                                    <p
+                                        class="pMargin white1"
+                                        name="ios-arrow-down"
+                                    >
+                                        Baseline
+                                    </p>
+                                </div>
+
+                <ion-button
+                  size="small"
+                  (click)="open_register_modal(student, 'edit')"
+                >
+                  <ion-icon class="data-large white1" name="create"></ion-icon>
+                  <p class="pMargin white1">{{ 'STUDENT.edit' | translate }}</p>
+                </ion-button>
+                <ion-button size="small" (click)="delete_button_click(student)">
+                  <ion-icon class="data-large white1" name="trash"></ion-icon>
+                  <p class="pMargin white1">
+                    {{ 'STUDENT.delete' | translate }}
+                  </p>
+                </ion-button>
+              </div>
+            </div>
+
+            <div
+              *ngIf='student.program=="pge" && showAction[student.studentid]'
+            >
+              <div
+                class="gray"
+                [ngClass]='(!student.hidden)?"show-data":"hide-data"'
+              >
+                <div class="hdivider gray"></div>
+                <div class="" style="margin-bottom: 10px">
+                  <p class="data-large">{{ 'STUDENT.baseline' | translate }}</p>
+                  This is the English level display area
+                  <div class="hfs">
+                    <div class="horizontal-flexbox baselineDesign">
+                      <p class="data padRight">
+                        {{ 'EXPLORE.level_eng' | translate }}
+                      </p>
+                      <div class="selected-chi vertical-flexbox">
+                        <p>
+                          {{student.english.val==null ? "?" :
+                          student.english.val}}
+                        </p>
+                      </div>
+                    </div>
+                    <div
+                      (click)="openModal2('english',student)"
+                      class="text-center"
+                      *ngIf="student.english.val!=student.eng_level"
+                    >
+                      <ion-icon
+                        class="padding10 green data-large"
+                        name="save"
+                      ></ion-icon>
+                      <p class="set-level-text">
+                        {{ 'STUDENT.setlevel' | translate }}
+                      </p>
+                    </div>
+                    <div class="change-button" *ngIf="student.isShowEng">
+                      <p
+                        *ngIf="student.english.hidden==true && student.english.val==student.eng_level"
+                        (click)='student.english.hidden=!student.english.hidden;focusLevelPge(student.studentid,"odia")'
+                        class="white"
+                      >
+                        change
+                      </p>
+                    </div>
+                  </div>
+                  This is English level selector area
+                  <div
+                    [ngClass]='(student.english.hidden)?"hide-data":"show-data"'
+                  >
+                    <div
+                      class="hfs wrap"
+                      id="levelElementenglish{{student.studentid}}"
+                    >
+                      <div
+                        (click)="student.english.val=l"
+                        *ngFor="let l of levels"
+                        class="vertical-flexbox"
+                        [ngClass]='(student.english.val == l)?"selected-chip":"unselected-chip"'
+                      >
+                        <p>{{l}}</p>
+                      </div>
+                    </div>
+                  </div>
+                  <hr />
+                  <div class="hdivider"></div>
+                  This is the Math level display area
+                  <div class="hfs">
+                    <div class="horizontal-flexbox baselineDesign">
+                      <p class="data padRight">
+                        {{ 'EXPLORE.level_math' | translate }}
+                      </p>
+                      <div class="selected-chi vertical-flexbox">
+                        <p>
+                          {{student.math.val==null ? "?" : student.math.val}}
+                        </p>
+                      </div>
+                    </div>
+                    <div
+                      (click)="openModal2('math',student)"
+                      class="text-center"
+                      *ngIf="student.math.val!=student.math_level"
+                    >
+                      <ion-icon
+                        class="padding10 green data-large"
+                        name="save"
+                      ></ion-icon>
+                      <p class="set-level-text">
+                        {{ 'STUDENT.setlevel' | translate }}
+                      </p>
+                    </div>
+                    <div class="change-button" *ngIf="student.isShowMath">
+                      <p
+                        *ngIf="student.math.hidden==true && student.math.val==student.math_level"
+                        (click)='student.math.hidden=!student.math.hidden;focusLevelPge(student.studentid,"math")'
+                        class="white"
+                      >
+                        change
+                      </p>
+                    </div>
+                  </div>
+                  This is Maths level selector area
+                  <div
+                    [ngClass]='(student.math.hidden)?"hide-data":"show-data"'
+                  >
+                    <div
+                      class="hfs wrap"
+                      id="levelElementmath{{student.studentid}}"
+                    >
+                      <div
+                        (click)="student.math.val=l"
+                        *ngFor="let l of levels"
+                        class="vertical-flexbox"
+                        [ngClass]='(student.math.val == l)?"selected-chip":"unselected-chip"'
+                      >
+                        <p>{{l}}</p>
+                      </div>
+                    </div>
+                  </div>
+                  <hr />
+                  <div class="hdivider"></div>
+                  This is the Odia level display area
+                  <div
+                    class="hfs"
+                    #eceElement
+                    id="eceElement{{student.studentid}}"
+                  >
+                    <div class="horizontal-flexbox baselineDesign">
+                      <p class="data padRight">
+                        {{ 'EXPLORE.level_odia' | translate }}
+                      </p>
+                      <div class="selected-chi vertical-flexbox">
+                        <p>
+                          {{student.odia.val==null ? "?" : student.odia.val}}
+                        </p>
+                      </div>
+                    </div>
+                    <div
+                      (click)="openModal2('odia',student)"
+                      class="text-center"
+                      *ngIf="student.odia.val!=student.odia_level"
+                    >
+                      <ion-icon
+                        class="padding10 green data-large"
+                        name="save"
+                      ></ion-icon>
+                      <p class="set-level-text">
+                        {{ 'STUDENT.setlevel' | translate }}
+                      </p>
+                    </div>
+                    <div class="change-button" *ngIf="student.isShowOdia">
+                      <p
+                        *ngIf="student.odia.hidden==true && student.odia.val==student.odia_level"
+                        (click)='student.odia.hidden=!student.odia.hidden;focusLevelPge(student.studentid,"odia")'
+                        class="white"
+                      >
+                        change
+                      </p>
+                    </div>
+                  </div>
+                  This is Odia level selector area
+                  <div
+                    [ngClass]='(student.odia.hidden)?"hide-data":"show-data"'
+                  >
+                    <div
+                      class="hfs wrap"
+                      id="levelElementodia{{student.studentid}}"
+                    >
+                      <div
+                        (click)="student.odia.val=l;"
+                        *ngFor="let l of levels"
+                        class="vertical-flexbox"
+                        [ngClass]='(student.odia.val == l)?"selected-chip":"unselected-chip"'
+                      >
+                        <p>{{l}}</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div
+              *ngIf='student.program=="ece" && showAction[student.studentid]'
+              id="eceElement{{student.studentid}}"
+            >
+              <div [ngClass]='(!student.hidden)?"show-data":"hide-data"'>
+                <div class="hdivider"></div>
+                <div class="padding10">
+                  <p class="data-large">{{ 'STUDENT.baseline' | translate }}</p>
+               
+                  <div class="hfs">
+                    <div class="horizontal-flexbox baselineDesign">
+                      <p class="data padRight">
+                        {{ 'EXPLORE.level_ece' | translate }}
+                      </p>
+                      <div class="selected-chi vertical-flexbox">
+                        <p>{{student.ece.val==null ? "?" : student.ece.val}}</p>
+                      </div>
+                    </div>
+                    <div
+                      class="text-center"
+                      *ngIf="student.ece.val!=student.ec_level"
+                    >
+                      <ion-icon
+                        (click)="openModal2('',student)"
+                        class="padding10 green data-large"
+                        name="save"
+                      ></ion-icon>
+                      <p class="set-level-text">
+                        {{ 'STUDENT.setlevel' | translate }}
+                      </p>
+                    </div>
+                    <div class="change-button" *ngIf="student.isShowEce">
+                      <p
+                        *ngIf="student.ece.hidden==true && student.ece.val==student.ec_level"
+                        (click)="student.ece.hidden=!student.ece.hidden; focusLevel(student.studentid)"
+                        class="white"
+                      >
+                        change
+                      </p>
+                    </div>
+                  </div>
+                  
+                  <div [ngClass]='(student.ece.hidden)?"hide-data":"show-data"'>
+                    <div
+                      class="levelnum wrap"
+                      id="levelElement{{student.studentid}}"
+                    >
+                      <div
+                        (click)="student.ece.val=l"
+                        *ngFor="let l of ece_levels"
+                        class="vertical-flexbox"
+                        [ngClass]='(student.ece.val == l)?"selected-chip":"unselected-chip"'
+                      >
+                        <p>{{l}}</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </ion-card>
+        </ion-col>
+      </ion-row>
+    </div>
+  </ion-grid>
+</ion-content> -->

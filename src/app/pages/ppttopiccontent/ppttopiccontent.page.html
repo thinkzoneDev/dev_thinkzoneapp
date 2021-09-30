@@ -1,0 +1,31 @@
+<ion-header no-border [ngClass]="'shadow'">
+    <ion-toolbar class="material-toolbar" color="--ion-color-cushead">
+        <ion-buttons slot="start" style="color:#ffffff">
+            <ion-back-button></ion-back-button>
+        </ion-buttons>
+        <ion-title>
+            <p class="page-title">{{ topicname }}</p>
+        </ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <ion-content>
+    <div>
+        <ion-grid>
+            <ion-row>
+                <ion-col>
+                    <div>
+                        <ion-button expand="full" (click)= "goToContentDetails()">content</ion-button>
+                    </div>
+                </ion-col>
+            </ion-row>
+            <!-- <ion-row>
+                <ion-col>
+                    <div>
+                       <ion-button expand="full" (click)= "goToQuizDetails()" >quiz</ion-button>
+                    </div>
+                </ion-col>
+            </ion-row> -->
+        </ion-grid>
+    </div>
+  </ion-content>
+  

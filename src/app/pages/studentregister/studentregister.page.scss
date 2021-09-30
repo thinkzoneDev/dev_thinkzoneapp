@@ -1,0 +1,184 @@
+ion-header {
+  ion-toolbar {
+    --background: #373b44;
+    --background: -webkit-linear-gradient(to right, #4286f4, #373b44);
+    --background: linear-gradient(to right, #4286f4, #373b44);
+
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+
+    ion-back-button {
+      color: white;
+    }
+
+    ion-title {
+      text-align: center;
+      font-size: 1.2rem;
+      font-weight: 400;
+      letter-spacing: 1px;
+      font-family: Arial, Helvetica, sans-serif;
+      color: white;
+      margin-left: -53px;
+    }
+
+    button {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 43px;
+      background: transparent;
+      width: 43px;
+      margin-left: 10px;
+      ion-icon {
+        margin: auto;
+        font-size: 1.6rem;
+        color: white;
+      }
+    }
+  }
+}
+
+ion-content {
+  --background: #eff4ff;
+  .container {
+    margin-top: 65px;
+    padding: 0;
+
+    ion-card {
+      width: 97%;
+      margin: auto;
+      background: white;
+      margin-bottom: 10px;
+      min-height: 80px;
+      display: flex;
+      align-items: center;
+    }
+
+    .container-max {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+    }
+
+    ion-item {
+      border-radius: 10px;
+      width: 100%;
+
+      .label {
+        padding-top: 10px;
+        color: #263e77;
+        font-size: 1.1rem;
+        letter-spacing: 1px;
+        text-transform: capitalize;
+        font-family: Arial, Helvetica, sans-serif;
+        max-width: 100% !important;
+      }
+
+      ion-icon {
+        color: #263e77;
+      }
+
+      ion-select,
+      ion-select-option {
+        color: #263e77 !important;
+        opacity: 1 !important;
+        font-family: Arial, Helvetica, sans-serif;
+        text-transform: capitalize;
+        font-weight: 500;
+        letter-spacing: 1px;
+        font-weight: 1.2rem;
+      }
+
+      ion-label {
+        color: #263e77;
+        font-size: 1.1rem;
+        letter-spacing: 1px;
+        text-transform: capitalize;
+        font-family: Arial, Helvetica, sans-serif;
+        max-width: 100% !important;
+      }
+
+      ion-datetime {
+        font-family: Arial, Helvetica, sans-serif;
+        letter-spacing: 1px;
+        font-size: 1.1rem;
+      }
+
+      ion-input {
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 1.2rem;
+        letter-spacing: 1px;
+        color: #000;
+      }
+
+      ion-radio-group {
+        width: 100%;
+        .wrapper {
+          display: flex;
+          justify-content: space-between;
+          flex-direction: row;
+          align-items: center;
+
+          @keyframes white-to-blue {
+            0% {
+              background: white;
+              color: #2196f3;
+            }
+            100% {
+              background: #2196f3;
+              color: white;
+            }
+          }
+          .selected-chip {
+            animation: white-to-blue 0.6s;
+            animation-fill-mode: forwards;
+            border-radius: 20px;
+            text-align: center;
+            color: white;
+            background: #2196f3;
+            // min-width: 80px;
+            min-height: 20px;
+            p {
+              color: white;
+            }
+          }
+
+          @keyframes blue-to-white {
+            0% {
+              color: white;
+              background: #2196f3;
+            }
+            100% {
+              color: #2196f3;
+              background: white;
+            }
+          }
+          .unselected-chip {
+            animation: blue-to-white 0.6s;
+            animation-fill-mode: forwards;
+            border-radius: 20px;
+            text-align: center;
+            color: #2196f3;
+            border: 1px #2196f3 solid;
+            min-height: 20px;
+            p {
+              color: #2196f3;
+            }
+          }
+        }
+      }
+    }
+  }
+  ion-button {
+    --background: #373b44;
+    --background: -webkit-linear-gradient(to right, #4286f4, #373b44);
+    --background: linear-gradient(to right, #4286f4, #373b44);
+    font-size: 1.1rem;
+    font-weight: 500;
+
+    ion-icon {
+      margin-left: 10px;
+    }
+  }
+}

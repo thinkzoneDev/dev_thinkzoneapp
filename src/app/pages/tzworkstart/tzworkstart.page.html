@@ -1,0 +1,18 @@
+<ion-header no-border [ngClass]="'shadow'">
+    <ion-toolbar class='material-toolbar' color="--ion-color-reghead">
+        <ion-row style="position: relative">
+            <ion-title class='page-title-absolute'>
+                <p class="marginBottom">{{ 'WORKSHOP.leap' | translate }}</p>
+            </ion-title>
+            <ion-back-button style="color:#ffffff;display:block;" (click)='back()'></ion-back-button>
+        </ion-row>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+    <div class="buttonAlign">
+        <ion-button (click)='startProgram()' class="buttonwidth" color="--ion-color-reghead"><span>Start Now </span>
+            <ion-icon name="arrow-forward" style="font-size: 18px;"></ion-icon>
+        </ion-button>
+    </div>
+</ion-content>

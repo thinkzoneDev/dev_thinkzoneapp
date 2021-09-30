@@ -1,0 +1,30 @@
+<div class="container">
+  <div class="close" (click)="onClickClose()">
+    <ion-icon name="close"></ion-icon>
+  </div>
+
+  <div class="wraper">
+    <ion-card class="math_activity" (click)="openMathActivity()">
+      <img src="../../../../assets/img/hbl/maths.png" alt="" class="cardimg" />
+      <p class="data hometitle">{{ 'HOME.activity_pge_math' | translate }}</p>
+    </ion-card>
+
+    <ion-card class="odia_activity" (click)="openEnglishActivity()">
+      <img
+        src="../../../../assets/img/hbl/dictionary.png"
+        alt=""
+        class="cardimg"
+      />
+      <p class="data hometitle">{{ 'HOME.activity_pge_eng' | translate }}</p>
+    </ion-card>
+
+    <ion-card class="eng_activity" (click)="openOdiaActivity()">
+      <img
+        src="../../../../assets/img/hbl/reading.png"
+        alt=""
+        class="cardimg"
+      />
+      <p class="data hometitle">{{ 'HOME.activity_pge_odia' | translate }}</p>
+    </ion-card>
+  </div>
+</div>

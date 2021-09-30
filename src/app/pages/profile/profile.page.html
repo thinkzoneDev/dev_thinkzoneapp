@@ -1,0 +1,112 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-row>
+      <ion-buttons>
+        <ion-back-button></ion-back-button>
+      </ion-buttons>
+      <ion-title *ngIf="toolbarshadow"
+        >{{ 'PROFILE.title' | translate }}</ion-title
+      >
+    </ion-row>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [scrollEvents]="true" (ionScroll)="logScrolling($event)">
+  <div class="containier">
+    <ion-card class="card-1">
+      <img
+        src="{{ userimage }}"
+        onerror="this.onerror=null; this.src='./../../../../assets/img/default-user-profile-image.png'"
+      />
+      <div class="name">
+        <div class="content">
+          <ion-icon
+            name="person"
+            class="m10 data-large"
+            style="color: #1ab7ea"
+          ></ion-icon>
+          <h1>{{ username | titlecase }}</h1>
+        </div>
+        <div class="content">
+          <ion-icon
+            name="mail"
+            class="m10 data-large"
+            style="color: #ff052a"
+          ></ion-icon>
+          <h3>{{ _userid }}</h3>
+        </div>
+        <div class="content">
+          <ion-icon
+            name="people"
+            class="m10 data-large"
+            style="color: #263e77"
+          ></ion-icon>
+          <h2>Manager: {{ managername }}</h2>
+        </div>
+        <div class="content">
+          <ion-icon
+            name="person-add"
+            class="m10 data-large"
+            style="color: #1bce98"
+          ></ion-icon>
+          <h2>Usertype: <span>{{ usertype }}</span></h2>
+        </div>
+      </div>
+      <div class="type">
+        <ion-button expand="block" [routerLink]="['/performance']">
+          performance
+        </ion-button>
+      </div>
+    </ion-card>
+
+    <ion-card>
+      <div class="content">
+        <ion-icon class="m10 data-large green" name="calendar"></ion-icon>
+        <p>DOB: {{ bdate || "" }} {{ bmonth || "" }} {{ byear || "" }}</p>
+      </div>
+      <div class="content">
+        <ion-icon class="m10 data-large black" [name]="gender"></ion-icon>
+        <p>Gender: {{ gender}}</p>
+      </div>
+      <div class="content">
+        <ion-icon
+          class="m10 data-large"
+          style="color: #410093"
+          name="calendar"
+        ></ion-icon>
+        <p>Regd.Date: {{ rdate }} {{ rmonth }},{{ ryear }}</p>
+      </div>
+    </ion-card>
+    <ion-card class="card-3">
+      <div class="content">
+        <ion-icon class="m10 data-large blue" name="call"></ion-icon>
+        <p>Phone: {{ contactno }}</p>
+      </div>
+      <div class="content">
+        <ion-icon class="m10 data-large green" name="school"></ion-icon>
+        <p>Qualification: {{ qualification }}</p>
+      </div>
+      <div class="content">
+        <ion-icon class="m10 data-large red" name="pin"></ion-icon>
+        <p>Address:</p>
+      </div>
+      <!-- <div class="content">
+        <div class="para"><p>Locality: {{address}}</p></div>
+      </div> -->
+      <div class="content">
+        <div class="para"><p>Block: {{block}}</p></div>
+      </div>
+      <div class="content">
+        <div class="para"><p>District: {{district}}</p></div>
+      </div>
+      <div class="content">
+        <div class="para"><p>State: {{state}}</p></div>
+      </div>
+    </ion-card>
+  </div>
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed"
+    ><ion-fab-button (click)="goToEditPage()"
+      ><ion-icon name="create"></ion-icon
+    ></ion-fab-button>
+  </ion-fab>
+</ion-content>

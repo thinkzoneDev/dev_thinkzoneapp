@@ -1,0 +1,37 @@
+<ion-header no-border [ngClass]="(toolbarshadow)?'':'shadow'">
+  <ion-toolbar (click)="closeModal()">
+    <button (click)="closeModal()">
+      <ion-icon name="arrow-back"></ion-icon>
+    </button>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card>
+    <div [hidden]="isLoaded == true" class="download">
+      <ion-card>
+        <img src="../../../assets/img/hbl/Pulse.gif" />
+        <h2>{{prg}}</h2></ion-card
+      >
+    </div>
+    <pdf-viewer
+      [src]="link"
+      [original-size]="false"
+      [show-all]="true"
+      [page]="page"
+      [render-text]="true"
+      (on-progress)="onProgress($event)"
+    ></pdf-viewer>
+  </ion-card>
+
+  <ion-fab
+    vertical="bottom"
+    horizontal="end"
+    slot="fixed"
+    (click)="downloadViewPdf(link)"
+  >
+    <ion-fab-button>
+      <ion-icon name="cloud-download"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+</ion-content>

@@ -1,0 +1,55 @@
+<ion-header no-border [ngClass]="(toolbarshadow)?'':'shadow'">
+    <ion-toolbar class='material-toolbar' color="--ion-color-reghead">
+        <ion-row style="position: relative">
+            <ion-title class='page-title-absolute'>
+                <p class="marginBottom">{{ 'PGEACTIVITY.title_math' | translate }}</p>
+            </ion-title>
+            <ion-back-button style="color:#ffffff"></ion-back-button>
+        </ion-row>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content [scrollEvents]="true" (ionScroll)="logScrolling($event)">
+  <!-- <app-period-selector *ngIf='month_list.length>0' [month]='month_list' (selected)='reloadActivityData($event)'></app-period-selector> -->
+  <app-period-selector *ngIf='month_list.length>0' [month]='month_list' [ngClass] = "months" (selected)='show_activity_details($event)'></app-period-selector>
+  <!-- 
+  <div *ngIf='activity_loaded && activity_list.length==0'>
+      <p style='color: #f44336;text-align: center;margin: 10px'>No activities found for the selected week</p>
+  </div>
+  <app-activity-selector [activity_list]='activity_list' (selected)='activity_btnclick($event)'></app-activity-selector>
+  <ion-grid>
+    <ion-card class="whitecard">
+      <ion-row>
+          <ion-item class="full_width">
+            <ion-label>Month</ion-label>
+            <ion-select placeholder="Select One" (ionChange)="month_onchange($event.detail.value)">
+              <ion-select-option *ngFor="let qlist of month_list" [value]="qlist.value" [disabled]="qlist.disabled">{{ qlist.text }}</ion-select-option>
+            </ion-select>
+          </ion-item>
+        </ion-row>
+        <ion-row>
+          <ion-item class="full_width">
+            <ion-label>Week</ion-label>
+            <ion-select placeholder="Select One" (ionChange)="week_onchange($event.detail.value)">
+              <ion-select-option *ngFor="let wlist of week_list" [value]="wlist.value">{{ wlist.text }}</ion-select-option>
+            </ion-select>
+          </ion-item>
+        </ion-row>
+    </ion-card>
+    <ion-card class="whitecard">
+      {{ activity_heading }}
+      <ion-list>
+        <ion-item *ngFor="let activity of activity_list;" class="ionitem">
+          <ion-grid>
+            <ion-row class="right-align">
+              <ion-button icon-left size="medium" color="{{ activity.cls }}" (click)="activity_btnclick(activity.val)"  float-right tappable class="explore-btn">
+                L{{ activity.val }}
+              </ion-button>
+            </ion-row>
+          </ion-grid>
+        </ion-item>
+      </ion-list>
+    </ion-card>
+  </ion-grid> 
+  -->
+</ion-content>

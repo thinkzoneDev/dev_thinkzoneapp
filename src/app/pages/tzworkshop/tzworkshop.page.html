@@ -1,0 +1,62 @@
+<ion-header no-border>
+  <ion-toolbar class="material-toolbar" color="--ion-color-reghead">
+    <ion-row style="position: relative">
+      <ion-title class="page-title-absolute">
+        <p class="marginBottom">{{ 'PGEACTIVITY.title' | translate }}</p>
+      </ion-title>
+      <ion-back-button style="color: #ffffff"></ion-back-button>
+    </ion-row>
+    <ion-row class="inverted_border_radius"></ion-row>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="container">
+    <ion-card class="math_activity" [routerLink]="'/pgemathactivity'">
+      <div class="activity">
+        <img src="/assets/img/PGE-Icon_2.png" alt="" class="cardimg" />
+        <p class="data hometitle">{{ 'HOME.activity_pge_math' | translate }}</p>
+      </div>
+    </ion-card>
+
+    <ion-card class="odia_activity" [routerLink]="'/pgeenglishactivity'">
+      <div class="activity">
+        <img src="/assets/img/PGE-Icon_1.png" alt="" class="cardimg" />
+        <p class="data hometitle">{{ 'HOME.activity_pge_eng' | translate }}</p>
+      </div>
+    </ion-card>
+
+    <ion-card class="eng_activity" [routerLink]="'/pgeodiaactivity'">
+      <div class="activity">
+        <img src="/assets/img/PGE-Icon_3.png" alt="" class="cardimg" />
+        <p class="data hometitle">{{ 'HOME.activity_pge_odia' | translate }}</p>
+      </div>
+    </ion-card>
+  </div>
+</ion-content>
+<!--
+TZ WORKSHOP CODE
+<ion-header no-border [ngClass]="'shadow'">
+  <ion-toolbar class='material-toolbar' color="--ion-color-reghead">
+      <ion-row style="position: relative">
+          <ion-title class='page-title-absolute'>
+              <p class="marginBottom">{{ 'WORKSHOP.title' | translate }}</p>
+          </ion-title>
+          <ion-back-button style="color:#ffffff;display:block" (click)='naviagateback()'></ion-back-button>
+      </ion-row>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <div class="buttonAlign">
+      <ion-button (click)="sr_button_click()" class="buttonwidth" style="margin-bottom: 30px;text-transform: capitalize;" color="--ion-color-reghead"> <!--  [routerLink]="'/tzschoolstart'"
+          {{ 'WORKSHOP.school' | translate }}
+          <!-- <ion-icon name="arrow-forward" style="font-size: 18px;"></ion-icon> 
+      </ion-button>
+      <ion-button (click)="leap_button_click()" class="buttonwidth" color="--ion-color-reghead"> <!--  [routerLink]="'/tzworkstart'" 
+          {{ 'WORKSHOP.leap' | translate }}
+          <!-- <ion-icon name="arrow-forward" style="font-size: 18px;"></ion-icon> 
+      </ion-button>
+  </div>
+</ion-content>
+
+-->

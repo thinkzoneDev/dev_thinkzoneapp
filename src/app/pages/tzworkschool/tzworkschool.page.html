@@ -1,0 +1,32 @@
+<ion-header no-border [ngClass]="'shadow'">
+    <ion-toolbar class='material-toolbar' color="--ion-color-reghead">
+        <ion-row style="position: relative">
+            <ion-title class='page-title-absolute'>
+                <p class="marginBottom">{{ 'WORKSHOP.school' | translate }}</p>
+            </ion-title>
+            <ion-back-button style="color:#ffffff; display: block;" (click)="navigateback()"></ion-back-button>
+        </ion-row>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+    <ion-grid>
+        <ion-item class="radio-margin ">
+            <ion-label>{{ 'WORKSHOP.startdate' | translate }}</ion-label>
+            <ion-label class="boldblue">{{ startdate_str }}</ion-label>
+        </ion-item>
+        <ion-item class="radio-margin ">
+            <ion-label>{{ 'WORKSHOP.enddate' | translate }}</ion-label>
+            <ion-label class="boldblue">{{ enddate_str }}</ion-label>
+        </ion-item>
+        <ion-item>
+            <ion-label>{{ 'WORKSHOP.daysleft' | translate }}</ion-label>
+            <ion-label class="boldblue">{{ days_remaining }}</ion-label>
+        </ion-item>
+    </ion-grid>
+    <div class="goDiv">
+        <ion-button (click)="go_button_click()" class="buttonwidth " color="--ion-color-reghead "><span>{{ 'WORKSHOP.go' | translate }}</span>
+            <ion-icon style="display: block;font-size: 18px;" name="arrow-forward"></ion-icon>
+        </ion-button>
+    </div>
+</ion-content>

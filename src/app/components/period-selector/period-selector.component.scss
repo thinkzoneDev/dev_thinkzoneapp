@@ -1,0 +1,214 @@
+.horizontal-flexboxx {
+    display: flex;
+    flex-flow: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.selected-chip {
+    animation: white-to-blue 0.6s;
+    animation-fill-mode: forwards;
+    border-radius: 4px;
+    text-align: center;
+    color: white;
+    background: green;
+    border: 1px solid green;
+    min-width: 30%;
+    min-height: 20px;
+    margin: 4px;
+    p {
+        color: white;
+    };
+    padding: 5px 15px;
+}
+.complete-chip{
+    border-radius: 4px;
+    text-align: center;
+    //color: white;
+    //background: green;
+    border: 1px solid green;
+    min-width: 30%;
+    min-height: 20px;
+    margin: 4px;
+    p {
+        //color: white;
+        //background-color: green;
+    };
+    padding: 5px 15px;
+}
+.completemonthselected-chip{
+    border-radius: 4px;
+    text-align: center;
+    color: white;
+    background: green;
+    border: 1px solid green;
+    min-width: 30%;
+    min-height: 20px;
+    margin: 4px;
+    p {
+        color: white;
+    };
+    padding: 5px 15px;
+}
+
+
+.complete-selected-chip {
+    border-radius: 4px;
+    text-align: center;
+    //color: white;
+    //background: green;
+    border: 1px solid green;
+    min-width: 30%;
+    min-height: 20px;
+    margin: 4px;
+    p {
+        //color: white;
+    };
+    padding: 5px 15px;
+}
+
+.completeweekselected-chip{
+    // animation: white-to-blue 0.6s;
+    // animation-fill-mode: forwards;
+    border-radius: 4px;
+    border: 1px solid green;
+    text-align: center;
+    //color: white;
+    //background: green;
+    min-width: 46%;
+    min-height: 20px;
+    margin: 4px;
+    p {
+        //color: white;
+    };
+    padding: 5px 15px;
+    width: 100%;
+}
+
+.weekselected-chip {
+    animation: white-to-blue 0.6s;
+    animation-fill-mode: forwards;
+    border-radius: 4px;
+    border: 1px solid green;
+    text-align: center;
+    //color: white;
+    border: 1px solid #2196f3;
+    //background: #2196f3;
+    min-width: 46%;
+    min-height: 20px;
+    margin: 4px;
+    p {
+        //color: white;
+    };
+    padding: 5px 15px;//<-- test2
+}
+
+.weekunselected-chip {
+    animation: blue-to-white 0.6s;
+    animation-fill-mode: forwards;
+    border-radius: 4px;
+    text-align: center;
+    //color: #2196f3;
+    border: 1px solid green;
+    min-width: 46%;
+    min-height: 20px;
+    margin: 4px;
+    p {
+        //color: #2196f3;
+    };
+    padding: 5px 15px;
+}
+
+.unselected-chip {
+    animation: blue-to-white 0.6s;
+    animation-fill-mode: forwards;
+    border-radius: 4px;
+    text-align: center;
+    //color: #2196f3;
+    border: 1px solid green;
+    min-width: 30%;
+    min-height: 20px;
+    margin: 4px;
+    p {
+        //color: #2196f3;
+    };
+    padding: 5px 15px;
+}
+
+
+.complete-unselected-chip {
+    animation: blue-to-white 0.6s;
+    animation-fill-mode: forwards;
+    border-radius: 4px;
+    text-align: center;
+    //color: green;
+    border: 1px green solid;
+    min-width: 30%;
+    min-height: 20px;
+    //background: green;
+    margin: 4px;
+    p {
+        //color: green;
+    };
+    padding: 5px 15px;
+}
+
+
+
+.selected-chip p,
+.unselected-chip p {
+    margin: 10px 0px;
+}
+
+.weekselected-chip p,
+.weekunselected-chip p {
+    margin: 10px 0px;
+}
+
+
+.hidden {
+    animation: fadeOut 0.6s;
+    animation-fill-mode: forwards;
+}
+
+
+.expanded {
+    animation: fadeIn 0.6s;
+    animation-fill-mode: forwards;
+}
+
+.card {
+    // padding: 30px;
+    padding: 0px 8px;
+    margin: 20px;
+    color: gray;
+    border-radius: 4px;
+}
+
+.hbar {
+    min-width: 80%;
+    background: rgb(199, 199, 199);
+    min-height: 1px;
+}
+
+.weekmonthHead {
+    color: #222222;
+    font-weight: 600;
+    font-size: 20px;
+}
+.width100{
+    width: 100%;
+}
+.leveltxt1{
+    font-weight: bold;
+    //background-color: #002b45;
+    //color: white;
+    padding: 10px 39px;
+}
+.leveltxt2{
+    background-color: #ffffff14;
+    //border-radius: 50%;
+    padding: 0px;
+    font-size: 20px;
+    //width: 60px;
+}

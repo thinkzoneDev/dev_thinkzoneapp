@@ -1,0 +1,106 @@
+// ion-header {
+//   ion-toolbar {
+//     --background: #eff4ff;
+//     button {
+//       position: absolute;
+//       top: 0;
+//       right: 0;
+//       border-radius: 50%;
+//       box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+//       display: flex;
+//       justify-content: center;
+//       align-items: center;
+//       height: 43px;
+//       width: 43px;
+//       background: #4286f4;
+//       margin-right: 10px;
+//       margin-top: 10px;
+//       ion-icon {
+//         margin: auto;
+//         font-size: 2rem;
+//         color: white;
+//       }
+//     }
+//   }
+// }
+
+ion-header {
+  ion-toolbar {
+    --background: #eff4ff;
+
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+
+    ion-title {
+      text-align: center;
+      font-size: 1.2rem;
+      font-weight: 400;
+      letter-spacing: 1px;
+      font-family: Arial, Helvetica, sans-serif;
+      color: white;
+      margin-left: -53px;
+    }
+
+    button {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 43px;
+      background: transparent;
+      width: 43px;
+      margin-left: 10px;
+      ion-icon {
+        margin: auto;
+        font-size: 1.6rem;
+        color: black;
+      }
+    }
+  }
+}
+
+ion-content {
+  --background: #eff4ff;
+
+  ion-card {
+    display: block;
+    margin: 10px auto;
+    width: 98%;
+    height: 100%;
+    background: white;
+  }
+
+  .download {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #e6e6e6;
+
+    ion-card {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: row;
+      height: 50px;
+      width: 50%;
+      background: white;
+
+      img {
+        height: 40px;
+        width: 40px;
+      }
+
+      h2 {
+        color: black;
+        font-family: Arial, Helvetica, sans-serif;
+        font-weight: 400;
+        font-size: 1rem;
+        text-align: center;
+        margin-top: 5px;
+        margin-left: 5px;
+      }
+    }
+  }
+}

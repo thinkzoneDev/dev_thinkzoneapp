@@ -1,0 +1,63 @@
+<ion-header no-border [ngClass]="(toolbarshadow)?'':'shadow'">
+  <ion-toolbar class="material-toolbar" (click)="calltoroot()">
+    <div class="row">
+      <ion-button><ion-icon name="arrow-back"></ion-icon></ion-button>
+      <div class="" style="margin-left: 25%; font-size: 18px; font-weight: bold;">{{ 'HOME.training' | translate }}</div>
+    </div>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [scrollEvents]="true">
+  <div class="container">
+    <ion-card
+      (click)="onClickBaseline('baseline')"
+    >
+      <div class="image"><img src="/assets/img/checklist.png" /></div>
+      <p>{{ 'APP.teacherbaseline' | translate }}</p>
+    </ion-card>
+
+    <ion-card (click)="onClickBaseline('endline')">
+      <div class="image"><img src="/assets/img/check-list.png" /></div>
+      <p>{{ 'APP.teacherendline' | translate }}</p>
+    </ion-card>
+
+    <ion-card (click)="navigate_to_ppt_module()">
+      <div class="image"><img src="/assets/img/ppt.png" /></div>
+      <p>
+        {{ 'PPT.ppt' | translate }}
+        <ion-icon
+          name="fastforward"
+          *ngIf="!ppt_status"
+          style="vertical-align: bottom; color: mediumpurple; font-size: 24px"
+        ></ion-icon>
+        <ion-icon
+          name="checkmark-circle"
+          *ngIf="ppt_status"
+          style="
+            vertical-align: text-top;
+            color: lightseagreen;
+            font-size: 18px;
+          "
+        ></ion-icon>
+      </p>
+    </ion-card>
+
+    <!-- <ion-col [routerLink]="'/trainingcontent'"> -->
+
+    <ion-card (click)="navigate_to_training_module()">
+      <div class="image"><img src="/assets/img/teaching.png" /></div>
+      <p>{{ 'HOME.trainingcontent' | translate }}</p>
+    </ion-card>
+    <!-- <ion-col class="box" [routerLink]="'/assesmentprogram'">
+                    <img src="/assets/img/ECE-Icon_2.png" alt="" class="cardimg" />
+                    <p class='data hometitle'>{{ 'HOME.assessments' | translate }}</p>
+                </ion-col> -->
+    <!--<ion-col class="box">
+      <div [routerLink]="'/trainingfiles'">
+        <img src="/assets/img/ECE-Icon_1.png" alt="" class="cardimg" />
+        <p class="data hometitle">{{ 'HOME.misc' | translate }}</p>
+       <p class='data-large homesubtitle'>{{ 'HOME.misc' | translate}}</p> 
+      </div>
+    </ion-col>-->
+  </div>
+</ion-content>

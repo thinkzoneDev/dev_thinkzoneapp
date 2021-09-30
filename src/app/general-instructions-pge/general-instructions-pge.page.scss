@@ -1,0 +1,47 @@
+ion-content {
+  --background: #eff4ff;
+  .general {
+    text-align: center;
+    background-color: cornflowerblue;
+    padding: 4%;
+    color: white;
+    font-size: 20px;
+  }
+  .close {
+    width: 100%;
+    position: absolute;
+    bottom: 10px;
+    text-align: center;
+  }
+
+  .close1 {
+    float: right;
+    text-align: right;
+    font-size: 1.5rem;
+    font-weight: 700;
+    line-height: 1;
+    text-shadow: 0 1px 0 #fff;
+    opacity: 0.5;
+    font-size: 20px;
+    color: red;
+  }
+
+  .general1 {
+    text-align: center;
+    padding: 4%;
+    font-size: 20px;
+    font-weight: bold;
+    color: black;
+  }
+
+  .maincontentdiv {
+    margin-top: 10%;
+    padding-left: 5%;
+    padding-right: 5%;
+  }
+
+  .button {
+    display: flex;
+    justify-content: center;
+  }
+}

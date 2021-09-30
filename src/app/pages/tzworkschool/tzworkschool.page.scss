@@ -1,0 +1,40 @@
+.material-toolbar {
+    background: #002b45 !important;
+}
+
+.marginBottom {
+    color: #fff;
+    margin-bottom: 0;
+}
+
+.buttonAlign {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.buttonwidth {
+    font-size: 1.2rem;
+    width: 40%;
+    height: 60px;
+    border-radius: 4px;
+    text-align: center;
+    color: #fff;
+    background: green;
+}
+
+.goDiv {
+    text-align: center;
+    margin-top: 30px;
+}
+
+ion-item {
+    --padding-start: 0px !important;
+}
+.boldblue{
+    font-weight: bold;
+    color: darkblue;
+    font-size: 20px;
+}

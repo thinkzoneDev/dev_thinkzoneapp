@@ -1,0 +1,95 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{'PGEACTIVITY.extraresource' | translate}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div
+    *ngIf="extraresourcesfile_list && extraresourcesfile_list.length > 0; else elsepart;"
+    class="container"
+  >
+    <div
+      size="6"
+      *ngFor="let resource of extraresourcesfile_list; let i=index;"
+      class="wraper"
+    >
+      <ion-card>
+        <div class="icon">
+          <ion-icon
+            (click)="file_icon_delete_click(resource)"
+            name="trash"
+          ></ion-icon>
+        </div>
+        <div
+          (click)="file_icon_click(resource)"
+          class="row-position"
+          class="image"
+        >
+          <img
+            class="img-size"
+            src="../../../assets/img/filetypeicons/filetype_bmp.png"
+            *ngIf="resource.filetype != undefined && (resource.filetype.toLowerCase() == 'jpg' || resource.filetype.toLowerCase() == 'jpeg' || resource.filetype.toLowerCase() == 'bmp' || resource.filetype.toLowerCase() == 'png' || resource.filetype.toLowerCase() == 'gif' || resource.filetype.toLowerCase() == 'ico' || resource.filetype.toLowerCase() == 'tif' || resource.filetype.toLowerCase() == 'tiff' || resource.filetype.toLowerCase() == 'webp' || resource.filetype.toLowerCase() == 'svg')"
+          />
+          <img
+            class="img-size"
+            src="../../../assets/img/filetypeicons/filetype_pdf.png"
+            *ngIf="resource.filetype != undefined && (resource.filetype.toLowerCase() == 'pdf')"
+          />
+          <img
+            class="img-size"
+            src="../../../assets/img/filetypeicons/filetype_doc.png"
+            *ngIf="resource.filetype != undefined && (resource.filetype.toLowerCase() == 'doc' || resource.filetype.toLowerCase() == 'docx')"
+          />
+          <img
+            class="img-size"
+            src="../../../assets/img/filetypeicons/filetype_xls.png"
+            *ngIf="resource.filetype != undefined && (resource.filetype.toLowerCase() == 'csv' || resource.filetype.toLowerCase() == 'xls' || resource.filetype.toLowerCase() == 'xlsx')"
+          />
+          <img
+            class="img-size"
+            src="../../../assets/img/filetypeicons/filetype_txt.png"
+            *ngIf="resource.filetype != undefined && (resource.filetype.toLowerCase() == 'txt')"
+          />
+          <img
+            class="img-size"
+            src="../../../assets/img/filetypeicons/filetype_avi.png"
+            *ngIf="resource.filetype != undefined && (resource.filetype.toLowerCase() == 'avi')"
+          />
+          <img
+            class="img-size"
+            src="../../../assets/img/filetypeicons/filetype_mp3.png"
+            *ngIf="resource.filetype != undefined && (resource.filetype.toLowerCase() == 'mp3')"
+          />
+          <img
+            class="img-size"
+            src="../../../assets/img/filetypeicons/filetype_mpeg.png"
+            *ngIf="resource.filetype != undefined && (resource.filetype.toLowerCase() == 'mpeg' || resource.filetype.toLowerCase() == 'mp4')"
+          />
+          <img
+            class="img-size"
+            src="../../../assets/img/filetypeicons/filetype_ppt.png"
+            *ngIf="resource.filetype != undefined && (resource.filetype.toLowerCase() == 'ppt' || resource.filetype.toLowerCase() == 'pptx')"
+          />
+          <img
+            class="img-size"
+            src="../../../assets/img/filetypeicons/filetype_file.png"
+            *ngIf="resource.filetype == undefined || resource.filetype.trim() == ''"
+          />
+        </div>
+        <div class="text">
+          <p>{{resource.displayname}}</p>
+        </div>
+      </ion-card>
+    </div>
+  </div>
+  <ng-template #elsepart>
+    <div class="nothing_to_display">
+      <ion-icon name="logo-dropbox"></ion-icon
+      >{{'PGEACTIVITY.extraresource_text' | translate}}
+    </div>
+  </ng-template>
+</ion-content>

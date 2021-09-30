@@ -1,0 +1,46 @@
+<ion-header no-border [ngClass]="(toolbarshadow)?'':'shadow'">
+    <ion-toolbar class='material-toolbar' color="--ion-color-cushead">
+        <ion-row>
+            <ion-title class='page-title-absolute'>
+                <p class="pMargin" style="color:#ffffff">{{ 'TRAINING.title' | translate}}</p>
+            </ion-title>
+            <ion-back-button style="color:#ffffff"></ion-back-button>
+        </ion-row>
+    </ion-toolbar>
+</ion-header>
+<ion-content [scrollEvents]="true" (ionScroll)="logScrolling($event)">
+    <!-- <div class="homeslides">
+        <ion-slides pager="true" autoplay="true" [options]="slideOpts" #slider>
+            <ion-slide class="sliderhome1">
+            </ion-slide>
+            <ion-slide class="sliderhome2">
+            </ion-slide>
+            <ion-slide class="sliderhome3">
+            </ion-slide>
+        </ion-slides>
+    </div> -->
+    <div class="completegrid">
+        <ion-grid class="dashgrid">
+            <ion-row>
+                <ion-col class="box"  (click)=gotoassesment1()>
+                    <img src="/assets/img/PGE-Icon_2.png" alt="" class="cardimg" />
+                    <p class='data hometitle'>{{ 'HOME.math' | translate }}</p>
+                </ion-col>
+                <ion-col class="box" (click)=gotoassesment2()>
+                    <img src="/assets/img/ECE-Icon_2.png" alt="" class="cardimg" />
+                    <p class='data hometitle'>{{ 'HOME.english' | translate }}</p>
+                </ion-col>
+            </ion-row>
+            <ion-row>
+                <ion-col class="box" (click)=gotoassesment3()>
+                    <img src="/assets/img/PGE-Icon_3.png" alt="" class="cardimg" />
+                    <p class='data hometitle'>{{ 'HOME.odia' | translate }}</p>
+                </ion-col>
+                <ion-col >
+                </ion-col>
+            </ion-row>
+        </ion-grid>
+    </div>
+    
+</ion-content>
+

@@ -1,0 +1,34 @@
+<ion-header no-border>
+    <ion-toolbar class='material-toolbar' color="--ion-color-cushead">
+        <ion-buttons slot="start">
+            <ion-back-button (click)="closeModal()" style="color:#ffffff; display: block;"></ion-back-button>
+        </ion-buttons>
+        <ion-title>
+            <!-- <p class='page-title' style="color:#ffffff; margin-bottom: 0px;">Skill Chart Table</p> -->
+            <p *ngIf='program == "ece"' class='page-title' style="color:#ffffff; margin-bottom: 0px;margin-bottom: 0;text-transform:capitalize;"><span style="text-transform:uppercase">{{program}}</span> | {{month}} | Level- {{level}}</p>
+            <p *ngIf='program == "pge"' class='page-title' style="color:#ffffff; margin-bottom: 0px;text-transform:capitalize;"><span style="text-transform:uppercase">{{program}}</span> | {{subject}} | {{month}} | Level- {{level}}</p>
+        </ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <!-- table data  -->
+    <div class="scroll_div">
+        <div *ngFor="let row of tabledata | slice:0:1; let i = index;">
+            <div *ngIf="i==0" class="row_div row_div{{i}}">
+                <div *ngFor="let col of row; let j = index;" class="column_div">
+                    <span style="text-transform:capitalize" [ngClass]="{'dNne ' : (col=='no ') , 'dNone ' :(col=='yes ')}"> {{col}} </span>
+                </div>
+            </div>
+        </div>
+        <div *ngIf="tabledata.length > 0" style="height:200px;overflow: auto;width:1351px;">
+            <div *ngFor="let row of tabledata | slice:1:tabledata.length; let i = index;">
+                <div *ngFor="let col of row; let j = index;" class="column_div" [ngClass]="{'centerAlign ':j>0}">
+                    <span style="text-transform:capitalize" [ngClass]="{'dNne ' : (col=='no ') , 'dNone ' :(col=='yes ')}"> {{col}} </span>
+                    <span *ngIf='col=="yes" '><ion-icon name="checkmark" style="color: green;font-size: 1.2rem;vertical-align: sub;" ng-reflect-name="checkmark" role="img" class="md hydrated" aria-label="checkmark"></ion-icon></span>
+                    <span *ngIf='col=="no" '><ion-icon name="close" style="color: red;font-size: 1.2rem;vertical-align: sub;" ng-reflect-name="close" role="img" class="md hydrated" aria-label="checkmark"></ion-icon></span>
+                </div>
+            </div>
+        </div>
+    </div>
+</ion-content>

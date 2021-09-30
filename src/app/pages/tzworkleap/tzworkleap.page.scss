@@ -1,0 +1,94 @@
+.material-toolbar {
+    background: #002b45 !important;
+}
+
+ion-item {
+    --padding-start: 0px !important;
+}
+
+.marginBottom {
+    color: #fff;
+    margin-bottom: 0;
+}
+
+.buttonAlign {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.buttonwidth {
+    font-size: 1.2rem;
+    width: 40%;
+    height: 60px;
+    border-radius: 4px;
+    text-align: center;
+    color: #fff;
+    background: green;
+}
+
+@keyframes white-to-blue {
+    0% {
+        background: white;
+        color: #2196f3;
+    }
+    100% {
+        background: #2196f3;
+        color: white;
+    }
+}
+
+.selected-chip {
+    animation: white-to-blue 0.6s;
+    animation-fill-mode: forwards;
+    border-radius: 4px;
+    text-align: center;
+    color: white;
+    background: #2196f3;
+    border: 1px solid #2196f3;
+    min-width: 30%;
+    min-height: 20px;
+    margin: 4px;
+    p {
+        color: white;
+    }
+}
+
+.unselected-chip {
+    animation: blue-to-white 0.6s;
+    animation-fill-mode: forwards;
+    border-radius: 4px;
+    text-align: center;
+    color: #2196f3;
+    border: 1px #2196f3 solid;
+    min-width: 30%;
+    min-height: 20px;
+    margin: 4px;
+    p {
+        color: #2196f3;
+    }
+}
+
+@keyframes blue-to-white {
+    0% {
+        color: white;
+        background: #2196f3;
+    }
+    100% {
+        color: #2196f3;
+        background: white;
+    }
+}
+
+.goDiv {
+    text-align: center;
+    margin-top: 30px;
+}
+
+.boldblue{
+    font-weight: bold;
+    color: darkblue;
+    font-size: 20px;
+}

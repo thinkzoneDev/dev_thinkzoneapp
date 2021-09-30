@@ -1,0 +1,58 @@
+<ion-header no-border [ngClass]="(toolbarshadow)?'':'shadow'">
+    <ion-toolbar class='material-toolbar' color="--ion-color-reghead">
+        <ion-row>
+            <ion-title class='page-title-absolute'>
+               <p class="page-title">{{ 'HOME.trainingcontent' | translate }}</p>
+            </ion-title>
+            <ion-back-button style="color:#ffffff"></ion-back-button>
+        </ion-row>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content [scrollEvents]="true">
+  <ion-row>
+    <p *ngIf="contentstatus" style="margin-left: 100px;color: brown;">no contents available</p>
+  </ion-row>
+    <ion-row >
+        <ion-col size=6 *ngFor="let link of links">
+          <ion-card *ngIf="link.type == 'file'">
+            <ion-icon (click)="download(link.filepath)" *ngIf="link.stored==false" class="download-icon" ios="ios-download" md="md-download" style="color: #0675f4;"></ion-icon>
+            <!-- <ion-icon (click)="viewFile(link)" *ngIf="link.stored==true" class="view-icon" name="eye"></ion-icon> -->
+            <ion-row (click)="openOrDownload(link)" class="row-position">
+              <!-- <img class="img-size" [src]="link.img" /> -->
+              <img *ngIf="link.filetype != undefined && link.filetype.toLowerCase() == 'pdf'"  class="img-size"  src="../../../assets/img/filetypeicons/filetype_pdf.png" />
+              <img *ngIf="link.filetype != undefined && link.filetype.toLowerCase() == 'jpeg'" class="img-size"  src="../../../assets/img/filetypeicons/filetype_jpeg.png"/>
+              <img *ngIf="link.filetype != undefined && link.filetype.toLowerCase() == 'docx'" class="img-size"  src="../../../assets/img/filetypeicons/filetype_doc.png" />
+              <img *ngIf="link.filetype != undefined && link.filetype.toLowerCase() == 'zip'"  class="img-size"  src="../../../assets/img/filetypeicons/filetype_zip.png" />
+              <img *ngIf="link.filetype != undefined && link.filetype.toLowerCase() == 'csv'"  class="img-size"  src="../../../assets/img/filetypeicons/filetype_xls.png" />
+              <img *ngIf="link.filetype != undefined && link.filetype.toLowerCase() == 'txt'"  class="img-size"  src="../../../assets/img/filetypeicons/filetype_txt.png" />
+              <img *ngIf="link.filetype != undefined && link.filetype.toLowerCase() == 'avi'"  class="img-size"  src="../../../assets/img/filetypeicons/filetype_avi.png" />
+              <img *ngIf="link.filetype != undefined && link.filetype.toLowerCase() == 'mp4'"  class="img-size"  src="../../../assets/img/filetypeicons/filetype_avi.png" />
+              <img *ngIf="link.filetype != undefined && link.filetype.toLowerCase() == 'bmp'"  class="img-size"  src="../../../assets/img/filetypeicons/filetype_bmp.png" />
+              <img *ngIf="link.filetype != undefined && link.filetype.toLowerCase() == 'file'" class="img-size"  src="../../../assets/img/filetypeicons/filetype_file.png"/>
+              <img *ngIf="link.filetype != undefined && link.filetype.toLowerCase() == 'mp3'"  class="img-size"  src="../../../assets/img/filetypeicons/filetype_mp3.png" />
+              <img *ngIf="link.filetype != undefined && link.filetype.toLowerCase() == 'mpeg'" class="img-size"  src="../../../assets/img/filetypeicons/filetype_mpeg.png"/>
+              <img *ngIf="link.filetype != undefined && link.filetype.toLowerCase() == 'ppt'"  class="img-size"  src="../../../assets/img/filetypeicons/filetype_ppt.png" />
+              <img *ngIf="link.filetype != undefined && link.filetype.toLowerCase() == 'png'"  class="img-size"  src="../../../assets/img/filetypeicons/filetype_jpeg.png"/>
+              <img *ngIf="link.filetype != undefined && link.filetype.toLowerCase() == 'directory'"  class="img-size"  src="../../../assets/img/filetypeicons/folder.jpg" />
+            </ion-row>
+            <ion-row class="row-position">
+              <p class="displayname">{{link.filename}}</p>
+              <!-- <p>{{link.stored}}</p>
+              <p>{{link.stored_url}}</p> -->
+            </ion-row>
+          </ion-card>
+        </ion-col>
+      </ion-row>
+    <!-- <div class='card shadow' *ngFor='let data of alldata'>
+        <div class='m10'>
+            <div style='flex-wrap: wrap' class='horizontal-flexbox justifyBetween' >
+                <div>
+                  
+                    <p class='data'>{{data.filename}}</p>
+                    <ion-icon (click)="download(data.filepath)" class="download-icon" ios="ios-download" md="md-download" style="color: #0675f4;"></ion-icon>
+                </div>
+            </div>
+        </div>
+    </div> -->
+</ion-content>

@@ -1,0 +1,20 @@
+<ion-header no-border [ngClass]="(toolbarshadow)?'':'shadow'">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title> Notifications </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Teacher App</ion-card-title>
+    </ion-card-header>
+
+    <ion-card-content>
+      <h2 class="message_h2">{{ message }}</h2>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

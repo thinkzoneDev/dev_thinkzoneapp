@@ -1,0 +1,14 @@
+<ion-header no-border [ngClass]="(toolbarshadow)?'':'shadow'">
+    <ion-toolbar class="material-toolbar" color="--ion-color-reghead">
+        <ion-row>
+            <ion-title class='page-title-absolute'>
+                <p class="marginBottom">{{ 'PGEACTIVITY.title_odia' | translate }}</p>
+            </ion-title>
+            <ion-back-button style="color:#ffffff"></ion-back-button>
+        </ion-row>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content [scrollEvents]="true" (ionScroll)="logScrolling  ($event)">
+  <app-period-selector *ngIf='month_list.length>0' [month]='month_list' (selected)='show_activity_details($event)'></app-period-selector>
+</ion-content>

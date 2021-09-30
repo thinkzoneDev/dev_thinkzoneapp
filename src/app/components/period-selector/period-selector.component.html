@@ -1,0 +1,79 @@
+<div *ngIf='month!=null'>
+  <!-- ============= LEVEL SET ============ -->
+  <ion-grid class="width100">
+    <ion-row class="leveltxt1">
+      <ion-col size="8"><span style="vertical-align: -webkit-baseline-middle; ">{{ 'PGEACTIVITY.level' | translate }}</span></ion-col>
+      <ion-col size="4">
+        <ion-select interface="action-sheet" mode="md" placeholder="" value="{{ selected_level }}" (ionChange)="level_change($event.target.value)" class="leveltxt2"> <!-- [(ngModel)]="selectedLanguage" (ionChange)="languageChanged($event.target.value)"> -->
+            <ion-select-option value="1">{{ 'PGEACTIVITY.1' | translate }}</ion-select-option>
+            <ion-select-option value="2">{{ 'PGEACTIVITY.2' | translate }}</ion-select-option>
+            <ion-select-option value="3">{{ 'PGEACTIVITY.3' | translate }}</ion-select-option>
+            <ion-select-option value="4">{{ 'PGEACTIVITY.4' | translate }}</ion-select-option>
+            <ion-select-option value="5">{{ 'PGEACTIVITY.5' | translate }}</ion-select-option>
+        </ion-select>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <!-- Month Panel  -->
+  <div class='card shadow'>
+      <div class='m10'>
+          <!--   Selector -->
+          <p class='data-large weekmonthHead'>{{ 'PGEACTIVITY.month_title' | translate}}</p>
+          <div style='flex-wrap: wrap' class='horizontal-flexboxx monthDiv'>
+              <div (click)='month_onchange(m.value)' *ngFor='let m of active_month_list' [ngClass]="getClassValue(m)">
+                <!-- [ngClass]='(m.selected)?"selected-chip":"unselected-chip"' -->
+                <div class=''> 
+                  <div class=""><ion-icon name="checkmark-circle-outline" *ngIf="m.iscompleted"></ion-icon></div>
+                  <div class="">{{m.name}}</div>
+                </div>
+              </div>
+          </div>
+      </div>
+  </div>
+
+   <!-- Week Panel  -->
+  <div [ngClass]='(selected_month=="")?"hidden":"expanded"'>
+      <div class='card shadow'>
+          <div class='m10'>
+              <!-- Week Selector -->
+              <p class='data-large weekmonthHead'>{{ 'PGEACTIVITY.week_title' | translate}}</p>
+              <div style='flex-wrap: wrap' class='horizontal-flexboxx'>
+                  <div (click)='week_onchange(m.value)'  *ngFor='let m of week_list' [ngClass] = "getweekvalue(m)">
+                    <!-- [ngClass]='(m.value===selected_week)?"weekselected-chip":"weekunselected-chip"' -->
+                    <div class=''>  
+                      <div class=""><ion-icon name="checkmark-circle-outline" *ngIf="m.iscompleted"></ion-icon></div>
+                      <div class="">{{m.text}}</div>
+                    </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>
+
+<!-- <div *ngIf='month!=null'>
+  <div class='card shadow'>
+    <div class='m10'> -->
+
+<!--   Selector -->
+<!-- <p class='data-large'>{{ 'ECEACTIVITY.month' | translate}}</p>
+      <div style='flex-wrap: wrap' class='horizontal-flexbox'>
+        <div (click)='month_onchange(m.value)' *ngFor='let m of active_month_list' [ngClass]='(m.selected)?"selected-chip":"unselected-chip"'>
+          <p class='data'>{{m.name}}</p>
+        </div>
+      </div> -->
+
+<!-- <div [ngClass]='(selected_month=="")?"hidden":"expanded"'>
+        <div class='hbar'></div> -->
+<!-- Week Selector -->
+<!-- <p class='data-large'>{{ 'ECEACTIVITY.week' | translate}}</p>
+        <div style='flex-wrap: wrap' class='horizontal-flexbox'>
+          <div (click)='week_onchange(m.value)' *ngFor='let m of week_list' [ngClass]='(m.value===selected_week)?"selected-chip":"unselected-chip"'>
+            <p class='data'>{{m.text}}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div> -->

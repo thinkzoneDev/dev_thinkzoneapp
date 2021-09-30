@@ -1,0 +1,23 @@
+<ion-content>
+  <div class="container">
+    <h2>{{ userDetails.username }}</h2>
+    <div class="image">
+      <img
+        src="{{ userDetails.image }}"
+        onerror="this.onerror=null; this.src='./../../../../assets/img/default-user-profile-image.png'"
+      />
+    </div>
+    <p>
+      Assesment Details - {{ userDetails.secured_baselineendline }}/{{
+        userDetails.total_baselineendline
+      }}
+    </p>
+    <p>
+      Monthly training details - {{ userDetails.secured_monthly }}/{{
+        userDetails.total_monthly
+      }}
+    </p>
+    <p>Time spent - {{ userDetails.spent_time.toFixed() }} Minutes</p>
+    <p>Final rank- {{ (userDetails.finalrank * 100).toFixed() }}</p>
+  </div>
+</ion-content>

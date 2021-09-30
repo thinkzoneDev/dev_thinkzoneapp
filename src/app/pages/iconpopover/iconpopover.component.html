@@ -1,0 +1,14 @@
+<ion-list>
+    <ion-item>
+        <ion-icon class="green data-large" name='create' (click)="open_register_modal(student, 'edit')"></ion-icon>
+        <ion-label (click)="open_register_modal(student, 'edit')">{{ 'STUDENT.edit' | translate }}</ion-label>
+    </ion-item>
+    <ion-item>
+        <ion-icon class="red data-large" name='trash' (click)="delete_button_click(student)"></ion-icon>
+        <ion-label (click)="delete_button_click(student)">{{ 'STUDENT.delete' | translate }}</ion-label>
+    </ion-item>
+    <ion-item>
+        <ion-icon class="gray data-large" (click)='flipStudentDisplay(student)' [ngClass]='(!student.hidden)?"rotate-down":"rotate-up"' name='ios-arrow-down'></ion-icon>
+        <ion-label (click)='flipStudentDisplay(student)'>{{ 'STUDENT.baseline' | translate }}</ion-label>
+    </ion-item>
+</ion-list>

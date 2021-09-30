@@ -1,0 +1,95 @@
+<ion-header no-border [ngClass]="(toolbarshadow)?'':'shadow'">
+  <ion-toolbar>
+    <ion-row>
+      <ion-buttons>
+        <ion-back-button></ion-back-button>
+      </ion-buttons>
+      <ion-title>{{ 'ECEACTIVITY.title' | translate}}</ion-title>
+    </ion-row>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [scrollEvents]="true" (ionScroll)="logScrolling($event)">
+  <div class="container">
+    <div class="wraper-main">
+      <ion-select
+        [(ngModel)]="level"
+        (ngModelChange)="levelOnChange(level)"
+        interface="action-sheet"
+        placeholder="{{ 'ECEACTIVITY.select_level_txt' | translate }}"
+      >
+        <ion-select-option value="1"
+          >{{ 'ECEACTIVITY.level1' | translate }}</ion-select-option
+        >
+        <ion-select-option value="2"
+          >{{ 'ECEACTIVITY.level2' | translate }}</ion-select-option
+        >
+        <ion-select-option value="3"
+          >{{ 'ECEACTIVITY.level3' | translate }}
+        </ion-select-option>
+      </ion-select>
+    </div>
+
+    <div class="wraper">
+      <ion-card (click)="select_skill('bodyparts')">
+        <img src="/assets/img/body_parts.png" alt="" />
+        <p class="data hometitle">{{ 'ECEACTIVITY.month1' | translate }}</p>
+      </ion-card>
+      <ion-card (click)="select_skill('animalsbirds&theirsounds')">
+        <img src="/assets/img/animals.png" alt="" />
+        <p class="data hometitle">{{ 'ECEACTIVITY.month2' | translate }}</p>
+      </ion-card>
+    </div>
+
+    <div class="wraper">
+      <ion-card (click)="select_skill('flowersfruits&vegetables')">
+        <img src="/assets/img/fruits.png" alt="" />
+        <p class="data hometitle">{{ 'ECEACTIVITY.month3' | translate }}</p>
+      </ion-card>
+      <ion-card (click)="select_skill('house&accessories')">
+        <img src="/assets/img/house.png" alt="" />
+        <p class="data hometitle">{{ 'ECEACTIVITY.month4' | translate }}</p>
+      </ion-card>
+    </div>
+
+    <div class="wraper">
+      <ion-card (click)="select_skill('transportation')">
+        <img src="/assets/img/transport.png" alt="" />
+        <p class="data hometitle">{{ 'ECEACTIVITY.month5' | translate }}</p>
+      </ion-card>
+      <ion-card (click)="select_skill('occupation')">
+        <img src="/assets/img/occupation.png" alt="" />
+        <p class="data hometitle">{{ 'ECEACTIVITY.month6' | translate }}</p>
+      </ion-card>
+    </div>
+
+    <div class="wraper">
+      <ion-card (click)="select_skill('serviceprovidingcenter')">
+        <img src="/assets/img/helper.png" alt="" />
+        <p class="data hometitle">{{ 'ECEACTIVITY.month7' | translate }}</p>
+      </ion-card>
+      <ion-card (click)="select_skill('insects')">
+        <img src="/assets/img/insect.png" alt="" />
+        <p class="data hometitle">{{ 'ECEACTIVITY.month8' | translate }}</p>
+      </ion-card>
+    </div>
+
+    <div class="wraper">
+      <ion-card (click)="select_skill('environment')">
+        <img src="/assets/img/environment.png" alt="" />
+        <p class="data hometitle">{{ 'ECEACTIVITY.month9' | translate }}</p>
+      </ion-card>
+      <ion-card (click)="select_skill('seasons')">
+        <img src="/assets/img/seasons.png" alt="" />
+        <p class="data hometitle">{{ 'ECEACTIVITY.month10' | translate }}</p>
+      </ion-card>
+    </div>
+  </div>
+  <!-- =========== commented by nrusing on 01-02-2020 as UI changed ====================== -->
+  <!-- <app-period-selector *ngIf='month_list.length>0' [month]='month_list' (selected)='reloadActivityData($event)'></app-period-selector>
+
+    <div *ngIf='activity_loaded && activity_list.length==0'>
+        <p class='error-message'>No activities found for the selected week</p>
+    </div>
+    <app-activity-selector [activity_list]='activity_list' (selected)='activity_btnclick($event)'></app-activity-selector> -->
+</ion-content>

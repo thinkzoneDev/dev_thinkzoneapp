@@ -1,0 +1,106 @@
+<ion-header no-border>
+    <ion-toolbar class='material-toolbar' color="--ion-color-cushead">
+        <ion-buttons slot="start">
+            <ion-back-button (click)="closeModal()" style="color:#ffffff;"></ion-back-button>
+        </ion-buttons>
+        <ion-title>
+            <p class='page-title' style="color:#ffffff; margin-bottom: 0px;">Skill Chart</p>
+        </ion-title>
+
+        <ion-buttons slot="end">
+            <ion-button size="large" shape="round" (click)="show_file()">
+                <ion-icon class='data-large' name="download" style="font-size:25px; color:#ffffff"></ion-icon>
+            </ion-button>
+        </ion-buttons>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content [scrollEvents]="true" class="bg-white">
+    <div class="skill_mainDiv">
+        <div>
+            <ion-item>
+                <ion-label class="font16">Please select fields to view skill chart</ion-label>
+            </ion-item>
+            <ion-item>
+                <ion-label class="font14">Program</ion-label>
+                <ion-select class="font14" (ionChange)="program_select_click($event.target.value)" interface="popover" mode="ios" placeholder="">
+                    <ion-select-option value="ece">ECE</ion-select-option>
+                    <ion-select-option value="pge">PGE</ion-select-option>
+                </ion-select>
+            </ion-item>
+
+            <ion-item [hidden]="hide_subject_select">
+                <ion-label class="font14">Subject</ion-label>
+                <ion-select class="font14" (ionChange)="subject_select_click($event.target.value)" interface="popover" mode="ios" placeholder="">
+                    <ion-select-option value="english">English</ion-select-option>
+                    <ion-select-option value="math">Math</ion-select-option>
+                    <ion-select-option value="odia">Odia</ion-select-option>
+                </ion-select>
+            </ion-item>
+
+            <ion-item *ngIf="selected_program == 'ece'">
+                <ion-label class="font14">Quarter</ion-label>
+                <ion-select class="font14" (ionChange)="month_select_click($event.target.value)" interface="popover" mode="ios" placeholder="">
+                    <ion-select-option value="quarter1">1</ion-select-option>
+                    <ion-select-option value="quarter2">2</ion-select-option>
+                    <ion-select-option value="quarter3">3</ion-select-option>
+                    <ion-select-option value="quarter4">4</ion-select-option>
+                </ion-select>
+            </ion-item>
+            <ion-item *ngIf="selected_program == 'ece'">
+                <ion-label class="font14">Level</ion-label>
+                <ion-select class="font14" (ionChange)="level_select_click($event.target.value)" interface="popover" mode="ios" placeholder="">
+                    <ion-select-option value="1">1</ion-select-option>
+                    <ion-select-option value="2">2</ion-select-option>
+                    <ion-select-option value="3">3</ion-select-option>
+                </ion-select>
+            </ion-item>
+
+            <ion-item *ngIf="selected_program == 'pge'">
+                <ion-label class="font14">Month</ion-label>
+                <ion-select class="font14" (ionChange)="month_select_click($event.target.value)" interface="popover" mode="ios" placeholder="">
+                    <ion-select-option value="month1">1</ion-select-option>
+                    <ion-select-option value="month2">2</ion-select-option>
+                    <ion-select-option value="month3">3</ion-select-option>
+                    <ion-select-option value="month4">4</ion-select-option>
+                    <ion-select-option value="month5">5</ion-select-option>
+                </ion-select>
+            </ion-item>
+            <ion-item *ngIf="selected_program == 'pge'">
+                <ion-label class="font14">Level</ion-label>
+                <ion-select class="font14" (ionChange)="level_select_click($event.target.value)" interface="popover" mode="ios" placeholder="">
+                    <ion-select-option value="1">1</ion-select-option>
+                    <ion-select-option value="2">2</ion-select-option>
+                    <ion-select-option value="3">3</ion-select-option>
+                    <ion-select-option value="4">4</ion-select-option>
+                    <ion-select-option value="5">5</ion-select-option>
+                </ion-select>
+            </ion-item>
+        </div>
+        <div class="d-flex align-items-center justify-content-center" style="margin-top: 10%;">
+            <ion-button (click)=' open_skillchart()' class="buttonViewchart">View Chart</ion-button>
+        </div>
+
+        <div class="dlprogressdiv" [hidden]="hide_dlprogressdiv">Downloading file. Please wait...<br>{{ dlprogress }}</div>
+    </div>
+
+    <!-- table data  -->
+    <!-- <div class="scroll_div">
+        <div *ngFor="let row of tabledata | slice:0:1; let i = index;">
+            <div *ngIf="i==0" class="row_div row_div{{i}}">
+                <div *ngFor="let col of row; let j = index;" class="column_div">
+                    <span style="text-transform:capitalize" [ngClass]="{'dNne ' : (col=='no ') , 'dNone ' :(col=='yes ')}"> {{col}} </span>
+                </div>
+            </div>
+        </div>
+        <div *ngIf="tabledata.length > 0" style="height:70px;overflow: auto;width:1369px;">
+            <div *ngFor="let row of tabledata | slice:1:tabledata.length; let i = index;">
+                <div *ngFor="let col of row; let j = index;" class="column_div" [ngClass]="{'centerAlign ':j>0}">
+                    <span style="text-transform:capitalize" [ngClass]="{'dNne ' : (col=='no ') , 'dNone ' :(col=='yes ')}"> {{col}} </span>
+                    <span *ngIf='col=="yes" '><ion-icon name="checkmark" style="color: green;font-size: 1.2rem" ng-reflect-name="checkmark" role="img" class="md hydrated" aria-label="checkmark"></ion-icon></span>
+                    <span *ngIf='col=="no" '><ion-icon name="close" style="color: red;font-size: 1.2rem" ng-reflect-name="close" role="img" class="md hydrated" aria-label="checkmark"></ion-icon></span>
+                </div>
+            </div>
+        </div>
+    </div> -->
+</ion-content>

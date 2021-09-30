@@ -1,0 +1,28 @@
+.horizontal-flexbox {
+    display: flex;
+    flex-flow: row;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.activityHead {
+    font-size: 20px !important;
+    font-weight: 600;
+    color: #222222;
+}
+
+.activitynotCom {
+    margin-top: 10px;
+    border: 1px solid #2196f3;
+    color: #2196f3;
+    border-radius: 4px;
+    overflow: 'auto';
+}
+
+.activityCom {
+    margin-top: 10px;
+    border: 1px solid green;
+    color: #2196f3;
+    border-radius: 4px;
+    overflow: 'auto';
+}

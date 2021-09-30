@@ -1,0 +1,35 @@
+<ion-content>
+  <div class="container">
+    <div class="img">
+      <img src="../../../../assets/img/good-job.png" />
+    </div>
+
+    <!-- Save -->
+    <ion-button (click)="save_button_click()" [disabled]="disable_save_button">
+      <ion-icon
+        style="font-size: 1.6rem; margin-right: 10px"
+        name="save"
+      ></ion-icon
+      >{{ 'ASSESSMENT.btn_save' | translate }}
+    </ion-button>
+
+    <!-- Quiz -->
+    <ion-button (click)="quiz_button_click()" [disabled]="disable_quiz_button">
+      <ion-icon
+        style="font-size: 1.6rem; margin-right: 10px"
+        name="help-circle"
+      ></ion-icon
+      >Quiz
+    </ion-button>
+
+    <!-- Preview -->
+    <ion-button
+      (click)="preview_button_click()"
+      [disabled]="!(disable_save_button && disable_quiz_button)"
+    >
+      <ion-icon name="eye"></ion-icon>{{ 'PPT.preview' | translate }}
+    </ion-button>
+
+    <!-- Cancel -->
+  </div>
+</ion-content>

@@ -1,0 +1,100 @@
+<ion-header no-border [ngClass]="(toolbarshadow)?'':'shadow'">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+
+    <ion-title>{{ 'HBL.hbl_title' | translate }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [scrollEvents]="true" (ionScroll)="logScrolling($event)">
+  <div class="spacer">
+    <div class="outline">
+      <div class="main-wrapper">
+        <div class="wrapper">
+          <div class="container"><h2>{{ totalCount }}</h2></div>
+          <h2>{{ 'HBL.total' | translate }}</h2>
+        </div>
+        <div class="wrapper">
+          <div class="container"><h2>{{ countPge }}</h2></div>
+          <h2>PGE</h2>
+        </div>
+        <div class="wrapper">
+          <div class="container"><h2>{{ countEce }}</h2></div>
+          <h2>ECE</h2>
+        </div>
+      </div>
+    </div>
+
+    <div class="custom-shape-divider-bottom-1619843386">
+      <svg
+        data-name="Layer 1"
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 1200 120"
+        preserveAspectRatio="none"
+      >
+        <path
+          d="M600,112.77C268.63,112.77,0,65.52,0,7.23V120H1200V7.23C1200,65.52,931.37,112.77,600,112.77Z"
+          class="shape-fill"
+        ></path>
+      </svg>
+    </div>
+  </div>
+
+  <div class="container-2">
+    <ion-searchbar
+      [(ngModel)]="searchText"
+      showCancelButton="never"
+      (keyup)="search_student($event)"
+      (ionClear)="ionClear()"
+      placeholder="Search student"
+    ></ion-searchbar>
+    <!-- <ion-button (click)="btn_importstudent_click()" expand="block">
+      {{ 'HBLREGISTER.btn_importstudent' | translate }}<ion-icon name="swap"></ion-icon>
+    </ion-button> -->
+    <ion-card *ngFor="let s of student_list; let i=index;">
+      <!-- <div class="serial_number"><h2>{{i+1}}</h2></div> -->
+      <div class="serial_number" (click)="callStudent(s)">
+        <ion-icon name="call"></ion-icon>
+      </div>
+      <div class="main-container">
+        <div class="main" (click)="student_btn_click(s)">
+          <h3>{{s.studentname}}</h3>
+          <div class="content">
+            <p>
+              <span>
+                {{ (s.program=='ece') ? ("Anganwadi") : ("Class - "+s.class) }}
+              </span>
+            </p>
+            <span>{{ s.program | uppercase }}</span>
+          </div>
+        </div>
+
+        <ion-button
+          *ngIf="showFillBtn"
+          (click)="fillResponse(s)"
+          size="small"
+          shape="round"
+        >
+          {{ 'HBL.hbl_responce' | translate }}
+        </ion-button>
+      </div>
+      <button (click)="showEditDeleteMenu(s, $event)">
+        <ion-icon name="more"></ion-icon>
+      </button>
+    </ion-card>
+  </div>
+
+  <!-- <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button><ion-icon name="apps"></ion-icon></ion-fab-button>
+    <ion-fab-list side="top">
+      <ion-button (click)="open_register_modal(null, 'new')">
+        {{ 'HBL.activity' | translate }}<ion-icon name="add"></ion-icon>
+      </ion-button>
+      <ion-button [routerLink]="['/hbl-activity']">
+        {{ 'HBL.register' | translate }}<ion-icon name="logo-buffer"></ion-icon>
+      </ion-button>
+    </ion-fab-list>
+  </ion-fab> -->
+</ion-content>

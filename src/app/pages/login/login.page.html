@@ -1,0 +1,148 @@
+<ion-content>
+  <div class="container">
+    <div class="wraper">
+      <div class="image">
+        <img src="assets/img/new_logo.png" />
+      </div>
+
+      <ion-button (click)="signInWithGoogle()">
+        <img src="../../../assets/img/hbl/google-symbol.png" />Continue With
+        Google
+      </ion-button>
+
+      <h2>
+        By continuing, you agree to our <br /><a
+          onclick="window.open('https://thinkzone-teacherapp.flycricket.io/terms.html', '_system', 'location=yes'); return false;"
+          >Terms & Conditions</a
+        >
+        &nbsp;
+        <a
+          onclick="window.open('https://thinkzone-teacherapp.flycricket.io/privacy.html', '_system', 'location=yes'); return false;"
+          >Privacy Policy</a
+        >&nbsp;
+        <!-- <a onclick="window.open('')">Content Policy</a> -->
+      </h2>
+    </div>
+  </div>
+</ion-content>
+<!-- [ngClass]='(loginState==0)?"":"diminish"' -->
+<!-- 
+    <ion-content fullscreen="full" class="animated fadeIn">
+      <ion-grid>
+        <ion-row>
+          <ion-col>
+            <img src="/assets/img/bg0.jpg" alt="" class="bg" />
+          </ion-col>
+        </ion-row>
+      </ion-grid> 
+      
+      <ion-grid>
+        <ion-row>
+          <ion-col><div class="logo-round"></div></ion-col>
+          <ion-col><div class="app-title"></div></ion-col>
+          <ion-col></ion-col>
+        </ion-row>
+      </ion-grid>
+  
+      </ion-content>
+        <ion-footer>
+          <ion-button expand="full" class="login-button" color="warning" (click)="openModal()" no-margin>
+            <ion-icon name="log-in"></ion-icon>Sign In
+        </ion-button>
+      </ion-footer> 
+    
+  
+  <ion-content>
+    <div>
+      <!-- <img src="assets/img/SignUpBgImg.png" /> 
+  
+      <div [ngClass]='(loginState==0)?"":"diminish"'>
+        <img src="assets/img/logo-round.png" />
+      </div>
+  
+      <ion-button color="danger" expand="full" (click)="signInWithGoogle()">
+        <ion-icon name="logo-google"></ion-icon>&nbsp;&nbsp;&nbsp;Google Signin/
+        Signup
+      </ion-button>
+  
+      <!--   <form [formGroup]="signinFormGroup" class="list-form signinpage">
+       <div class="input-item">
+                      <ion-item no-padding>
+                          <div>
+                              <ion-label position="stacked"
+                                  >{{ 'LOGIN.txt_email' | translate}}<a
+                                      style="color: red; font-size: 12px"
+                                      >*</span
+                                  ></ion-label
+                              >
+                              <ion-input
+                                  (ionChange)='errormessage=""'
+                                  formControlName="email"
+                                  type="email"
+                                  class="inputwidth"
+                              ></ion-input>
+                          </div>
+                      </ion-item>
+                  </div>
+                  <div class="input-item" style="margin-bottom: 30px">
+                      <ion-item no-padding>
+                          <div>
+                              <ion-label position="stacked"
+                                  >{{ 'LOGIN.txt_password' | translate}}<span
+                                      style="color: red; font-size: 12px"
+                                      >*</span
+                                  ></ion-label
+                              >
+                              <ion-input
+                                  (ionChange)='errormessage=""'
+                                  formControlName="password"
+                                  type="password"
+                                  class="inputwidth"
+                              ></ion-input>
+                          </div>
+                      </ion-item>
+                  </div>
+                  <ion-button expand="full" (click)="goToNextPage()"
+                      ><ion-icon
+                          name="unlock"
+                          style="vertical-align: text-bottom"
+                      ></ion-icon
+                      >&nbsp;&nbsp;&nbsp;&nbsp; {{ 'LOGIN.btn_login' |
+                      translate}}</ion-button
+                  >
+                  <p class="loginerror">{{_message | translate}}</p>
+      </form>
+   -->
+<!-- <div (click)='guestlogin_click()'>
+                <p class='guestloginlink'>{{ 'LOGIN.guest_link' | translate}}</p>
+              </div> -->
+
+<!-- <ion-button
+                  color="secondary"
+                  expand="block"
+                  (click)="register_click()"
+              >
+                  {{ 'LOGIN.register_link' | translate}}
+              </ion-button> 
+    </div>
+  </ion-content>
+  
+  <!-- Guest Login & Register part -->
+<!-- <ion-footer>
+      <ion-grid>
+          <ion-row>
+              <ion-col>
+              <div (click)='guestlogin_click()'>
+                <p class='guestloginlink'>{{ 'LOGIN.guest_link' | translate}}</p>
+              </div>
+            </ion-col>
+              <ion-col>
+                  <div (click)="register_click()">
+                      <p class="guestloginlink">
+                          {{ 'LOGIN.register_link' | translate}}
+                      </p>
+                  </div>
+              </ion-col>
+          </ion-row>
+      </ion-grid>
+  </ion-footer> -->

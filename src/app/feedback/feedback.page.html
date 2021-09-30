@@ -1,0 +1,30 @@
+<ion-header>
+  <ion-toolbar>
+   
+    <ion-title style="text-align: center;">feedback</ion-title>
+   
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+  <!-- <div class="act">
+   Activit Name
+   [ngClass] = "getvalue()"
+   *ngFor = "let m of body" [ngClass] = "getvalue(m)"
+  </div> -->
+  <div style="text-align: center;
+  margin-top: 10%;">
+    <span (click) = "likef()"><img src="/assets/img/like.jpg"  style="height:10vh;" [ngClass] = getvalue()/></span>
+    <span (click) = "dislikef()"><img src="/assets/img/dislike.jpg" style="height: 9vh;" [ngClass] = getdvalue() /></span>
+  </div>
+<div style="margin-top: 20%;">
+  <span>Description</span>
+  <ion-item>
+  <ion-textarea [(ngModel)] = "feedback"></ion-textarea>
+  <!-- [(feedback)] -->
+</ion-item>
+</div>
+<div style="margin-top: 20%;">
+<ion-button expand="full" (click) = "feedback_update()">Submit</ion-button>
+</div>
+</ion-content>

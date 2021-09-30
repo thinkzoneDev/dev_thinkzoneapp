@@ -1,0 +1,285 @@
+<ion-header>
+  <ion-toolbar (click)="checkQuizStatus()">
+    <ion-row>
+      <button (click)="checkQuizStatus()">
+        <ion-icon name="arrow-back"></ion-icon>
+      </button>
+      <ion-title>{{'REGISTER.register' | translate}}</ion-title>
+    </ion-row>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="container">
+    <!-- Image -->
+    <div class="welcome">
+      <div class="text">
+        <h2>{{'REGISTER.hello' | translate}}!</h2>
+        <p style="color: #4286f4">{{ username }}</p>
+        <p>{{'REGISTER.registerMessage' | translate}}</p>
+        <p>{{ email }}</p>
+      </div>
+      <div class="img">
+        <img src="{{ image }}" />
+      </div>
+    </div>
+
+    <!-- Google Register Form -->
+    <div class="wraper" *ngIf="register_type == 'google'; else normal_signup">
+      <!-- Gender -->
+      <div class="item">
+        <div class="icon"><ion-icon name="female"></ion-icon></div>
+        <ion-item>
+          <ion-label position="floating"
+            >{{'REGISTER.gender' | translate}}</ion-label
+          >
+          <ion-select
+            color="secondary"
+            cancelText="Cancel"
+            okText="Ok"
+            multiple="false"
+            placeholder="{{'REGISTER.selectGender' | translate}}"
+            [(ngModel)]="gender"
+            style="min-width: 100%; color: black"
+            (ngModelChange)="gender_onchange(gender)"
+            value="{{ gender }}"
+          >
+            <ion-select-option
+              *ngFor="let gender of genderlist"
+              value="{{ gender }}"
+              >{{ gender | uppercase }}</ion-select-option
+            >
+          </ion-select>
+        </ion-item>
+      </div>
+
+      <!-- DOB -->
+      <div class="item">
+        <div class="icon">
+          <ion-icon name="calendar"></ion-icon>
+        </div>
+        <ion-item>
+          <ion-label>{{'REGISTER.DOB' | translate}}</ion-label>
+          <ion-input type="date" [(ngModel)]="dob"></ion-input>
+        </ion-item>
+      </div>
+
+      <!-- Mobile Number -->
+      <div class="item">
+        <div class="icon"><ion-icon name="call" item-start></ion-icon></div>
+        <ion-item>
+          <ion-label position="floating"
+            >{{'REGISTER.mobileno' | translate}}</ion-label
+          >
+          <ion-input
+            color="secondary"
+            type="number"
+            [(ngModel)]="mobileno"
+          ></ion-input>
+        </ion-item>
+      </div>
+
+      <!-- User Type -->
+      <div class="item">
+        <div class="icon"><ion-icon name="people" item-start></ion-icon></div>
+        <ion-item>
+          <ion-label position="floating"
+            >{{'REGISTER.userType' | translate}}</ion-label
+          >
+          <ion-select
+            color="secondary"
+            cancelText="Cancel"
+            okText="Ok"
+            multiple="false"
+            style="min-width: 100%; color: black"
+            placeholder="{{ 'REGISTER.select_user_type' | translate }}"
+            [(ngModel)]="usertype"
+            (ngModelChange)="select_usertype_onchange(usertype)"
+            value="{{usertype}}"
+          >
+            <ion-select-option
+              *ngFor="let userType of usertypelist"
+              value="{{userType}}"
+              >{{ userType | uppercase }}</ion-select-option
+            >
+          </ion-select>
+        </ion-item>
+      </div>
+
+      <!-- School name -->
+      <!-- Code removed search field added below, kept for reference -->
+      <!-- <div class="item" *ngIf="isSchool">
+        <div class="icon"><ion-icon name="school"></ion-icon></div>
+        <ion-item>
+          <ion-label position="floating"
+            >{{'REGISTER.schoolName' | translate}}</ion-label
+          >
+          <ion-select
+            color="secondary"
+            cancelText="Cancel"
+            okText="Ok"
+            multiple="false"
+            style="min-width: 100%; color: black"
+            placeholder="{{ 'REGISTER.selectSchool' | translate }}"
+            (ionChange)="school_onchange($event)"
+          >
+            <ion-select-option
+              *ngFor="let school of schoolNameList"
+              [value]="school"
+              >{{ school.schoolname | uppercase }}</ion-select-option
+            >
+          </ion-select>
+        </ion-item>
+      </div> -->
+
+      <!-- School name -->
+      <div class="item" *ngIf="isSchool">
+        <div class="icon"><ion-icon name="school"></ion-icon></div>
+        <ion-item>
+          <ion-label position="floating"
+            >{{'REGISTER.schoolName' | translate}}</ion-label
+          >
+          <ionic-selectable
+            item-content
+            [(ngModel)]="selectedSchool"
+            itemValueField="udisecode"
+            itemTextField="schoolname"
+            [items]="schoolNameList"
+            [canSearch]="true"
+            [hasVirtualScroll]="true"
+            closeButtonText="{{ 'REGISTER.btn_cancel' | translate }}"
+            (onChange)="school_onchange($event)"
+          >
+          </ionic-selectable>
+        </ion-item>
+      </div>
+
+      <!-- Anganwadi name -->
+      <div class="item" *ngIf="isAnganwadi">
+        <div class="icon"><ion-icon name="school"></ion-icon></div>
+        <ion-item>
+          <ion-label position="floating"
+            >{{'REGISTER.anganwadiName' | translate}}</ion-label
+          >
+          <ionic-selectable
+            item-content
+            [(ngModel)]="selectedAnganwadi"
+            itemValueField="anganwadicode"
+            itemTextField="anganwadiname"
+            [items]="anganwadiList"
+            [canSearch]="true"
+            [hasVirtualScroll]="true"
+            closeButtonText="{{ 'REGISTER.btn_cancel' | translate }}"
+            (onChange)="anganwadi_onchange($event)"
+          >
+          </ionic-selectable>
+        </ion-item>
+      </div>
+
+      <!-- Passcode -->
+      <div class="item">
+        <div class="icon">
+          <ion-icon name="barcode"></ion-icon>
+        </div>
+        <ion-item>
+          <ion-label position="floating"
+            >{{'REGISTER.passcode' | translate}}</ion-label
+          >
+          <ion-input
+            color="secondary"
+            type="text"
+            [(ngModel)]="passcode"
+          ></ion-input>
+        </ion-item>
+      </div>
+    </div>
+
+    <!-- Normal Register Form -->
+    <ng-template #normal_signup>
+      <div class="wraper">
+        <!-- User Name -->
+        <ion-item no-padding class="animated fadeInUp">
+          <ion-label position="floating"
+            ><ion-icon name="person" item-start></ion-icon>User Name</ion-label
+          >
+          <ion-input
+            color="secondary"
+            type="text"
+            [(ngModel)]="username"
+          ></ion-input>
+        </ion-item>
+
+        <!-- Email ID -->
+        <ion-item no-padding class="animated fadeInUp">
+          <ion-label position="floating"
+            ><ion-icon name="mail" item-start></ion-icon>Email</ion-label
+          >
+          <ion-input
+            color="secondary"
+            type="email"
+            [(ngModel)]="email"
+          ></ion-input>
+        </ion-item>
+
+        <!-- Password -->
+        <ion-item no-padding class="animated fadeInUp">
+          <ion-label position="floating"
+            ><ion-icon name="lock" item-start></ion-icon>Password</ion-label
+          >
+          <ion-input
+            color="secondary"
+            type="password"
+            [(ngModel)]="password"
+          ></ion-input>
+        </ion-item>
+
+        <!-- Mobile Number -->
+        <ion-item no-padding class="animated fadeInUp">
+          <ion-label position="floating"
+            ><ion-icon name="call" item-start></ion-icon>Mobile
+            Number</ion-label
+          >
+          <ion-input
+            color="secondary"
+            type="number"
+            [(ngModel)]="mobileno"
+          ></ion-input>
+        </ion-item>
+
+        <!-- Pass Code -->
+        <div class="item">
+          <div class="icon">
+            <ion-icon name="finger-print"></ion-icon>
+          </div>
+          <ion-item>
+            <ion-label position="floating">Pass Code</ion-label>
+            <ion-input
+              color="secondary"
+              type="text"
+              [(ngModel)]="passcode"
+            ></ion-input>
+          </ion-item>
+        </div>
+      </div>
+    </ng-template>
+
+    <ion-button
+      size="medium"
+      expand="full"
+      shape="round"
+      (click)="signUp()"
+      tappable
+    >
+      {{'REGISTER.signup' | translate}}<ion-icon name="log-in"></ion-icon>
+    </ion-button>
+
+    <!-- Back to Login Page -->
+    <!-- <div text-center margin-top>
+      <span (click)="goToLogin()" tappable>
+        <ion-text color="dark">
+          <strong>{{'REGISTER.iHaveAnAccount' | translate}}</strong>
+        </ion-text>
+      </span>
+    </div> -->
+  </div>
+</ion-content>

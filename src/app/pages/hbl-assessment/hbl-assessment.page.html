@@ -1,0 +1,134 @@
+<ion-header>
+  <ion-toolbar (click)="closeModal()">
+    <ion-row>
+      <button (click)="closeModal()">
+        <ion-icon name="arrow-back"></ion-icon>
+      </button>
+      <ion-title>{{ 'HBLASSESSMENT.title' | translate }}</ion-title>
+    </ion-row>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="container-main">
+    <!-- <div class="header"> 
+      <button (click)="closeModal()">
+        <ion-icon name="arrow-back"></ion-icon>
+      </button>
+      <ion-title>{{ 'HBLASSESSMENT.title' | translate }}</ion-title>
+    </div> -->
+    <!-- <div class="module-test" ngDefaultControl>
+      <ion-card
+        (click)="month_onchange(q.value)"
+        [attr.value]="data"
+        *ngFor="let q of month_list"
+        [ngClass]='(selected_month==q.value)?"selected-chip":"unselected-chip"'
+      >
+        <p>{{q.text}}</p>
+      </ion-card>
+    </div> -->
+
+    <div class="wraper">
+      <div class="baseline">
+        <ion-card
+          [routerLink]="'/hbl-quiz'"
+          (click)="baselnAndEndln_btnclick('baseln')"
+          class="box"
+        >
+          <div class="flex">
+            <img src="../../../assets/img/hbl/baseline-shift.png" />
+            <h2>{{ 'HBLASSESSMENT.baseln_txt' | translate }}</h2>
+          </div>
+        </ion-card>
+      </div>
+
+      <!-- [hidden]="(baselnBtnHidden)" -->
+
+      <div class="baseline">
+        <ion-card
+          [routerLink]="'/hbl-quiz'"
+          (click)="baselnAndEndln_btnclick('endln')"
+          class="box"
+        >
+          <div class="flex">
+            <img src="../../../assets/img/hbl/work-time.png" />
+            <h2>{{ 'HBLASSESSMENT.endln_txt' | translate }}</h2>
+          </div>
+        </ion-card>
+      </div>
+
+      <!-- <div [hidden]="(pgeAssessmentBtnHidden)" class="activity">
+        <ion-card
+          [routerLink]="'/hbl-quiz'"
+          (click)="assessment_btnclick('odia')"
+          class="box-2"
+        >
+          <div class="flex-2">
+            <img src="../../../assets/img/hbl/satisfaction.png" />
+            <h2>{{ 'HBLASSESSMENT.odia_txt' | translate }}</h2>
+          </div>
+        </ion-card>
+
+        <ion-card
+          [routerLink]="'/hbl-quiz'"
+          (click)="assessment_btnclick('math')"
+          class="box-2"
+        >
+          <div class="flex-2">
+            <img src="../../../assets/img/hbl/calculating.png" />
+            <h2>{{ 'HBLASSESSMENT.math_txt' | translate }}</h2>
+          </div>
+        </ion-card>
+
+        <ion-card
+          [routerLink]="'/hbl-quiz'"
+          (click)="assessment_btnclick('eng')"
+          class="box-2"
+        >
+          <div class="flex-2">
+            <img src="../../../assets/img/hbl/english.png" />
+            <h2>{{ 'HBLASSESSMENT.english_txt' | translate }}</h2>
+          </div>
+        </ion-card>
+      </div> -->
+
+      <!-- <div class="baseline">
+        <ion-card
+          [routerLink]="'/hbl-quiz'"
+          (click)="assessment_btnclick('ases')"
+          class="box"
+        >
+          <div class="flex">
+            <img src="../../../assets/img/hbl/test.png" />
+            <h2>{{ 'HBLASSESSMENT.monthly_txt' | translate }}</h2>
+          </div>
+        </ion-card>
+      </div> -->
+
+      <!-- Endline module disabled will be activated later -->
+      <!-- <div class="endline">
+        <ion-card
+          [routerLink]="'/hbl-quiz'"
+          (click)="assessment_btnclick('ases')"
+          class="box-2"
+        >
+          <div class="flex-2">
+            <img src="../../../assets/img/hbl/test.png" />
+            <h2>{{ 'HBLASSESSMENT.monthly_txt' | translate }}</h2>
+          </div>
+        </ion-card>
+
+        <ion-card
+          [routerLink]="'/hbl-quiz'"
+          (click)="baselnAndEndln_btnclick('endln')"
+          class="box-2"
+        >
+          <div class="flex-2">
+            <img src="../../../assets/img/hbl/work-time.png" />
+            <h2>{{ 'HBLASSESSMENT.endln_txt' | translate }}</h2>
+          </div>
+        </ion-card>
+      </div> -->
+    </div>
+  </div>
+</ion-content>

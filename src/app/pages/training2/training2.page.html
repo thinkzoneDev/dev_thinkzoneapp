@@ -1,0 +1,85 @@
+<!-- <ion-header  no-border [ngClass]="(toolbarshadow)?'shadow':'shadow'">
+  <ion-toolbar class='material-toolbar'>
+    <ion-row>
+        <ion-title class='page-title-absolute'>
+          <p>Training Content</p>
+        </ion-title>
+        <ion-back-button></ion-back-button>
+    </ion-row>
+  </ion-toolbar>
+</ion-header> -->
+<ion-header no-border [ngClass]="(toolbarshadow)?'':'shadow'">
+    <ion-toolbar class='material-toolbar' color="--ion-color-cushead">
+        <ion-row>
+            <ion-title class='page-title-absolute'>
+                <p class="pMargin" style="color:#ffffff">{{ 'TRAINING.title2' | translate}}</p>
+            </ion-title>
+            <ion-back-button style="color:#ffffff;display: block;"></ion-back-button>
+        </ion-row>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content [scrollEvents]="true" (ionScroll)="logScrolling($event)"> <!-- scrollY='false' -->
+    <ion-item class="full_width" [hidden]="hideSessionSavedTag">
+        <div class="notify_div">
+            <ion-row>
+                <ion-icon name="alert"></ion-icon>
+                <ion-label>This training session already saved.</ion-label>
+            </ion-row>
+        </div>
+    </ion-item>
+
+    <ion-grid>
+        <!-- Scrollable content -->
+        <ion-row>
+            <ion-item class="full_width">
+                <ion-label class="head">{{submodulename}}</ion-label>
+            </ion-item>
+        </ion-row>
+        <ion-card class="content_card">
+            <div class="">
+                <ion-textarea disabled readonly [innerHTML]="content" class="textarea"></ion-textarea>
+            </div>
+        </ion-card>
+        <ion-card class="videoCard">
+            <div class="d-flex justify-content-around align-items-center">
+                <div class="verAlign" *ngIf="video.length>0">
+                    <ion-label class="padLeft" (click)="play_video()" *ngIf="video.length>0">Video content</ion-label>
+                    <ion-label class="padLeft" *ngIf="video.length ==0">No Video Available</ion-label>
+                    <div class="right-align" style="position:relative;">
+                        <span *ngFor="let v of video; let i = index;"> <ion-badge style="position: absolute;left: 26px; background: red;">{{ i+1 }}</ion-badge></span>
+                        <div class="playBorder">
+                            <a href="javascript:void(0);">
+                                <ion-icon name="play" class="data-xlarge play" (click)="play_video('')" style="display: block;"></ion-icon>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="verAlign" *ngIf="worksheet.length>0">
+                    <ion-label (click)="open_document(w)" *ngIf="worksheet.length>0" class="padLeft">Work Sheets</ion-label>
+                    <ion-label *ngIf="worksheet.length==0" class="padLeft">No Work Sheets</ion-label>
+                    <span *ngIf="worksheet.length==0">
+                    <a href="javascript:void(0);">
+                      <ion-icon name="paper" class="paper data-xlarge" (click)="open_document(w)" style="display: block;"></ion-icon>
+                  </a>
+                </span>
+                    <div class="right-align" *ngFor="let w of worksheet; let i = index;">
+                        <a href="javascript:void(0);">
+                            <ion-icon name="paper" class="paper data-xlarge" (click)="open_document(w)" style="display: block;"></ion-icon>
+                        </a>
+                    </div>
+                </div>
+                <div class="verAlign">
+                    <ion-label (click)="open_quiz()" class="padLeft">Quizes</ion-label>
+                    <img alt="" (click)="open_quiz()" class="cardimg" style="width:40px;" src="/assets/img/quiz.png">
+                </div>
+            </div>
+        </ion-card>
+        <ion-row class="text-center">
+            <ion-button icon-left size="medium" color="primary" (click)="complete_activity()" tappable class="explore-btn" [hidden]="!hideSessionSavedTag">
+                Complete Activity
+            </ion-button>
+        </ion-row>
+
+    </ion-grid>
+</ion-content>

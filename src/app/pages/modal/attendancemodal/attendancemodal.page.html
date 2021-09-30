@@ -1,0 +1,68 @@
+<ion-header no-border [ngClass]="(toolbarshadow)?'':'shadow'">
+  <ion-toolbar (click)="closeModal()">
+    <ion-row>
+      <button (click)="closeModal()">
+        <ion-icon name="arrow-back"></ion-icon>
+      </button>
+      <ion-title>{{ 'TAKEATTENDANCE.takeattendance' | translate}}</ion-title>
+    </ion-row>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [scrollEvents]="true" (ionScroll)="logScrolling($event)">
+  <div class="spacer">
+    <div class="outline">
+      <div class="main-wrapper">
+        <div class="wrapper">
+          <div class="container" style="background-color: gray">
+            <h2>{{ unattended }}</h2>
+          </div>
+          <h2>{{ 'TAKEATTENDANCE.remaining' | translate }}</h2>
+        </div>
+        <div class="wrapper">
+          <div class="container" style="background-color: #4caf50">
+            <h2>{{ present }}</h2>
+          </div>
+          <h2>{{ 'TAKEATTENDANCE.present' | translate}}</h2>
+        </div>
+        <div class="wrapper">
+          <div class="container" style="background-color: #ff2b2b">
+            <h2>{{absent}}</h2>
+          </div>
+          <h2>{{ 'TAKEATTENDANCE.absent' | translate}}</h2>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <p *ngIf='errormessage!=""' class="red data-large text-center">
+    {{errormessage}}
+  </p>
+
+  <ion-card *ngFor="let s of new_student_list" [ngClass]="s.bgclass">
+    <div class="text">
+      <h2>{{s.detail.studentname}}</h2>
+    </div>
+    <div class="buttons">
+      <div (click)="setState(1, s)" [ngClass]="s.presentbutton" class="button">
+        <ion-icon
+          [style.color]='(s.selectionState == 1)?"white":"#4caf50"'
+          name="checkmark"
+        ></ion-icon>
+      </div>
+      <div (click)="setState(2, s)" [ngClass]="s.absentbutton" class="button">
+        <ion-icon
+          [style.color]='(s.selectionState == 2)?"white":"#f44336"'
+          name="close"
+        ></ion-icon>
+      </div>
+    </div>
+  </ion-card>
+
+  <div class="btn">
+    <ion-button (click)="save_attendace()">
+      <ion-icon name="save"></ion-icon>
+      {{ 'TAKEATTENDANCE.save' | translate}}
+    </ion-button>
+  </div>
+</ion-content>

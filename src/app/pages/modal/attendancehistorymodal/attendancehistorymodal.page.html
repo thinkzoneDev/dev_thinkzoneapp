@@ -1,0 +1,68 @@
+<ion-header no-border [ngClass]="(toolbarshadow)?'':'shadow'">
+  <ion-toolbar>
+    <ion-row>
+      <ion-buttons>
+        <ion-back-button></ion-back-button>
+      </ion-buttons>
+      <ion-title>{{ attendance_date | date: 'mediumDate' }}</ion-title>
+      <button (click)="closeModal()"><ion-icon name="close"></ion-icon></button>
+    </ion-row>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content
+  [scrollEvents]="true"
+  (ionScroll)="logScrolling($event)"
+  *ngIf="!is_Holiday"
+>
+  <div class="spacer">
+    <div class="outline">
+      <div class="main-wrapper">
+        <div class="wrapper">
+          <div class="container" style="background-color: gray">
+            <h2>{{ total }}</h2>
+          </div>
+          <h2>{{ 'TAKEATTENDANCE.total' | translate }}</h2>
+        </div>
+        <div class="wrapper">
+          <div class="container" style="background-color: #4caf50">
+            <h2>{{ present }}</h2>
+          </div>
+          <h2>{{ 'TAKEATTENDANCE.present' | translate}}</h2>
+        </div>
+        <div class="wrapper">
+          <div class="container" style="background-color: #ff2b2b">
+            <h2>{{absent}}</h2>
+          </div>
+          <h2>{{ 'TAKEATTENDANCE.absent' | translate}}</h2>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="student-list">
+    <ion-card *ngFor="let att of attendance_list; let i=index;">
+      <div class="serial_number">
+        <h2>{{ i+1 }}</h2>
+      </div>
+      <div class="text"><h2>{{att.studentname | titlecase}}</h2></div>
+      <div *ngIf="att.availability == 'present'" class="mark">
+        <ion-icon name="checkmark" style="color: #4caf50"></ion-icon>
+      </div>
+      <div *ngIf="att.availability == 'absent'" class="mark">
+        <ion-icon name="close" style="color: #ff2b2b"></ion-icon>
+      </div>
+    </ion-card>
+  </div>
+</ion-content>
+
+<ion-content *ngIf="is_Holiday">
+  <div class="holiday">
+    <ion-icon name="logo-reddit"></ion-icon>
+    <div class="text">
+      <h2>
+        {{ attendance_date | date: 'mediumDate' }}<br />This was a Holiday
+      </h2>
+    </div>
+  </div>
+</ion-content>

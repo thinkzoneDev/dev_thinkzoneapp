@@ -1,0 +1,46 @@
+<ion-header no-border>
+    <ion-toolbar class='material-toolbar' color="--ion-color-cushead">
+        <ion-row>
+            <ion-title class='page-title-absolute'>
+                <p class="pMargin white" style="text-transform: capitalize;">{{list[0].modulename}}</p>
+            </ion-title>
+            <ion-back-button style="color:#ffffff;"></ion-back-button>
+        </ion-row>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+
+    <ion-grid class="dash">
+        <div class="ionDiv">
+            <ion-card (click)='submodule_click(m)' *ngFor='let m of list' class="ionCardred text-center" [ngClass]="{'ionCardred' : (m.progress != 100 ) , 'ionCardgreen' :(m.progress == 100 )  }"> 
+            <!-- <ion-card (click)='submodule_click(m)' *ngFor='let m of list' class="ionCardred text-center" [ngClass]="{'ionCardred' : (m.iscomplete == false ) , 'ionCardgreen' :(m.iscomplete == true )  }"> -->
+                <div class="verAlign">
+                    <!-- <div class='horizontal-flexbox' [style.opacity]='m.progress != 100 ? "1" : "0"' [style.display]='m.progress != 100 ? "flex" : "none"' style='margin: 10px;height: 30px;width: 30px;border-radius: 15px;border:1px solid gray'>
+                        <ion-icon name='checkmark' style="color: gray;font-size: 1.2rem"></ion-icon>
+                    </div> -->
+                    <div class="imgDiv">
+                        <img (click)='submodule_click(m)' alt="" class="cardimg" src="/assets/img/logo-round.png">
+                    </div>
+                    <div class='horizontal-flexbox' *ngIf="m.iscomplete == true">
+                        <ion-icon name='checkmark' style="color: gray;font-size: 1.2rem"></ion-icon>
+                    </div>
+                    <div class='horizontal-flexbox' *ngIf="m.iscomplete == false">
+                        <ion-icon name='remove' style="color: gray;font-size: 1.2rem"></ion-icon>
+                    </div>
+                    <!-- <div class='horizontal-flexbox' [style.opacity]='m.progress == 100 ? "1" : "0"' [style.display]='m.progress == 100 ? "flex" : "none"' style='margin: 10px;height: 30px;width: 30px;border-radius: 15px;border:1px solid #4caf50'>
+                        <ion-icon name='checkmark' style="color: #4caf50;font-size: 1.2rem"></ion-icon>
+                    </div> -->
+                    <p class="pMargin" style="text-transform: capitalize;">{{m.submodulename}}</p>
+                    <!-- <ion-icon name='ios-arrow-forward' class='data-large'></ion-icon> -->
+                </div>
+            </ion-card>
+        </div>
+    </ion-grid>
+    <!-- <div (click)='submodule_click(m)' *ngFor='let m of list' class='card shadow'>
+        <div class='hfsb'>
+            <p class="pMargin">{{m.submodulename}}</p>
+            <ion-icon name='ios-arrow-forward' class='data-large'></ion-icon>
+        </div>
+    </div> -->
+</ion-content>

@@ -1,0 +1,15 @@
+<ion-content>
+  <div class="container">
+    <ion-card>
+      <h1>{{ name }}</h1>
+      <div class="wraper">
+        <h2>Percentage - {{percentage || '0%'}}</h2>
+        <div class="status">
+          <p *ngIf="!complete">Not Completed</p>
+          <p *ngIf="complete">Completed</p>
+        </div>
+      </div>
+    </ion-card>
+    <ion-button (click)="closeModal()" expand="block"> close </ion-button>
+  </div>
+</ion-content>

@@ -1,0 +1,389 @@
+<ion-header no-border [ngClass]="(toolbarshadow)?'':'shadow'">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+
+    <ion-title> <span>T</span>hink<span>Z</span>one </ion-title>
+
+    <ion-buttons slot="end" (click)="notifications('hi')">
+      <ion-button>
+        <ion-icon slot="icon-only" name="notifications"></ion-icon>
+      </ion-button>
+      <ion-badge *ngIf="showunread" color="danger">{{ unreadcount }}</ion-badge>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [scrollEvents]="true" (ionScroll)="logScrolling($event)">
+  <!--Slider Module-->
+
+  <div class="homeslides">
+    <ion-slides
+      pager="false"
+      autoplay="true"
+      [options]="slideOpts"
+      cancelable="false"
+      #slider
+    >
+      <ion-slide *ngFor="let img of image_array"
+        ><div class="card" (click)="onSliderimageClick(img.type)">
+          <img src="data:image/png;base64,{{ img.image }}" alt="Red dot" />
+        </div>
+      </ion-slide>
+    </ion-slides>
+  </div>
+
+  <!-- Student Module -->
+
+  <ion-card
+    style="
+      border-left: 1px solid #85d8ce;
+      border-bottom: 1px solid #085078;
+      border-right: 1px solid #085078;
+    "
+  >
+    <h2 class="h2">Students Module</h2>
+    <div class="module">
+      <div class="box" (click)="openStudentDetails()">
+        <img src="/assets/img/skills.png" />
+        <p>{{ 'STUDENT.student_details' | translate }}</p>
+      </div>
+
+      <div class="box" (click)="open_register_modal(null, 'new')">
+        <img src="/assets/img/website.png" />
+        <p>{{ 'STUDENT.register' | translate }}</p>
+      </div>
+
+      <!-- <div class="box" (click)="openStudentRegisterbyType()">
+        <img src="/assets/img/website.png" />
+        <p>{{ 'STUDENT.register' | translate }}</p>
+      </div> -->
+
+      <div class="box" (click)="openAttendance()">
+        <img src="/assets/img/immigration.png" />
+        <p>{{ 'HOME.attendance' | translate }}</p>
+      </div>
+
+      <div class="box" (click)="openCallResponseReport()">
+        <img src="/assets/img/hbl/call.png" />
+        <p>{{ 'HBL.callresponse' | translate }}</p>
+      </div>
+    </div>
+  </ion-card>
+
+  <!-- Activity/Assesment Module -->
+
+  <ion-card
+    style="
+      border-right: 1px solid #24c6dc;
+      border-bottom: 1px solid #085078;
+      border-left: 1px solid #085078;
+    "
+  >
+    <h2 class="h3">Activity Module</h2>
+    <div class="module">
+      <div *ngIf="isAnganwadiOrFellow" class="box" (click)="openECEActivity()">
+        <img src="/assets/img/work-time.png" />
+        <p>{{ 'HOME.ece' | translate}} {{ 'HOME.activity_ece' | translate }}</p>
+      </div>
+
+      <!-- <div *ngIf="isAnganwadiOrFellow" class="box" (click)="openECEAssesment()">
+        <img src="/assets/img/behavior.png" />
+        <p>
+          {{ 'HOME.ece' | translate}} {{ 'HOME.assessment_ece' | translate }}
+        </p>
+      </div> -->
+
+      <div *ngIf="isSchoolOrFellow" class="box" (click)="openPGEActivity()">
+        <img src="/assets/img/hbl/work-time.png" />
+        <p>{{ 'HOME.pge' | translate}} {{ 'PGEACTIVITY.title' | translate }}</p>
+      </div>
+
+      <!-- <div *ngIf="isSchoolOrFellow" class="box" (click)="openPGEAssesment()">
+        <img src="/assets/img/hbl/check-list.png" />
+        <p>
+          {{ 'HOME.pge' | translate}} {{ 'HOME.assessment_pge' | translate }}
+        </p>
+      </div> -->
+
+      <div class="box" (click)="openHBLActivity()">
+        <img src="/assets/img/hbl/study.png" />
+        <p>{{ 'HBL.activity' | translate }}</p>
+      </div>
+    </div>
+  </ion-card>
+
+  <!-- Teachers Module -->
+
+  <ion-card
+    style="
+      border-right: 1px solid #24c6dc;
+      border-bottom: 1px solid #085078;
+      border-left: 1px solid #085078;
+    "
+  >
+    <h2 class="h1">Teachers Module</h2>
+    <div class="module">
+      <div class="box" (click)="openBaseline('baseline')">
+        <img src="/assets/img/checklist.png" />
+        <p>{{ 'APP.teacherbaseline' | translate }}</p>
+      </div>
+
+      <div class="box" (click)="navigate_to_ppt_module()">
+        <img src="/assets/img/ppt.png" />
+        <p class="complete">
+          {{ 'PPT.ppt' | translate }}
+          <ion-icon
+            name="checkmark-circle"
+            *ngIf="ppt_status"
+            style="color: rgb(56, 178, 32)"
+          ></ion-icon>
+        </p>
+      </div>
+
+      <div class="box" (click)="navigate_to_training_module()">
+        <img src="/assets/img/teaching.png" />
+        <p>{{ 'HOME.trainingcontent' | translate }}</p>
+      </div>
+
+      <!-- disabled will be enabled later -->
+      <!-- <div class="box" (click)="openBaseline('endline')">
+        <img src="/assets/img/check-list.png" />
+        <p>{{ 'APP.teacherendline' | translate }}</p>
+      </div> -->
+    </div>
+  </ion-card>
+
+  <!-- HBL Module-->
+
+  <!-- <ion-card
+    style="
+      border-left: 1px solid #85d8ce;
+      border-bottom: 1px solid #085078;
+      border-right: 1px solid #085078;
+    "
+  >
+    <h2 class="h4">HOME BASED LEARNING</h2>
+    <div class="module">
+      <div class="box" (click)="openHBLModule()">
+        <img src="/assets/img/hbl/requirement.png" />
+        <p>{{ 'HBL.student_list' | translate }}</p>
+      </div>
+
+      <div class="box" (click)="openRegisterModal(null, 'new')">
+        <img src="/assets/img/hbl/enrollment.png" />
+        <p>{{ 'HBL.register' | translate }}</p>
+      </div>
+    </div>
+  </ion-card> -->
+
+  <!--Others Module-->
+  <ion-card
+    style="
+      border-right: 1px solid #24c6dc;
+      border-bottom: 1px solid #085078;
+      border-left: 1px solid #085078;
+    "
+  >
+    <h2 class="h5">Others</h2>
+    <div class="module">
+      <div class="box" (click)="openDictionary()">
+        <img src="/assets/img/hbl/book.png" />
+        <p>{{ 'HOME.dictionary' | translate }}</p>
+      </div>
+
+      <div class="box" (click)="openGallery()">
+        <img src="/assets/img/hbl/attach.png" />
+        <p>{{ 'HOME.gallery' | translate }}</p>
+      </div>
+
+      <div *ngIf="isFellow" class="box" (click)="openPayment()">
+        <img src="/assets/img/hbl/bill.png" />
+        <p>{{ 'HOME.payment' | translate }}</p>
+      </div>
+
+      <!-- <div class="box" (click)="openPrivacy()">
+        <img src="/assets/img/hbl/policy.png" />
+        <p>{{ 'HOME.hrpolicy' | translate }}</p>
+      </div> -->
+    </div>
+  </ion-card>
+</ion-content>
+
+<!--Code Commented By Abinash Shasini on 25/05/2021 Dashboard Modifiation-->
+
+<!-- <ion-content [scrollEvents]="true" (ionScroll)="logScrolling($event)">
+  <p>Add student details here {{ 'HOME.student_details' | translate }}</p> -->
+
+<!-- <ion-content fullscreen class="completegrid"> -->
+
+<!-- Dashboard for Guest User -->
+<!-- <div class="completegrid" *ngIf="_isguestuser">
+    <ion-grid class="dashgrid">
+      <ion-row>
+        <ion-col class="box">
+          <div [routerLink]="'/ecactivity'">
+            <img src="/assets/img/ECE-Icon_1.png" alt="" class="cardimg" />
+            <p class="data hometitle">{{ 'HOME.activity_ece' | translate }}</p>
+            <p class="data-large homesubtitle">{{ 'HOME.ece' | translate}}</p>
+          </div>
+        </ion-col>
+        <ion-col class="box">
+          <div [routerLink]="'/pgemathactivity'">
+            <img src="/assets/img/PGE-Icon_2.png" alt="" class="cardimg" />
+            <p class="data hometitle">
+              {{ 'HOME.activity_pge_math' | translate }}
+            </p>
+            <p class="data-large homesubtitle">{{ 'HOME.pge' | translate}}</p>
+          </div>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col class="box">
+          <div [routerLink]="'/pgeenglishactivity'">
+            <img src="/assets/img/PGE-Icon_1.png" alt="" class="cardimg" />
+            <p class="data hometitle">
+              {{ 'HOME.activity_pge_eng' | translate }}
+            </p>
+            <p class="data-large homesubtitle">{{ 'HOME.pge' | translate}}</p>
+          </div>
+        </ion-col>
+        <ion-col class="box">
+          <div [routerLink]="'/pgeodiaactivity'">
+            <img src="/assets/img/PGE-Icon_3.png" alt="" class="cardimg" />
+            <p class="data hometitle">
+              {{ 'HOME.activity_pge_odia' | translate }}
+            </p>
+            <p class="data-large homesubtitle">{{ 'HOME.pge' | translate}}</p>
+          </div>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col class="box" [routerLink]="'/training1'">
+          <img src="/assets/img/Training-Icon.png" alt="" class="cardimg" />
+          <p class="data hometitle">{{ 'HOME.training' | translate }}</p>
+        </ion-col>
+        <ion-col class="box" [routerLink]="'/tools'">
+          <img src="/assets/img/tools.png" alt="" class="cardimg" />
+          <p class="data hometitle">{{ 'HOME.tools' | translate }}</p>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div> -->
+
+<!-- Dashboard for Real User -->
+
+<!-- </ion-content> -->
+
+<!-- Student details  -->
+<!-- <div [routerLink]="'/studentexplor'"  class='shadow home-card'>
+    <div class='card-left-block student-bg'>
+      <ion-icon name='person' style="font-size: 3rem"></ion-icon>
+    </div>
+    <div class='centered-text-for-card'>
+      <p class='data'>{{ 'HOME.student_details' | translate }}</p>
+    </div>
+    <div class='decorative-side-panel-small student-bg'>
+    </div>
+  </div> -->
+
+<!-- Attendance  -->
+<!-- <div [routerLink]="'/attendance'" class='shadow home-card'>
+    <div class='card-left-block attendance-bg'>
+      <p style='color: white;font-size: 2rem;margin: 5px'>{{date}}</p>
+      <p style='color: white;margin: 5px 8px 5px 8px'>{{month}}</p>
+    </div>
+    <div class='centered-text-for-card'>
+      <p class='data'>{{ 'HOME.attendance' | translate }}</p>
+    </div>
+    <div class='decorative-side-panel-small attendance-bg'>
+    </div>
+  </div> -->
+
+<!-- ECE Activity + Assessment  -->
+<!-- <div class='shadow home-card'>
+    <div class='student-level-name'>
+      <p class='data-large ece-color'>ECE</p>
+    </div>
+    <div class='vertical-bar'>
+    </div>
+    <div class='button-section-inside-card'>
+        <div [routerLink]="'/ecactivity'" class='shadow button ece-solid'>
+          <p class='data'>{{ 'HOME.activity_ece' | translate }}</p>
+        </div>
+        <div [routerLink]="'/ecassessment'" class='button ece-bordered'>
+          <p class='data'>{{ 'HOME.assessment_ece' | translate }}</p>
+        </div>
+    </div>
+    <div class='decorative-side-panel ece-bg'>
+    </div>
+  </div> -->
+
+<!-- PGE Activity + Assessment  -->
+<!-- <div class='shadow home-card'>
+    <div class='student-level-name'>
+      <p class='data-large pge-color'>PGE</p>
+    </div>
+    <div class='vertical-bar'>
+    </div>
+    <div  class='button-section-inside-card'>
+        <div [routerLink]="'/pgactivity'" class='shadow button pge-solid'>
+          <p class='data'>{{ 'HOME.activity_pge_math' | translate }}</p>
+        </div>
+        <div [routerLink]="'/pgactivityeng'" class='shadow button pge-solid'>
+          <p class='data'>{{ 'HOME.activity_pge_eng' | translate }}</p>
+        </div>
+        <div [routerLink]="'/pgactivityodia'" class='shadow button pge-solid'>
+          <p class='data'>{{ 'HOME.activity_pge_odia' | translate }}</p>
+        </div>
+        <div [routerLink]="'/pgassessment'" class='button pge-bordered'>
+          <p class='data'>{{ 'HOME.assessment_pge' | translate }}</p>  
+        </div>
+    </div>
+    <div class='decorative-side-panel pge-bg'>
+    </div>
+  </div> -->
+
+<!-- Payment details  -->
+<!-- <div [routerLink]="'/tchpayment'"  class='shadow home-card'>
+    <div class='card-left-block cyan-bg'>
+      <ion-icon name='cash' style="font-size: 3rem"></ion-icon>
+    </div>
+    <div class='centered-text-for-card'>
+      <p class='data'>{{ 'HOME.payment' | translate }}</p>
+    </div>
+    <div class='decorative-side-panel-small cyan-bg'>
+    </div>
+  </div> -->
+
+<!-- Training details  -->
+<!-- <div [routerLink]="'/training1'"  class='shadow home-card'>
+    <div class='card-left-block lemon-bg'>
+      <ion-icon name='trending-up' style="font-size: 3rem"></ion-icon>
+    </div>
+    <div class='centered-text-for-card'>
+      <p class='data'>{{ 'HOME.training' | translate }}</p>
+    </div>
+    <div class='decorative-side-panel-small lemon-bg'>
+    </div>
+  </div> -->
+
+<!-- Payment + Training  -->
+<!-- <div class='shadow home-card spread-evenly'>
+    <div [routerLink]="'/tchpayment'">
+      <div class='solid-icon cyan-bg'>
+        <ion-icon class="data-large white" name='cash'></ion-icon>
+      </div>
+      <p class='data'>{{ 'HOME.payment' | translate }}</p>
+    </div>
+    <div class='vertical-bar'></div>
+    <div [routerLink]="'/training1'">
+      <div class='solid-icon lemon-bg'>
+        <ion-icon class='data-large white' name='trending-up'></ion-icon>
+      </div>
+      <p class='data'>{{ 'HOME.training' | translate }}</p>
+    </div>
+  </div> -->
+<!-- <ion-button (click)="check_for_update()"> Click </ion-button> 
+</ion-content>-->

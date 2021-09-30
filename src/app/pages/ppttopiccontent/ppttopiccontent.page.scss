@@ -1,0 +1,246 @@
+.searchbar-clear-button.sc-ion-searchbar-md {
+    display: none !important;
+}
+
+.shadow {
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.014), 0 6px 6px rgba(0, 0, 0, 0.21);
+}
+
+.show-data {
+    transition: max-height 1.0s;
+    max-height: 800px;
+    overflow: hidden;
+}
+
+.hide-data {
+    transition: max-height 0.6s;
+    max-height: 0px;
+    overflow: hidden;
+}
+
+@keyframes spin-down {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(180deg);
+    }
+}
+
+@keyframes spin-up {
+    0% {
+        transform: rotate(180deg);
+    }
+    100% {
+        transform: rotate(0deg);
+    }
+}
+
+.rotate-down {
+    animation: spin-down 0.4s;
+    animation-fill-mode: forwards;
+}
+
+.rotate-up {
+    animation: spin-up 0.4s;
+    animation-fill-mode: forwards;
+}
+
+.horizontal-flexbox {
+    display: flex;
+    flex-flow: row;
+    justify-content: flex-start;
+    align-items: baseline;
+}
+
+.hflex {
+    display: flex;
+    flex-flow: row;
+    justify-content: center;
+    align-items: baseline;
+}
+
+.vertical-flexbox {
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
+}
+
+@keyframes white-to-blue {
+    0% {
+        background: white;
+        color: #2196f3;
+    }
+    100% {
+        background: #2196f3;
+        color: white;
+    }
+}
+
+.selected-chip {
+    margin: 10px;
+    animation: white-to-blue 0.6s;
+    animation-fill-mode: forwards;
+    border-radius: 20px;
+    text-align: center;
+    color: white;
+    background: #2196f3;
+    min-width: 40px;
+    height: 40px;
+    text-align: center;
+    p {
+        color: white;
+    }
+}
+
+.selected-chip p,
+.unselected-chip p {
+    margin: 0px;
+    margin-bottom: 3px;
+    font-size: 1.3rem;
+}
+
+@keyframes blue-to-white {
+    0% {
+        color: white;
+        background: #2196f3;
+    }
+    100% {
+        color: #2196f3;
+        background: white;
+    }
+}
+
+.unselected-chip {
+    margin: 10px;
+    animation: blue-to-white 0.6s;
+    animation-fill-mode: forwards;
+    border-radius: 20px;
+    text-align: center;
+    color: #2196f3;
+    border: 1px #2196f3 solid;
+    min-width: 40px;
+    height: 40px;
+    text-align: center;
+    font-size: 1.3rem;
+    p {
+        color: #2196f3;
+    }
+}
+
+.set-level-text {
+    margin-top: 0px;
+}
+
+.guardian {
+    text-align: start;
+    margin-bottom: 0px;
+    margin-top: 0px;
+}
+
+.program {
+    text-align: start;
+    margin-bottom: 10px;
+    margin-top: 10px;
+}
+
+.delete-button {
+    width: 35%;
+    border-radius: 4px;
+    justify-content: center;
+    background: #f44336;
+    color: white;
+    p {
+        color: white;
+    }
+}
+
+.edit-button {
+    width: 35%;
+    border-radius: 4px;
+    justify-content: center;
+    background: white;
+    color: #4caf50;
+    border: 1px #4caf50 solid;
+    p {
+        color: #4caf50;
+    }
+}
+
+.divider {
+    min-height: 1px;
+    min-width: 80%;
+    background: #E0E0E0;
+}
+
+.color-button {
+    z-index: 2;
+    position: relative;
+    top: -22px;
+    text-align: center;
+    color: white;
+    background: #4caf50;
+    border-radius: 4px;
+    box-shadow: 0 14px 28px rgba(126, 84, 194, 0.25), 0 10px 10px rgba(126, 84, 194, 0.22);
+}
+
+.allcard ion-card {
+    transform: rotate(45deg);
+    width: 71px;
+    height: 71px;
+    border-radius: 20px;
+}
+
+.norotate {
+    transform: rotate(-45deg);
+    font-weight: 800;
+    padding: 16px;
+}
+
+.divider {
+    min-height: 1px;
+    min-width: 80%;
+    background: #E0E0E0;
+}
+
+.page-title {
+    margin-bottom: 0;
+    text-align: center;
+    color: #fff;
+}
+
+.textCenter {
+    text-align: center;
+}
+
+.backcolor {
+    background-color: #002b45;
+}
+
+.positionbtn {
+    position: absolute;
+    top: 154px;
+    width: 100%;
+}
+
+.cardMarPad {
+    margin-left: 0;
+    margin-right: 0;
+    margin-bottom: 0;
+    padding: 0px 10px;
+    padding-top: 10px;
+}
+
+.studentname {
+    font-weight: 800;
+}
+
+.material-toolbar {
+    background: #002b45 !important;
+}
+.box {
+    box-shadow: 0 2px 4px rgba(var(--ion-color-dark-rgb), 0.24);
+    margin: 10px;
+    text-align: center;
+}

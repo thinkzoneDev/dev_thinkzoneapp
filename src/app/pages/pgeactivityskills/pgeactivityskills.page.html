@@ -1,0 +1,39 @@
+<ion-header no-border>
+  <ion-toolbar class="material-toolbar" color="--ion-color-reghead">
+    <ion-row style="position: relative">
+      <ion-title class="page-title-absolute">
+        <p class="marginBottom">{{ 'PGEACTIVITY.week_title' | translate }}</p>
+      </ion-title>
+      <ion-back-button style="color: #ffffff"></ion-back-button>
+    </ion-row>
+    <ion-row class="inverted_border_radius"></ion-row>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [scrollEvents]="true" (ionScroll)="logScrolling($event)">
+  <div class="">
+    <div class="m10">
+      <!-- Skill Panel  -->
+      <!-- <p class='data-large weekmonthHead'>{{ 'PGEACTIVITY.month_title' | translate}}</p> -->
+      <div style="flex-wrap: wrap" class="horizontal-flexboxx monthDiv">
+        <ion-grid>
+          <ion-row
+            *ngFor="let skill of skill_list; let i =index;"
+            (click)="skill_on_click(i+1,skill)"
+          >
+            <ion-card expand="block" class="buttoncard">
+              <ion-item mode="ios" no-lines lines="none">
+                <img
+                  src="./../../../assets/img/pgeactivity/skill.png"
+                  class="buttoncardicon"
+                />
+                <span class="buttoncardtext">{{ skill.question }}</span>
+                <span class=""></span>
+              </ion-item>
+            </ion-card>
+          </ion-row>
+        </ion-grid>
+      </div>
+    </div>
+  </div>
+</ion-content>

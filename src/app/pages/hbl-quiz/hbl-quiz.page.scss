@@ -1,0 +1,308 @@
+$yes: #4caf50;
+$no: #f44336;
+
+ion-header {
+  ion-toolbar {
+    --background: #373b44;
+    --background: -webkit-linear-gradient(to right, #4286f4, #373b44);
+    --background: linear-gradient(to right, #4286f4, #373b44);
+
+    ion-back-button {
+      color: white;
+    }
+
+    ion-title {
+      text-align: center;
+      font-size: 1.2rem;
+      font-weight: 400;
+      letter-spacing: 1px;
+      font-family: Arial, Helvetica, sans-serif;
+      color: white;
+      margin-left: -53px;
+    }
+
+    button {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 43px;
+      background: transparent;
+      width: 43px;
+      margin-left: 10px;
+      ion-icon {
+        margin: auto;
+        font-size: 1.6rem;
+        color: white;
+      }
+    }
+  }
+}
+
+ion-content {
+  margin: 0;
+  padding: 0;
+  --background: #eff4ff;
+  .container {
+    padding: 0;
+    ion-card {
+      margin: auto;
+      margin-top: 10px;
+      width: 100%;
+      height: 100px;
+      background: white;
+      display: grid;
+      grid-template-columns: 25% 75%;
+      align-items: center;
+
+      .img {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+        background: #1c356dce;
+        width: 100%;
+        height: 100%;
+
+        img {
+          border-radius: 50%;
+          box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+          height: 60px;
+          width: 60px;
+        }
+      }
+
+      .main {
+        display: grid;
+        grid-template-columns: 70% 30%;
+        align-items: center;
+        height: 100%;
+        padding: 0px 15px;
+
+        .block-main {
+          display: flex;
+          justify-content: center;
+          flex-direction: column;
+          height: 100%;
+          margin: auto;
+
+          h3,
+          h5 {
+            font-size: 1.1rem;
+            color: #263e77;
+            letter-spacing: 1px;
+            font-family: Arial, Helvetica, sans-serif;
+            margin: 0;
+            font-weight: 500;
+            text-transform: capitalize;
+          }
+
+          h5 {
+            margin-top: 10px;
+          }
+        }
+        .block {
+          margin: auto;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          width: 60px;
+          height: 60px;
+          background: #4286f4;
+          border-radius: 50%;
+          box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+        }
+
+        h3 {
+          font-size: 1.2rem;
+          color: white;
+          letter-spacing: 1px;
+          font-family: Arial, Helvetica, sans-serif;
+          margin: 0;
+        }
+      }
+    }
+
+    .wraper {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      margin-top: 30px;
+
+      h2 {
+        font-size: 1.5rem;
+        color: black;
+        font-family: Arial, Helvetica, sans-serif;
+        letter-spacing: 1px;
+        font-size: 500;
+        margin: 0;
+        text-align: center;
+        margin-bottom: 20px;
+        text-transform: uppercase;
+      }
+
+      ion-card {
+        width: 96%;
+        min-height: 130px;
+        background: white;
+        margin: auto;
+        margin-bottom: 15px;
+        display: flex;
+        justify-content: space-around;
+        align-items: flex-start;
+        flex-direction: column;
+        padding: 10px;
+
+        p {
+          font-size: 1.1rem;
+          color: #263e77;
+          font-family: Arial, Helvetica, sans-serif;
+          letter-spacing: 1px;
+          font-size: 400;
+          margin: 0;
+          padding: 0px 5px;
+          text-transform: capitalize;
+        }
+
+        .content {
+          display: flex;
+          justify-content: space-around;
+          align-items: center;
+          flex-direction: row;
+          width: 100%;
+        }
+
+        @keyframes yes-to-selectedyes {
+          0% {
+            background: white;
+            color: $yes;
+          }
+          100% {
+            background: $yes;
+            color: white;
+          }
+        }
+
+        @keyframes selectedyes-to-yes {
+          100% {
+            background: white;
+            color: $yes;
+          }
+          0% {
+            background: $yes;
+            color: white;
+          }
+        }
+
+        .yes {
+          animation: selectedyes-to-yes 0.6s;
+          animation-fill-mode: forwards;
+          border-radius: 2px;
+          border: 1px $yes solid;
+          color: $yes;
+          p {
+            color: $yes;
+          }
+        }
+
+        .selected-yes {
+          animation: yes-to-selectedyes 0.6s;
+          animation-fill-mode: forwards;
+          border-radius: 2px;
+          background: $yes;
+          color: white;
+          p {
+            color: white;
+          }
+        }
+
+        .no {
+          animation: selectedno-to-no;
+          animation-fill-mode: forwards;
+          border-radius: 2px;
+          border: 1px $no solid;
+          color: $no;
+          p {
+            color: $no;
+          }
+        }
+
+        .selected-no {
+          animation: no-to-selectedno 0.6s;
+          animation-fill-mode: forwards;
+          border-radius: 2px;
+          background: $no;
+          color: white;
+          p {
+            color: white;
+          }
+        }
+
+        @keyframes no-to-selectedno {
+          0% {
+            background: white;
+            color: $no;
+          }
+          100% {
+            background: $no;
+            color: white;
+          }
+        }
+
+        @keyframes selectedno-to-no {
+          100% {
+            background: white;
+            color: $no;
+          }
+          0% {
+            background: $no;
+            color: white;
+          }
+        }
+
+        .yes,
+        .selected-yes,
+        .no,
+        .selected-no {
+          width: 60px;
+          text-align: center;
+          margin: 0;
+          font-size: 12px;
+          padding: 6px;
+        }
+      }
+    }
+
+    .no-content {
+      margin-top: 20px;
+      p {
+        font-size: 1.2rem;
+        text-align: center;
+        color: $no;
+      }
+    }
+
+    ion-button {
+      --background: #373b44; /* fallback for old browsers */
+      --background: -webkit-linear-gradient(
+        to right,
+        #4286f4,
+        #373b44
+      ); /* Chrome 10-25, Safari 5.1-6 */
+      --background: linear-gradient(
+        to right,
+        #4286f4,
+        #373b44
+      ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+      font-size: 1.1rem;
+      font-weight: 500;
+      margin-top: 10px;
+      width: 96%;
+
+      ion-icon {
+        margin-left: 10px;
+      }
+    }
+  }
+}

@@ -1,0 +1,67 @@
+<ion-header no-border [ngClass]="'shadow'">
+    <ion-toolbar class='material-toolbar' color="--ion-color-cushead">
+        <ion-row>
+            <ion-title class='page-title-absolute'>
+                <p class="pMargin white">Training Content</p>
+            </ion-title>
+        </ion-row>
+        <ion-buttons slot="start" style="color:#ffffff">
+            <ion-back-button></ion-back-button>
+        </ion-buttons>
+    </ion-toolbar>
+</ion-header>
+<ion-content scrollY='false' [scrollEvents]="true">
+    <div *ngIf='isAssessmentTaken'>
+        <div class='card shadow text-center  assessmentAlign'>
+            <ion-icon class="data-xlarge green" name='checkmark-circle'></ion-icon>
+            <p class='data pMargin' style="margin-top: -29px;margin-left: 29px;margin-right: 2px;">{{ 'ASSESSMENT.taken' | translate }}</p>
+        </div>
+    </div>
+    <div *ngIf='!isAssessmentTaken'>
+        <ion-item *ngIf="!quizstatus">
+            <div *ngIf='showTimer'>{{display | date :"mm:ss":'UTC'}}</div>
+       </ion-item>
+        <ion-slides #slides class='m10' *ngIf="!quizstatus">
+            <!-- {{quiz | json}} -->
+            <ion-slide *ngFor='let q of quiz'>
+                <div class='full-width text-left'>
+                    <p class='colorBlack'>{{q.question}}</p>
+                    <div class='hbar'></div>
+                    <ion-radio-group [(ngModel)]='q.selectedOption' (ionChange)='logData(q)'>
+                        <ion-item>
+                            <ion-label text-wrap class='data'>A. {{q.A}}</ion-label>
+                            <ion-radio mode="ios" value="A" [disabled]="disable_radio"></ion-radio>
+                        </ion-item>
+                        <ion-item>
+                            <ion-label text-wrap class='data'>B. {{q.B}}</ion-label>
+                            <ion-radio mode="ios" value="B" [disabled]="disable_radio"></ion-radio>
+                        </ion-item>
+                        <ion-item>
+                            <ion-label text-wrap class='data'>C. {{q.C}}</ion-label>
+                            <ion-radio mode="ios" value="C" [disabled]="disable_radio"></ion-radio>
+                        </ion-item>
+                        <ion-item>
+                            <ion-label text-wrap class='data'>D. {{q.D}}</ion-label>
+                            <ion-radio mode="ios" value="D" [disabled]="disable_radio"></ion-radio>
+                        </ion-item>
+                    </ion-radio-group>
+                </div> 
+            </ion-slide>
+        </ion-slides>
+        <div class='hbar gray-bg'></div>
+         <div class='hfsb' *ngIf="!quizstatus">
+            <p class='data-large pageno' style="margin-top: -42px;">{{qno}}/{{quizlength}}</p>
+            <!-- <p class='data-xlarge'>{{secured_mark}}</p>
+            <p><ion-button  (click)='move(1)' [hidden]='(qno == quiz.length)?true:false' [disabled]="disable_next_button"><ion-icon name="skip-forward"></ion-icon></ion-button></p> -->
+        </div> 
+        <ion-button (click)='finishQuiz()' *ngIf='submitButton' style="margin:20px;margin-top: -10px;" expand='block'>{{submitButtonText}}</ion-button>
+    </div>
+</ion-content>
+
+<ion-content *ngIf="quizstatus" style="margin-bottom: 196px;">
+    <div *ngIf='!isAssessmentTaken'>
+        <div class="verAlign">
+            <p class='data-large red text-center'> No Questions found !</p>
+        </div>
+    </div>
+</ion-content>

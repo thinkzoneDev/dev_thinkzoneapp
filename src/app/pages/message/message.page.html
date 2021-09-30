@@ -1,0 +1,52 @@
+<ion-header no-border [ngClass]="(toolbarshadow)?'':'shadow'">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+
+    <ion-title> My Messages </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [scrollEvents]="true" (ionScroll)="logScrolling($event)">
+  <div>
+    <ion-searchbar
+      [(ngModel)]="searchText"
+      (keyup)="onSearch($event)"
+      (ionClear)="ionClear()"
+    ></ion-searchbar>
+  </div>
+
+  <div class="message-container">
+    <h3 *ngIf="( respons == undefined || respons.length <= 0)">
+      No Messages Available....
+    </h3>
+    <ion-card *ngFor="let res of respons; let i=index;">
+      <div
+        *ngIf="res.status == 'unread'"
+        class="messages"
+        (click)="openMessage(res)"
+      >
+        <div class="icon"><ion-icon slot="start" name="mail"></ion-icon></div>
+        <p style="font-weight: bold">{{ res.title }}</p>
+      </div>
+      <div
+        *ngIf="res.status == 'read'"
+        class="messages"
+        (click)="openMessage(res)"
+      >
+        <div class="icon">
+          <ion-icon slot="start" name="mail-open"></ion-icon>
+        </div>
+        <p>{{ res.title }}</p>
+      </div>
+      <div
+        *ngIf="res.status == 'read'"
+        class="delete"
+        (click)="deleteMessage(res._id)"
+      >
+        <ion-icon name="trash"></ion-icon>
+      </div>
+    </ion-card>
+  </div>
+</ion-content>

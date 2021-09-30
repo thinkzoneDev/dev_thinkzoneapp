@@ -1,0 +1,96 @@
+ion-header {
+  ion-toolbar {
+    --background: #373b44;
+    --background: -webkit-linear-gradient(to right, #4286f4, #373b44);
+    --background: linear-gradient(to right, #4286f4, #373b44);
+
+    ion-back-button {
+      color: white;
+    }
+
+    ion-title {
+      text-align: center;
+      font-size: 1.2rem;
+      font-weight: 400;
+      letter-spacing: 1px;
+      font-family: Arial, Helvetica, sans-serif;
+      color: white;
+      text-transform: capitalize;
+      margin-left: -35px;
+    }
+  }
+}
+
+ion-content {
+  --background: #eff4ff;
+
+  ion-searchbar {
+    --width: 100%;
+  }
+
+  .message-container {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+    margin-bottom: 20px;
+
+    ion-card {
+      margin-bottom: 0;
+      background: white;
+      min-height: 60px;
+      width: 96%;
+      display: grid;
+      grid-template-columns: 90% 10%;
+
+      .messages {
+        display: grid;
+        grid-template-columns: 25% 65%;
+
+        .icon {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          height: 100%;
+          ion-icon {
+            font-size: 2rem;
+            color: #ff9800;
+          }
+        }
+
+        p {
+          display: flex;
+          align-items: center;
+          height: 100%;
+          font-size: 1.1rem;
+          font-weight: 400;
+          letter-spacing: 1px;
+          font-family: Arial, Helvetica, sans-serif;
+          color: black;
+          margin: 0;
+        }
+      }
+
+      .delete {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100%;
+
+        ion-icon {
+          font-size: 1.5rem;
+          color: #f44336;
+        }
+      }
+    }
+
+    h3 {
+      font-size: 1rem;
+      font-weight: 400;
+      letter-spacing: 1px;
+      font-family: Arial, Helvetica, sans-serif;
+      color: black;
+      margin: 10px;
+    }
+  }
+}

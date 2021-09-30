@@ -1,0 +1,228 @@
+<!-- Code Commented By abinash Shasini on 16/07/2021 Design change -->
+<ion-header no-border [ngClass]="(toolbarshadow)?'':'shadow'">
+  <ion-toolbar (click)="checkQuizStatus()">
+    <ion-row>
+      <button (click)="checkQuizStatus()">
+        <ion-icon name="arrow-back"></ion-icon>
+      </button>
+      <ion-title> {{ 'ASSESSMENT.title' | translate }}</ion-title>
+    </ion-row>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [scrollEvents]="true" class="ion-no-padding">
+  <div class="container">
+    <ion-card>
+      <div class="img">
+        <img src="../../../assets/img/hbl/graduates.png" />
+      </div>
+      <div class="main">
+        <div class="block-main">
+          <h3>{{studentname | uppercase}}</h3>
+          <h5 *ngIf="isProgramPGE">Class - {{level}}</h5>
+          <h5 *ngIf="isProgramECE">Level - {{level}}</h5>
+        </div>
+
+        <div class="block">
+          <h3>{{program | uppercase}}</h3>
+        </div>
+      </div>
+    </ion-card>
+
+    <div class="wraper">
+      <h2>{{ subject_txt }}</h2>
+      <div class="div_box" *ngIf="!isAssessmentTaken">
+        <ion-card *ngFor="let q of assessment_list;let i=index">
+          <p>{{i+1}}. {{q.question}} ?</p>
+          <div class="content">
+            <div
+              (click)='segmentChanged(q, "yes")'
+              [ngClass]='(answerList[q.id]=="yes")?"selected-yes":"yes"'
+            >
+              {{ 'ASSESSMENT.btn_yes' | translate }}
+            </div>
+            <div
+              (click)='segmentChanged(q, "no")'
+              [ngClass]='(answerList[q.id]=="no")?"selected-no":"no"'
+            >
+              {{ 'ASSESSMENT.btn_no' | translate }}
+            </div>
+          </div>
+        </ion-card>
+      </div>
+
+      <ion-button
+        *ngIf="assessment_list.length>0"
+        (click)="save_assessment()"
+        expand="block"
+      >
+        {{ 'ASSESSMENT.btn_save' | translate }}
+        <ion-icon name="save" style="padding-left: 5px"></ion-icon>
+      </ion-button>
+    </div>
+  </div>
+</ion-content>
+
+<!-- <ion-header no-border [ngClass]="'shadow'">
+  <ion-toolbar class="material-toolbar" color="--ion-color-reghead">
+    <ion-buttons slot="start" style="color: #ffffff">
+      <ion-back-button style="color: #ffffff"></ion-back-button>
+    </ion-buttons>
+    <ion-title>
+      <ion-title class="page-title">
+        <p style="margin-bottom: 0; color: #ffffff; text-transform: capitalize">
+          {{ 'ASSESSMENT.title' | translate }}
+          {{(subject!='na')?'('+subject+')':''}}
+        </p>
+      </ion-title>
+    </ion-title>
+    <div
+      class="d-flex justify-content-around align-items-center"
+      style="padding: 10px"
+    >
+      <div class="text-center">
+        <p class="data-large white pMargin font12">
+          {{ 'ASSESSMENT.name' | translate }}
+        </p>
+        <p class="pMargin white fontSize">{{studentname | uppercase}}</p>
+      </div>
+      <div class="vr"></div>
+      <div class="text-center">
+        <p class="data white pMargin font12">
+          {{ 'ASSESSMENT.program' | translate }}
+        </p>
+        <p class="pMargin white fontSize">{{program | uppercase}}</p>
+      </div> -->
+<!-- <div class="vr"></div> -->
+<!-- <div class="text-center">
+                <p class="data white pMargin font12">
+                    {{ 'ASSESSMENT.class' | translate }}
+                </p>
+                <p class="pMargin white fontSize">{{level}}</p>
+            </div> -->
+<!-- </div>
+  </ion-toolbar>
+</ion-header>
+<ion-content> -->
+<!-- <div class='card-dark'>
+<p class='data-large white'>{{ 'ASSESSMENT.title' | translate }} {{(subject!='na')?'('+subject+')':''}}</p>
+<div class='hbar'></div>
+<p class='data-large white'>{{ 'ASSESSMENT.name' | translate }}: {{studentname | uppercase}}</p>
+<p class='data white'>{{ 'ASSESSMENT.program' | translate }}: {{program | uppercase}}</p>
+<p class='data white'>{{ 'ASSESSMENT.level' | translate }}: {{level}}</p>
+</div> -->
+
+<!-- <div *ngIf="isAssessmentTaken">
+    
+    <div class="card shadow text-center assessmentAlign">
+      <ion-icon class="data-xlarge green" name="checkmark-circle"></ion-icon>
+      <div class='hbar-gray'></div>
+      <p class="data pMargin">{{ 'ASSESSMENT.taken' | translate }}</p>
+    </div>
+    <div (click)="closeModal()" class="card shadow white text-center green-bg">
+      <p class="m0 data white_text">Ok</p>
+    </div>
+  </div>
+
+  <div *ngIf="!isAssessmentTaken">
+    <div
+      class="card shadow yesnoDiv"
+      *ngFor="let q of assessment_list;let i=index"
+    >
+      <p class="pMargin fontSize">{{i+1}}. {{q.question}}</p>
+      <div class='hbar-gray'></div>
+      <div class="horizontal-flexbox yesNo">
+        <div
+          (click)='segmentChanged(q, "yes")'
+          [ngClass]='(answerList[q.id]=="yes")?"selected-yes":"yes"'
+        >
+          <p class="data">{{ 'ASSESSMENT.btn_yes' | translate }}</p>
+        </div>
+        <div
+          (click)='segmentChanged(q, "no")'
+          [ngClass]='(answerList[q.id]=="no")?"selected-no":"no"'
+        >
+          <p class="data">{{ 'ASSESSMENT.btn_no' | translate }}</p>
+        </div>
+      </div>
+    </div> -->
+<!-- <div *ngIf="assessment_list.length === 0" class="" style="padding: 8px">
+      <p class="text-center pMargin">{{ 'ASSESSMENT.no_data' | translate }}</p>
+    </div> -->
+<!-- <div class="horizontal-flexbox" style="margin-bottom: 20px">
+      <div class="backbutton">
+        <div
+          (click)="closeModal()"
+          class="hfc"
+          style="margin-top: 0px; padding: 8px"
+        >
+          <ion-icon
+            style="font-size: 1.6rem; margin-right: 10px"
+            name="arrow-back"
+          ></ion-icon>
+          <p class="text-center data-large pMargin fontSize">
+            {{ 'ASSESSMENT.btn_cancel' | translate }}
+          </p>
+        </div>
+      </div>
+      <div
+        *ngIf="assessment_list.length>0"
+        (click)="save_assessment()"
+        class="shadow save-button"
+        style="padding: 8px"
+      >
+        <p class="text-center pMargin">
+          {{ 'ASSESSMENT.btn_save' | translate }}
+        </p>
+      </div>
+    </div>
+  </div> -->
+<!-- <ion-card>
+<ion-card-header color="warning">
+  <ion-card-title>Assessment Test(ECE)</ion-card-title>
+</ion-card-header>
+
+<ion-card-content>
+  <ion-card  *ngIf="isAssessmentTaken">
+    <div class="taken">
+      Assessment already Taken !!!
+    </div>
+    <div class="taken">
+        <ion-button color="medium" (click)="closeModal()">OK</ion-button>
+    </div>
+  </ion-card>
+  <ion-card  *ngIf="!isAssessmentTaken">
+    <ion-label text-wrap>{{ studentname }} <p>Program: {{ program }}</p><p>class: {{ class }}</p></ion-label>
+    <ion-list>
+      <ion-row *ngFor="let assessment of assessment_list; let i = index;" class="question-row" >
+        <ion-label text-wrap>{{ i+1 }} ) {{  assessment.question }}</ion-label><p>
+        <ion-segment mode='ios' (ionChange)="segmentChanged(assessment, $event.detail.value)">
+          <ion-segment-button class="segment-button" value="yes">
+            Yes
+          </ion-segment-button>
+          <ion-segment-button class="segment-button" value="no">
+            No
+          </ion-segment-button>
+        </ion-segment> </p>
+      </ion-row>
+    </ion-list>
+    <ion-grid>
+        <ion-row>
+          <ion-col></ion-col>
+          <ion-col>
+            <ion-button color="medium" (click)="closeModal()">
+              <ion-icon slot="start" name="close"></ion-icon> Back
+            </ion-button>
+          </ion-col>
+          <ion-col>
+            <ion-button icon-left color="success" (click)="save_assessment()" tappable>
+              <ion-icon name="save"></ion-icon> Save
+            </ion-button>
+          </ion-col>
+          <ion-col></ion-col>
+        </ion-row>
+      </ion-grid>
+  </ion-card>
+</ion-card-content>
+</ion-card> 
+</ion-content>-->

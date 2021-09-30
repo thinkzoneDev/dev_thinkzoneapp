@@ -1,0 +1,150 @@
+@keyframes white-to-blue {
+    0% {
+        background: white;
+        color: #2196f3;
+    }
+    100% {
+        background: #2196f3;
+        color: white;
+    }
+}
+.chip-style{
+    animation: blue-to-white 0.6s;
+    animation-fill-mode: forwards;
+    border-radius: 4px;
+    text-align: center;
+    color: #2196f3;
+    border: 1px #2196f3 solid;
+    min-width: 46%;
+    min-height: 20px;
+    margin-bottom: 16px;
+}
+.selected-chip {
+    animation: white-to-blue 0.6s;
+    animation-fill-mode: forwards;
+    border-radius: 4px;
+    text-align: center;
+    color: white;
+    background: #2196f3;
+    min-width: 46%;
+    min-height: 20px;
+    margin-bottom: 16px;
+    // margin: 10px;
+    p {
+        color: white;
+    }
+}
+
+@keyframes blue-to-white {
+    0% {
+        color: white;
+        background: #2196f3;
+    }
+    100% {
+        color: #2196f3;
+        background: white;
+    }
+}
+
+.unselected-chip {
+    animation: blue-to-white 0.6s;
+    animation-fill-mode: forwards;
+    border-radius: 4px;
+    text-align: center;
+    color: #2196f3;
+    border: 1px #2196f3 solid;
+    min-width: 46%;
+    min-height: 20px;
+    margin-bottom: 16px;
+    // margin: 10px;
+    p {
+        color: #2196f3;
+    }
+}
+
+.selected-chip p,
+.unselected-chip p {
+    margin: 10px;
+}
+
+.card {
+    margin: 20px;
+    // padding: 20px;
+    border-radius: 4px;
+    color: gray;
+}
+
+.card {
+    padding: 6px;
+    margin: 20px;
+    color: gray;
+    border-radius: 4px;
+}
+
+.marks-button {
+    background: #4caf50;
+    color: white;
+    border-radius: 4px;
+    height: 40px;
+    padding: 6px;
+    width: 60%;
+}
+
+.viewmarks-button {
+    background: #4c9daf;
+    color: white;
+    border-radius: 4px;
+    height: 40px;
+    padding: 6px;
+    width: 60%;
+}
+
+
+.fillmarks-button {
+    background: #7D4040;
+    color: white;
+    border-radius: 4px;
+    height: 40px;
+    padding: 6px;
+    width: 60%;
+}
+
+.material-toolbar {
+    background: #002b45 !important;
+}
+
+.mar0Pad6 {
+    margin-bottom: 0;
+    padding: 6px;
+}
+
+.paraAlign {
+    margin: 0;
+    font-weight: 600;
+    color: #222;
+    font-size: 13px;
+}
+
+.horAlign {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.justifyBetween {
+    justify-content: space-between;
+}
+
+.headingAssement {
+    font-weight: 600;
+    color: #222;
+}
+
+.redbg{ 
+    background-color: #fdcccc;
+}
+
+.greenbg{
+    background-color: #e8fde8;
+}

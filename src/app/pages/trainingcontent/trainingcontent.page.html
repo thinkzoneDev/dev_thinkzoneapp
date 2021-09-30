@@ -1,0 +1,76 @@
+<ion-header no-border [ngClass]="(toolbarshadow)?'':'shadow'">
+  <ion-toolbar>
+    <ion-row>
+      <!-- <button class="backbutton">
+        <ion-icon name="arrow-back"></ion-icon>
+      </button> -->
+      <ion-buttons>
+        <ion-back-button></ion-back-button>
+      </ion-buttons>
+      <ion-title> {{ 'HOME.trainingcontent' | translate }} </ion-title>
+    </ion-row>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div *ngIf="showMessage" style="text-align: center; color: #ff0000">
+    {{ 'PPT.no_contents_found' | translate }}
+  </div>
+  <div *ngIf="!showMessage" class="segment">
+    <div class="module-test" [(ngModel)]="pet" ngDefaultControl>
+      <ion-card
+        (click)="changeMenus(data)"
+        [attr.value]="data"
+        *ngFor="let data of module_data let i = index"
+        [ngClass]='(selected_moduleid==data.moduleid)?"selected-chip":"unselected-chip"'
+      >
+        <p>{{data.modulename}}</p>
+        <ion-icon
+          name="checkmark-circle-outline"
+          *ngIf="data.iscomplete === 1"
+        ></ion-icon>
+      </ion-card>
+    </div>
+  </div>
+
+  <div
+    *ngIf="showMsg"
+    style="text-align: center; color: #ff0000; margin-top: 20px"
+  >
+    No contents available
+  </div>
+
+  <div *ngIf="!showMsg">
+    <div [ngSwitch]="pet" *ngFor="let data of all_contents; let i=index;">
+      <div class="container">
+        <div class="index"><img src="assets/img/talk.png" /></div>
+
+        <div class="wrapper">
+          <h2>{{data.submodulename}}</h2>
+
+          <div *ngFor="let topicdetail of data.topicdetails" class="content">
+            <div class="complete">
+              <!-- <ion-icon
+                name="checkmark-circle-outline"
+                *ngIf="topicdetail.topic_percentage == '100%'"
+              ></ion-icon> -->
+              <div
+                class="btn-outline"
+                (click)="goToTopicPage(topicdetail,data.submoduleid)"
+              >
+                {{topicdetail.topicname}}
+
+                <ion-icon name="arrow-dropright"></ion-icon>
+              </div>
+            </div>
+
+            <!-- <h4>{{topicdetail.topic_percentage}}</h4> -->
+            <h4 (click)="showDetails(topicdetail)">Show Details</h4>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- <div style="padding: 50px"><h4>Time Spent: {{ timeSpend }} mins</h4></div> -->
+</ion-content>

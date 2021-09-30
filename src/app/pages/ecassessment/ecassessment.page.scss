@@ -1,0 +1,146 @@
+// Code Commented By abinash Shasini on 16/07/2021 Design change -->
+ion-header {
+  ion-toolbar {
+    --background: #373b44;
+    --background: -webkit-linear-gradient(to right, #4286f4, #373b44);
+    --background: linear-gradient(to right, #4286f4, #373b44);
+
+    ion-back-button {
+      color: white;
+    }
+
+    ion-title {
+      text-align: center;
+      font-size: 1.2rem;
+      font-weight: 400;
+      letter-spacing: 1px;
+      font-family: Arial, Helvetica, sans-serif;
+      color: white;
+      margin-left: -53px;
+    }
+
+    button {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 43px;
+      background: transparent;
+      width: 43px;
+      margin-left: 10px;
+      ion-icon {
+        margin: auto;
+        font-size: 1.6rem;
+        color: white;
+      }
+    }
+  }
+}
+
+ion-content {
+  --background: #fff;
+  @keyframes white-to-blue {
+    0% {
+      background: white;
+      color: #2196f3;
+    }
+    100% {
+      background: #2196f3;
+      color: white;
+    }
+  }
+
+  .selected-chip {
+    animation: white-to-blue 0.6s;
+    animation-fill-mode: forwards;
+    border-radius: 4px;
+    text-align: center;
+    color: white;
+    background: #2196f3;
+    min-width: 46%;
+    min-height: 20px;
+    p {
+      color: white;
+    }
+  }
+
+  @keyframes blue-to-white {
+    0% {
+      color: white;
+      background: #2196f3;
+    }
+    100% {
+      color: #2196f3;
+      background: white;
+    }
+  }
+
+  .unselected-chip {
+    animation: blue-to-white 0.6s;
+    animation-fill-mode: forwards;
+    border-radius: 4px;
+    text-align: center;
+    color: #2196f3;
+    border: 1px #2196f3 solid;
+    min-width: 46%;
+    min-height: 20px;
+    p {
+      color: #2196f3;
+    }
+  }
+
+  .selected-chip p,
+  .unselected-chip p {
+    margin: 10px;
+  }
+
+  .wrapper {
+    width: 100%;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    flex-direction: column;
+    background: #fff;
+    padding: 15px;
+
+    .item {
+      margin: 7px auto;
+      min-width: 90%;
+    }
+    margin: 0;
+    padding: 10px;
+    align-items: center;
+  }
+
+  .card {
+    background: white;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+    margin: auto;
+    padding: 0;
+    margin-top: 5px;
+    margin-bottom: 2.5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    min-height: 80px;
+    width: 95%;
+    flex-direction: row;
+    padding: 0 15px;
+
+    p {
+      font-size: 1.1rem;
+      text-transform: capitalize;
+      letter-spacing: 1px;
+      font-weight: 400;
+      font-family: Arial, Helvetica, sans-serif;
+      margin: 0;
+      padding: 0;
+      padding-left: 10px;
+      color: black;
+    }
+
+    ion-button {
+      --background: #4286f4;
+    }
+  }
+}

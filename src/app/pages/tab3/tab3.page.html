@@ -1,0 +1,5 @@
+<ion-content padding>
+    <div *ngFor='let level of levels_list; let i=index;'>
+        <ion-button (click)="level_onclick(level)" class="buttonwidth" color="--ion-color-reghead ">{{level.levelname | titlecase}}</ion-button>
+    </div>
+</ion-content>

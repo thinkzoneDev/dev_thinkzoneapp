@@ -1,0 +1,24 @@
+<ion-header no-border [ngClass]="(toolbarshadow)?'':'shadow'">
+    <ion-toolbar class='material-toolbar' color="--ion-color-reghead">
+        <ion-row>
+            <ion-title class='page-title-absolute'>
+                <p class="marginBottom">{{ 'PGEASSESSMENT.title' | translate }}</p>
+            </ion-title>
+            <ion-back-button style="color:#ffffff"></ion-back-button>
+        </ion-row>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content [scrollEvents]="true" (ionScroll)="logScrolling($event)">
+    <div class='card shadow'>
+        <div class=''>
+            <!--  Module Selector -->
+            <p class='data-large'>{{ 'PGEASSESSMENT.select_month' | translate }}</p>
+            <div style='flex-wrap: wrap' class='horizontal-flexbox'>
+                <div (click)='month_onchange(q.value)' *ngFor='let q of month_list'   [ngClass]='(selected_month==q.value)?"selected-chip":"unselected-chip"'>
+                    <p class='data'>{{q.text}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</ion-content>

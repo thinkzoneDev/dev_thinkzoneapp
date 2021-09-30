@@ -1,0 +1,36 @@
+<ion-header no-border [ngClass]="(toolbarshadow)?'':'shadow'">
+    <ion-toolbar class='material-toolbar' color="--ion-color-reghead">
+        <ion-row>
+            <ion-title class='page-title-absolute'>
+                <p style="color:#ffffff;margin-bottom:0">{{ 'ASSESSMENT.title' | translate }}</p>
+            </ion-title>
+            <ion-back-button style="color:#ffffff"></ion-back-button>
+        </ion-row>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content [scrollEvents]="true" (ionScroll)="logScrolling($event)">
+    <div class='card shadow'>
+        <div class='m10'>
+
+            <!--  Module Selector -->
+            <p class='data-large headingAssement'>{{ 'ASSESSMENT.level' | translate }}</p>
+            <!-- <div style='flex-wrap: wrap' class='horizontal-flexbox justifyBetween'>
+                <div class='chip-style'>
+                    <p class='data'>{{ 'ASSESSMENT.level1' | translate }}</p>
+                </div>
+                <div class='chip-style'>
+                    <p class='data'>{{ 'ASSESSMENT.level2' | translate }}</p>
+                </div>
+                <div class='chip-style'>
+                    <p class='data'>{{ 'ASSESSMENT.level3' | translate }}</p>
+                </div>
+            </div> -->
+            <div style='flex-wrap: wrap' class='horizontal-flexbox justifyBetween' *ngFor='let q of level_list'>
+                <div class='chip-style' (click)='level_onchange(q.value)'>
+                    <p class='data'>{{q.text}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</ion-content>

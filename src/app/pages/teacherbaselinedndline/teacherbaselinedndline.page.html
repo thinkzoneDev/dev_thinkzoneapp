@@ -1,0 +1,145 @@
+<ion-header *ngIf="!quizstatus">
+  <ion-toolbar (click)="checkQuizStatus()">
+    <!-- <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons> -->
+
+    <ion-row>
+      <button (click)="checkQuizStatus()">
+        <ion-icon name="arrow-back"></ion-icon>
+      </button>
+      <ion-title style="margin-right: -53px"> {{ page_title }} </ion-title>
+    </ion-row>
+  </ion-toolbar>
+</ion-header>
+
+<ion-header *ngIf="quizstatus">
+  <ion-toolbar
+    style="
+      --background: #373b44;
+      --background: -webkit-linear-gradient(to right, #4286f4, #373b44);
+      --background: linear-gradient(to right, #4286f4, #373b44);
+    "
+  >
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title style="margin-left: -48px"> {{ page_title }} </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content *ngIf="!quizstatus">
+  <ion-slides #slides [options]="{allowTouchMove:false}">
+    <ion-slide *ngFor="let q of quiz">
+      <div class="container">
+        <div class="wrapper">
+          <p>{{qno}}/{{quiz.length}}</p>
+          <h3>{{q.question}}</h3>
+          <div class="custom-shape-divider-bottom-1618830081">
+            <svg
+              data-name="Layer 1"
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 1200 120"
+              preserveAspectRatio="none"
+            >
+              <path
+                d="M600,112.77C268.63,112.77,0,65.52,0,7.23V120H1200V7.23C1200,65.52,931.37,112.77,600,112.77Z"
+                class="shape-fill"
+              ></path>
+            </svg>
+          </div>
+        </div>
+
+        <div class="grp">
+          <ion-radio-group [(ngModel)]="q.selectedOption">
+            <ion-item *ngIf="q.A">
+              <ion-label class="data" text-wrap>A. {{q.A}}</ion-label>
+              <ion-radio
+                mode="ios"
+                value="A"
+                [disabled]="disable_radio"
+                (ionSelect)="logData(q)"
+              ></ion-radio>
+            </ion-item>
+            <ion-item *ngIf="q.B">
+              <ion-label class="data" text-wrap>B. {{q.B}}</ion-label>
+              <ion-radio
+                mode="ios"
+                value="B"
+                [disabled]="disable_radio"
+                (ionSelect)="logData(q)"
+              ></ion-radio>
+            </ion-item>
+            <ion-item *ngIf="q.C">
+              <ion-label class="data" text-wrap>C. {{q.C}}</ion-label>
+              <ion-radio
+                mode="ios"
+                value="C"
+                [disabled]="disable_radio"
+                (ionSelect)="logData(q)"
+              ></ion-radio>
+            </ion-item>
+            <ion-item *ngIf="q.D">
+              <ion-label class="data" text-wrap>D. {{q.D}}</ion-label>
+              <ion-radio
+                mode="ios"
+                value="D"
+                [disabled]="disable_radio"
+                (ionSelect)="logData(q)"
+              ></ion-radio>
+            </ion-item>
+          </ion-radio-group>
+        </div>
+      </div>
+    </ion-slide>
+  </ion-slides>
+</ion-content>
+<ion-footer>
+  <ion-button
+    *ngIf="!quizstatus"
+    (click)="move(1)"
+    [hidden]="(qno == quiz.length)?true:false"
+    [disabled]="disable_next_button"
+    expand="block"
+    >Next Question<ion-icon name="caret-forward-outline"></ion-icon
+  ></ion-button>
+
+  <ion-button
+    (click)="finishQuiz()"
+    *ngIf="submitButton"
+    [disabled]="disable_submit_button"
+    expand="block"
+    >{{submitButtonText}}</ion-button
+  >
+</ion-footer>
+
+<ion-content *ngIf="quizstatus">
+  <div class="success-container">
+    <div class="success-card">
+      <div class="head-section" *ngIf="message_div">
+        <h1>{{ page_title }}&nbsp;{{'BASELINE.baseline_msg' | translate}}</h1>
+        <h1>{{ 'BASELINE.mark_Secured' | translate}}</h1>
+      </div>
+      <div class="mark-section" *ngIf="odiaTotalQuestion">
+        <h1>{{'BASELINE.odia' | translate}}</h1>
+        <h2>{{odiaMark}}/{{odiaTotalQuestion}}</h2>
+      </div>
+      <div class="mark-section" *ngIf="mathTotalQuestion">
+        <h1>{{'BASELINE.math' | translate}}</h1>
+        <h2>{{mathMark}}/{{mathTotalQuestion}}</h2>
+      </div>
+      <div class="mark-section" *ngIf="engTotalQuestion">
+        <h1>{{'BASELINE.eng' | translate}}</h1>
+        <h2>{{engMark}}/{{engTotalQuestion}}</h2>
+      </div>
+      <div class="mark-section" *ngIf="technologyTotalQuestion">
+        <h1>{{'BASELINE.pedagogy' | translate}}</h1>
+        <h2>{{technologyMark}}/{{technologyTotalQuestion}}</h2>
+      </div>
+      <div class="mark-section" *ngIf="pedagogyTotalQuestion">
+        <h1>{{'BASELINE.technology' | translate}}</h1>
+        <h2>{{pedagogyMark}}/{{pedagogyTotalQuestion}}</h2>
+      </div>
+    </div>
+  </div>
+</ion-content>

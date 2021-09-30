@@ -1,0 +1,57 @@
+<ion-header no-border [ngClass]="(toolbarshadow)?'':'shadow'">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{ 'PERFORMANCE.title' | translate }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="container">
+    <div class="score">
+      <div class="wraper">
+        <img src="assets/img/hbl/trophy.png" />
+        <h2>{{ 'PERFORMANCE.your_score' | translate }}</h2>
+      </div>
+      <div class="result">
+        <h2>{{ (averagescore*100).toFixed() }}</h2>
+      </div>
+    </div>
+
+    <h2 [hidden]="hideTimeSpentDiv">
+      {{ 'PERFORMANCE.heading3' | translate }}
+    </h2>
+
+    <ion-card [hidden]="hideTimeSpentDiv">
+      <ion-card-content>
+        <canvas
+          #timeSpent
+          style="position: relative; height: 30vh; width: 40vw"
+        ></canvas>
+      </ion-card-content>
+    </ion-card>
+
+    <h2 [hidden]="hideTrainingDiv">{{ 'PERFORMANCE.heading2' | translate }}</h2>
+
+    <ion-card [hidden]="hideTrainingDiv">
+      <ion-card-content>
+        <canvas
+          #training
+          style="position: relative; height: 30vh; width: 40vw"
+        ></canvas>
+      </ion-card-content>
+    </ion-card>
+
+    <h2 [hidden]="hideBaselineDive">{{ 'PERFORMANCE.heading' | translate }}</h2>
+
+    <ion-card [hidden]="hideBaselineDive">
+      <ion-card-content>
+        <canvas
+          #baselienEndline
+          style="position: relative; height: 30vh; width: 40vw"
+        ></canvas>
+      </ion-card-content>
+    </ion-card>
+  </div>
+</ion-content>

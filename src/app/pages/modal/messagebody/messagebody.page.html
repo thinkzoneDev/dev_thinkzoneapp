@@ -1,0 +1,15 @@
+<ion-header no-border [ngClass]="(toolbarshadow)?'':'shadow'">
+  <ion-toolbar>
+    <ion-title> {{ message_title }} </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <p>{{message_body}}</p>
+</ion-content>
+
+<ion-footer no-border [ngClass]="(toolbarshadow)?'':'shadow'">
+  <div class="button">
+    <button (click)="closeModal()">OK</button>
+  </div>
+</ion-footer>

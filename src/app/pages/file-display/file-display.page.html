@@ -1,0 +1,33 @@
+<ion-header no-border [ngClass]="(toolbarshadow)?'':'shadow'">
+    <ion-toolbar class='material-toolbar' color="--ion-color-reghead">
+        <ion-row>
+            <ion-title class="page-title-absolute">
+                <p class="pMargin white">{{page_title}}</p>
+            </ion-title>
+            <ion-back-button style="color:#ffffff"></ion-back-button>
+        </ion-row>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content scrollY='false' [scrollEvents]="true" (ionScroll)="logScrolling($event)">
+    <div *ngIf='doc_path_list.length != 0'>
+        <div *ngFor='let vid of doc_path_list;let i = index' (click)='file_btn_click(vid,i)' style='border-radius: 0px;margin: 20px; overflow: auto;justify-content: flex-start' class='shadow'>
+            <div class='horizontal-flexbox' style='justify-content: space-between'>
+                <div class='horizontal-flexbox' style='justify-content: flex-start'>
+                    <div class='horizontal-flexbox' style='margin: 10px;height: 40px;width: 40px;border-radius: 50%;background: #64B5F6;justify-content: center;'>
+                        <ion-icon [name]='icon' style="color: white"></ion-icon>
+                    </div>
+                    <p style='margin-left: 20px;color: gray'>{{type}} {{i+1}}</p>
+                </div>
+                <div *ngIf='vid.played' style='margin: 10px;height: 30px;width: 30px;border-radius: 50%;background: #66BB6A' class='horizontal-flexbox'>
+                    <ion-icon name='checkmark' style="color: white"></ion-icon>
+                </div>
+            </div>
+            <div *ngIf="i == file_index">{{dlprogress}} </div>
+        </div>
+    </div>
+    <div class="noVideo" *ngIf='doc_path_list.length == 0'>
+        <p *ngIf='type == "video"'>No video found</p>
+        <p *ngIf='type == "document" || type=="sheet"'>No worksheet found</p>
+    </div>
+</ion-content>

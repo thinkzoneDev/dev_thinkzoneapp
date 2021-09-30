@@ -1,0 +1,66 @@
+<ion-header no-border [ngClass]="(toolbarshadow)?'':'shadow'">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{ 'ATTENDANCE.title' | translate }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [scrollEvents]="true" (ionScroll)="logScrolling($event)">
+  <!-- attendance history records -->
+  <div class="wrapper">
+    <h2>{{ 'ATTENDANCE.last7days' | translate }}</h2>
+    <div [hidden]="is_attendance_history_blank" class="Blank">
+      <h1>{{ 'ATTENDANCE.no_attendance_found' | translate }} !</h1>
+    </div>
+    <div class="scrole">
+      <ion-card
+        [hidden]="!is_attendance_history_blank"
+        *ngFor="let att of attendance_history_list; let i=index;"
+        (click)="show_details(att)"
+      >
+        <p>{{ att.att_date | date: 'mediumDate' }}</p>
+        <ion-icon name="checkbox-outline"></ion-icon>
+      </ion-card>
+    </div>
+  </div>
+
+  <div (click)="openDatePicker()" class="calender">
+    <div class="day">
+      <p>{{attendance_day}}</p>
+    </div>
+    <div class="month">
+      <h1>{{month}}</h1>
+      <b>{{date}}</b>
+    </div>
+    <div class="year">
+      <p>{{year}}</p>
+    </div>
+  </div>
+
+  <div *ngIf="!is_attendance_taken" class="button">
+    <ion-button (click)='changeState("attendance")'>
+      {{ 'ATTENDANCE.btn_attendance' | translate }}
+    </ion-button>
+
+    <ion-button (click)='changeState("holiday")' style="--background: #54c4f7">
+      {{ 'ATTENDANCE.btn_holiday' | translate }}
+    </ion-button>
+  </div>
+  <div *ngIf="is_attendance_taken" class="taken">
+    <p *ngIf="isHoliday">{{ 'ATTENDANCE.holiday' | translate }}</p>
+    <p *ngIf="!isHoliday">{{ 'ATTENDANCE.complete' | translate }}</p>
+    <ion-icon name="checkmark"></ion-icon>
+  </div>
+  <ion-datetime
+    #datePicker
+    hidden="true"
+    display-format="DD/MM/YYYY"
+    picker-format="DD MM, YYYY"
+    (ionChange)="attendancedate_onhange($event.detail.value)"
+    [min]="min_date"
+    [max]="max_date"
+    [(ngModel)]="attendance_date"
+  ></ion-datetime>
+</ion-content>

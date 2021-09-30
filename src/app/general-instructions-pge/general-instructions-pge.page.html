@@ -1,0 +1,42 @@
+<ion-content style="border: 1px solid #818181; text-align: justify">
+  <!-- <div  class="close1">
+    <ion-icon name="close"  (click)="onClose()"></ion-icon>
+  </div> -->
+
+  <div class="general1">General Instructions</div>
+
+  <div *ngIf="selectedLanguage != 'od'" style="margin-top: 5%; padding: 5%">
+    <b>1.</b> Please make sure that you read the activities thoroughly before
+    you do them in your classroom<br /><br />
+    <b>2.</b> Please make sure that you do the activities according to the
+    levels.<br /><br />
+    <b>3.</b> Please conduct these activities regularly in the classroom.<br /><br />
+    <b>4.</b> The teacher can create and perform more and other different
+    activities in the classroom other than what is given in the application.<br /><br />
+    <b>5.</b> The teacher can create and perform more and other different
+    activities in the classroom other than what is given in the application.<br /><br />
+    <b>6.</b> After the completion of a set of four skills , the respective
+    assessment for that set will be unlocked in the assessment section.<br /><br />
+  </div>
+  <div *ngIf="selectedLanguage == 'od'" style="margin-top: 5%; padding: 5%">
+    <b>1.</b> ଶ୍ରେଣୀକୁ ଯିବା ପୂର୍ବରୁ ପାଠ୍ୟକ୍ରମ ପ୍ରସ୍ତୁତ କରନ୍ତୁ । ଏଠାରେ ଥିବା
+    ଶିକ୍ଷଣ କାର୍ଯ୍ୟର ସାହାଯ୍ୟ ନେଇପାରିବେ । <br /><br />
+    <b>2.</b> ଏଠାରେ ଦିଆଯାଇଥିବା ଶିକ୍ଷଣ କାର୍ଯ୍ୟ ଶିକ୍ଷକଙ୍କ ପାଇଁ ଏକ ଉଦାହରଣ ଅଟେ ।
+    ଶିକ୍ଷକ ଶିକ୍ଷାର୍ଥୀଙ୍କ ଆବଶ୍ୟକତା ଅନୁସାରେ ଶିକ୍ଷଣ କାର୍ଯ୍ୟ ବ୍ୟବାହାର କରିପାରିବେ ।
+    <br /><br />
+    <b>3.</b> ଶ୍ରେଣୀରେ ଶିକ୍ଷଣ-ଶିକ୍ଷାଦାନ ପ୍ରକ୍ରିୟା ଶିକ୍ଷାର୍ଥୀ ଭିତ୍ତିକ ହେବା ଆବଶ୍ୟକ
+    । <br /><br />
+    <b>4.</b> କୌଣସି ଧାରଣା ସହ ଶିକ୍ଷାର୍ଥୀମାନଙ୍କୁ ପରିଚୟ କରିବା ସମୟରେ କାର୍ଯ୍ୟ ଭିତ୍ତିକ
+    ଶିକ୍ଷଣ ପଦ୍ଧତି ବ୍ୟବହାର କରିବେ । <br /><br />
+    <b>5.</b> ଶ୍ରେଣୀରେ ଏକ ଶିକ୍ଷଣ ବାତାବରଣ ସୃଷ୍ଟି କରନ୍ତୁ ଯେଉଁଥିରେ ଶିକ୍ଷାର୍ଥୀମାନେ
+    ଅନୁସନ୍ଧାନ କରି ଶିଖିବେ । <br /><br />
+    <br /><br />
+  </div>
+  <!-- <div class="close">
+  <img src="assets/img/close.png" style="height: 8vh;" (click)="onClose()">
+  </div>
+   -->
+  <div class="button">
+    <ion-button name="small" (click)="onClose()">OK</ion-button>
+  </div>
+</ion-content>

@@ -1,0 +1,107 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-row>
+      <ion-buttons>
+        <ion-back-button></ion-back-button>
+      </ion-buttons>
+      <ion-title> {{ 'PGEACTIVITY.content' | translate }} </ion-title>
+      <ion-button (click)="go_to_extraresources_page()">
+        <ion-icon name="list-box"></ion-icon>{{ 'PGEACTIVITY.extraresource' |
+        translate }}
+      </ion-button>
+    </ion-row>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [scrollEvents]="true" (ionScroll)="logScrolling($event)">
+  <div class="no-content">
+    <p *ngIf="!contentstatus">{{ 'PPT.no_contents_found' | translate }}</p>
+  </div>
+  <!-- Extra Resources -->
+  <div class="container" *ngIf="contentstatus">
+    <div
+      *ngFor="let segment of segments_list; let i=index;"
+      [ngClass]="(current_segment == i) ? 'showdiv' : 'hidediv'"
+    >
+      <ion-card>
+        <!-- Text -->
+        <div *ngIf="segment['type'] == 'text_content'" class="text">
+          <div class="link">
+            <img src="../../../assets/img/hbl/web-link.png" />
+            <h2>Click on the links to watch the videos</h2>
+          </div>
+          <div [innerHTML]="segment['value']" class="text-content"></div>
+        </div>
+
+        <!-- Image -->
+
+        <img
+          *ngIf="segment['type'] == 'image_content'"
+          loading="eager"
+          alt="..."
+          src="{{ (segment['s3_url'] == undefined || segment['s3_url'] == null || segment['s3_url'] == '') ? './../../../../assets/img/media_missing.png' : segment['s3_url'] }}"
+          onerror="this.onerror=null; this.src='./../../../../assets/img/media_missing.png'"
+        />
+
+        <!-- Video  -->
+        <div
+          class="video"
+          *ngIf="segment['type'] == 'video_content'"
+          class="video"
+        >
+          <!-- download button -->
+
+          <ion-button
+            (click)="play_btn_click(segment)"
+            expand="full"
+            fill="solid"
+            shape="round"
+            strong="true"
+            mode="ios"
+          >
+            <ion-icon slot="start" name="play-circle"></ion-icon>Play Video
+          </ion-button>
+
+          <ion-button
+            (click)="delete_btn_click(segment)"
+            expand="full"
+            fill="solid"
+            color="danger"
+            shape="round"
+            strong="true"
+            mode="ios"
+          >
+            <ion-icon slot="start" name="trash"></ion-icon>Delete Video
+          </ion-button>
+        </div>
+      </ion-card>
+
+      <div class="btn-grp">
+        <ion-button (click)="prev(i)"
+          ><ion-icon name="arrow-dropleft"></ion-icon
+        ></ion-button>
+
+        <ion-button (click)="next(i)" [hidden]="hide_next_button"
+          ><ion-icon name="arrow-dropright"></ion-icon
+        ></ion-button>
+      </div>
+    </div>
+    <!-- Complete activity button -->
+
+    <div
+      (click)="completeActivity()"
+      *ngIf="!activity_already_submitted"
+      [hidden]="!hide_next_button"
+      class="save_activity_div"
+    >
+      {{ 'PGEACTIVITY.btn_save' | translate }}
+    </div>
+
+    <!-- Already completed activity status div -->
+
+    <div *ngIf="activity_already_submitted" class="completed_activity_div">
+      <ion-icon name="checkmark-circle-outline"></ion-icon>{{
+      'PGEACTIVITY.completed_activity' | translate }}
+    </div>
+  </div>
+</ion-content>

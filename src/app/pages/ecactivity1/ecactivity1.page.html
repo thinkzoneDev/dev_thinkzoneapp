@@ -1,0 +1,21 @@
+<ion-header no-border [ngClass]="(toolbarshadow)?'':'shadow'">
+  <ion-toolbar>
+    <ion-row>
+      <ion-buttons>
+        <ion-back-button></ion-back-button>
+      </ion-buttons>
+      <ion-title> {{ 'ECEACTIVITY.title' | translate}}</ion-title>
+    </ion-row>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [scrollEvents]="true" (ionScroll)="logScrolling($event)">
+  <!-- <div class="activity_title">{{ selected_month }} <br> Skill: {{ selected_week }}</div> -->
+  <div *ngIf="activity_loaded && activity_list.length==0">
+    <p class="error-message">No activities found for the selected week</p>
+  </div>
+  <app-activity-selector
+    [activity_list]="activity_list"
+    (selected)="activity_btnclick($event)"
+  ></app-activity-selector>
+</ion-content>

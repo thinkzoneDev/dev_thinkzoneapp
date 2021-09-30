@@ -1,0 +1,43 @@
+<ion-header no-border [ngClass]="(toolbarshadow)?'':'shadow'">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+
+    <ion-title>{{ 'PPT.quiz' | translate }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [scrollEvents]="true" (ionScroll)="logScrolling($event)">
+  <div class="container">
+    <div class="wrapper">
+      <h2>{{ 'PPT.module' | translate }}: {{modulename}}</h2>
+      <p>{{ 'PPT.submodule' | translate }}:{{submodulename}}</p>
+      <p>{{ 'PPT.topic' | translate }}: {{topicname}}</p>
+      <p>{{ 'PPT.totalmark' | translate }}: {{total_mark}}</p>
+      <p>{{ 'PPT.yourmark' | translate }}: {{secured_mark}}</p>
+    </div>
+    <ion-card *ngFor="let quiz of userquizdata; let i=index">
+      <h2>Q{{(i+1)}}. {{quiz.question}}</h2>
+      <div class="card">
+        <p [ngClass]='(quiz.answer == "A") ? "correctoption" : "option"'>
+          A. {{quiz.A}}
+        </p>
+        <p [ngClass]='(quiz.answer == "B") ? "correctoption" : "option"'>
+          B. {{quiz.B}}
+        </p>
+        <p [ngClass]='(quiz.answer == "C") ? "correctoption" : "option"'>
+          C. {{quiz.C}}
+        </p>
+        <p [ngClass]='(quiz.answer == "D") ? "correctoption" : "option"'>
+          D. {{quiz.D}}
+        </p>
+      </div>
+      <h2 *ngIf="quiz.selectedOption">
+        {{ 'PPT.youranswer' | translate }}: {{quiz.selectedOption}}
+      </h2>
+    </ion-card>
+  </div>
+</ion-content>
+
+<!-- <ion-footer><ion-button (click)="ok_btnclick()" expand="block">{{ 'BASELINE.btn_ok' | translate }}</ion-button></ion-footer> -->

@@ -1,0 +1,92 @@
+<ion-header no-border [ngClass]="(toolbarshadow)?'':'shadow'">
+  <ion-toolbar (click)="checkQuizStatus()">
+    <ion-row>
+      <button (click)="checkQuizStatus()">
+        <ion-icon name="arrow-back"></ion-icon>
+      </button>
+      <ion-title>{{ 'HBL.response_question' | translate }}</ion-title>
+    </ion-row>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-content [scrollEvents]="true" class="ion-no-padding">
+    <div class="container">
+      <ion-card>
+        <div class="img">
+          <img src="../../../assets/img/hbl/graduates.png" />
+        </div>
+        <div class="main">
+          <h3>{{studentName | uppercase}}</h3>
+          <h5>Contact no. - {{ phoneno }}</h5>
+          <h5>Date - {{ date }}</h5>
+          <h5>school - {{ schoolname }}</h5>
+        </div>
+      </ion-card>
+
+      <!-- <ion-list lines="none">
+        <ion-radio-group>
+          <ion-list-header>
+            <ion-label> {{ 'HBL.select' | translate }} </ion-label>
+          </ion-list-header>
+
+          <div class="select">
+            <ion-item (click)='subjectOnChange("odia")'>
+              <ion-radio></ion-radio>
+              <ion-label>{{ 'HBL.odia' | translate }}</ion-label>
+            </ion-item>
+
+            <ion-item (click)='subjectOnChange("math")'>
+              <ion-radio></ion-radio>
+              <ion-label>{{ 'HBL.math' | translate }}</ion-label>
+            </ion-item>
+
+            <ion-item (click)='subjectOnChange("english")'>
+              <ion-radio></ion-radio>
+              <ion-label>{{ 'HBL.eng' | translate }}</ion-label>
+            </ion-item>
+          </div>
+        </ion-radio-group>
+      </ion-list> -->
+
+      <div class="wraper" [hidden]="hide_div">
+        <ion-card>
+          <p>{{ 'HBLQUIZ.firstquestion' | translate }}?</p>
+          <div class="content">
+            <div (click)="yesClicked()" class="selected-yes">
+              {{ 'HBLQUIZ.btn_yes' | translate }}
+            </div>
+            <div (click)="noClicked()" class="selected-no">
+              {{ 'HBLQUIZ.btn_no' | translate }}
+            </div>
+          </div>
+        </ion-card>
+      </div>
+
+      <div class="wraper" *ngIf="parents_responded">
+        <ion-card *ngFor="let item of questionsList; let i=index">
+          <p>{{i+1}}. {{item.question}} ?</p>
+          <div class="content">
+            <div
+              (click)='segmentChanged(item, "yes")'
+              [ngClass]='(answerList[item._id]=="yes")?"selected-yes":"yes"'
+            >
+              {{ 'HBLQUIZ.btn_yes' | translate }}
+            </div>
+            <div
+              (click)='segmentChanged(item, "no")'
+              [ngClass]='(answerList[item._id]=="no")?"selected-no":"no"'
+            >
+              {{ 'HBLQUIZ.btn_no' | translate }}
+            </div>
+          </div>
+        </ion-card>
+
+        <ion-button *ngIf="saveBtn" (click)="save_feedback()" expand="block">
+          {{ 'HBLQUIZ.save_btn' | translate }}
+          <ion-icon name="save" style="padding-left: 5px"></ion-icon>
+        </ion-button>
+      </div>
+    </div>
+  </ion-content>
+</ion-content>

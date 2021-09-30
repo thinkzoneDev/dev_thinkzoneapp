@@ -1,0 +1,246 @@
+<ion-header no-border [ngClass]="(toolbarshadow)?'':'shadow'">
+    <ion-toolbar class="material-toolbar">
+        <ion-buttons slot="start">
+            <ion-menu-button></ion-menu-button>
+        </ion-buttons>
+        <ion-title>
+            <!-- <p class='page-title'>{{ 'HOME.thinkzone' | translate}}</p> -->
+            <p class='page-title'>-: {{ _username }} :-</p>
+        </ion-title>
+
+        <ion-buttons slot="end">
+            <ion-button size="small" shape="round" (click)="notifications('hi')">
+                <ion-icon class='data-large' name="notifications" style="font-size:25px"></ion-icon>
+            </ion-button>
+        </ion-buttons>
+    </ion-toolbar>
+</ion-header>
+<ion-content [scrollEvents]="true" (ionScroll)="logScrolling($event)">
+    <!-- <p>Add student details here {{ 'HOME.student_details' | translate }}</p> -->
+    <div class="homeslides">
+        <ion-slides pager="true" autoplay="true" [options]="slideOpts" #slider>
+            <ion-slide class="sliderhome1">
+                <!-- <div class="homeslidediv">
+                    <p class="homeslide">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer vel elit eget libero malesuada gravida.
+                    </p>
+                </div> -->
+            </ion-slide>
+            <ion-slide class="sliderhome2">
+                <!-- <div class="homeslidediv">
+                    <p class="homeslide"> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer vel elit eget libero malesuada gravida.</p>
+                </div> -->
+            </ion-slide>
+            <ion-slide class="sliderhome3">
+                <!-- <div class="homeslidediv">
+                    <p class="homeslide">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer vel elit eget libero malesuada gravida.</p>
+                </div> -->
+            </ion-slide>
+        </ion-slides>
+    </div>
+    <!-- <ion-content fullscreen class="completegrid"> -->
+    <div class="completegrid">
+        <ion-grid class="dashgrid">
+            <!-- 
+            <ion-row>
+                <ion-col class="box" [routerLink]="'/studentexplor'">
+                    <img src="/assets/img/StudentDetails-Icon.png" alt="" class="cardimg" />
+                    <p class='data hometitle'>{{ 'HOME.student_details' | translate }}</p>
+                </ion-col>
+                <ion-col class="box" [routerLink]="'/attendance'">
+                    <img src="/assets/img/Attendance-Icon.png" alt="" class="cardimg" />
+                    <p class='data hometitle'>{{ 'HOME.attendance' | translate }}</p>
+                </ion-col>
+            </ion-row>
+            <ion-row>
+                <ion-col class="box" >
+                  <div [routerLink]="'/ecactivity'">
+                    <img src="/assets/img/ECE-Icon_1.png" alt="" class="cardimg" />
+                    <p class='data hometitle'>{{ 'HOME.activity_ece' | translate }}</p>
+                    <p class='data-large homesubtitle'>{{ 'HOME.ece' | translate}}</p>
+                    </div>
+                </ion-col>
+                <ion-col class="box" [routerLink]="'/ecassessment'">
+                    <img src="/assets/img/ECE-Icon_2.png" alt="" class="cardimg" />
+                    <p class='data hometitle'>{{ 'HOME.assessment_ece' | translate }}</p>
+                    <p class='data-large homesubtitle'>{{ 'HOME.ece' | translate}}</p>
+                </ion-col>
+            </ion-row>
+            <ion-row>
+                <ion-col class="box">
+                  <div  [routerLink]="'/pgactivity'">
+                    <img src="/assets/img/PGE-Icon_2.png" alt="" class="cardimg" />
+                    <p class='data hometitle'>{{ 'HOME.activity_pge_math' | translate }}</p>
+                    <p class='data-large homesubtitle'>{{ 'HOME.pge' | translate}}</p>
+                    </div>
+                </ion-col>
+                <ion-col class="box">
+                  <div [routerLink]="'/pgactivityeng'">
+                    <img src="/assets/img/PGE-Icon_1.png" alt="" class="cardimg" />
+                    <p class='data hometitle'>{{ 'HOME.activity_pge_eng' | translate }}</p>
+                    <p class='data-large homesubtitle'>{{ 'HOME.pge' | translate}}</p>
+                    </div>
+                </ion-col>
+            </ion-row>
+            <ion-row>
+                <ion-col class="box">
+                  <div  [routerLink]="'/pgactivityodia'">
+                    <img src="/assets/img/PGE-Icon_3.png" alt="" class="cardimg" />
+                    <p class='data hometitle'>{{ 'HOME.activity_pge_odia' | translate }}</p>
+                    <p class='data-large homesubtitle'>{{ 'HOME.pge' | translate}}</p>
+                    </div>
+                </ion-col>
+                <ion-col class="box" [routerLink]="'/pgassessment'">
+                    <img src="/assets/img/Assessment-Icon.png" alt="" class="cardimg" />
+                    <p class='data hometitle'>{{ 'HOME.assessment_pge' | translate }}</p>
+                    <p class='data-large homesubtitle'>{{ 'HOME.pge' | translate}}</p>
+                 
+                </ion-col>
+            </ion-row>
+            <ion-row>
+                <ion-col class="box" [routerLink]="'/tchpayment'">
+                    <img src="/assets/img/Payment-Icon.png" alt="" class="cardimg" />
+                    <p class='data hometitle'>{{ 'HOME.payment' | translate }}</p>
+                </ion-col>
+                <ion-col class="box" [routerLink]="'/training1'">
+                    <img src="/assets/img/Training-Icon.png" alt="" class="cardimg" />
+                    <p class='data hometitle'>{{ 'HOME.training' | translate }}</p>
+                </ion-col>
+            </ion-row>
+             -->
+
+
+            <ion-row>
+                <!-- <ion-col class="box" [routerLink]="'/tzworkshop'">
+                    <img src="/assets/img/workshop.png" alt="" class="cardimg" />
+                    <p class='data hometitle'>{{ 'HOME.tzworkshop' | translate }}</p>
+                </ion-col>
+                 -->
+                <ion-col class="box" [routerLink]="'/tools'">
+                    <img src="/assets/img/tools.png" alt="" class="cardimg" />
+                    <p class='data hometitle'>{{ 'HOME.tools' | translate }}</p>
+                </ion-col>
+                <ion-col class="box" [routerLink]="'/manager-box'">
+                    <img src="/assets/img/gallery.png" alt="" class="cardimg" />
+                    <p class='data hometitle'>{{ 'HOME.gallery' | translate }}</p>
+                </ion-col>
+            </ion-row>
+            <ion-row>
+        </ion-row>
+        </ion-grid>
+    </div>
+    <!-- </ion-content> -->
+
+    <!-- Student details  -->
+    <!-- <div [routerLink]="'/studentexplor'"  class='shadow home-card'>
+    <div class='card-left-block student-bg'>
+      <ion-icon name='person' style="font-size: 3rem"></ion-icon>
+    </div>
+    <div class='centered-text-for-card'>
+      <p class='data'>{{ 'HOME.student_details' | translate }}</p>
+    </div>
+    <div class='decorative-side-panel-small student-bg'>
+    </div>
+  </div> -->
+
+    <!-- Attendance  -->
+    <!-- <div [routerLink]="'/attendance'" class='shadow home-card'>
+    <div class='card-left-block attendance-bg'>
+      <p style='color: white;font-size: 2rem;margin: 5px'>{{date}}</p>
+      <p style='color: white;margin: 5px 8px 5px 8px'>{{month}}</p>
+    </div>
+    <div class='centered-text-for-card'>
+      <p class='data'>{{ 'HOME.attendance' | translate }}</p>
+    </div>
+    <div class='decorative-side-panel-small attendance-bg'>
+    </div>
+  </div> -->
+
+    <!-- ECE Activity + Assessment  -->
+    <!-- <div class='shadow home-card'>
+    <div class='student-level-name'>
+      <p class='data-large ece-color'>ECE</p>
+    </div>
+    <div class='vertical-bar'>
+    </div>
+    <div class='button-section-inside-card'>
+        <div [routerLink]="'/ecactivity'" class='shadow button ece-solid'>
+          <p class='data'>{{ 'HOME.activity_ece' | translate }}</p>
+        </div>
+
+        <div [routerLink]="'/ecassessment'" class='button ece-bordered'>
+          <p class='data'>{{ 'HOME.assessment_ece' | translate }}</p>
+        </div>
+    </div>
+    <div class='decorative-side-panel ece-bg'>
+    </div>
+  </div> -->
+
+    <!-- PGE Activity + Assessment  -->
+    <!-- <div class='shadow home-card'>
+    <div class='student-level-name'>
+      <p class='data-large pge-color'>PGE</p>
+    </div>
+    <div class='vertical-bar'>
+    </div>
+    <div  class='button-section-inside-card'>
+        <div [routerLink]="'/pgactivity'" class='shadow button pge-solid'>
+          <p class='data'>{{ 'HOME.activity_pge_math' | translate }}</p>
+        </div>
+
+        <div [routerLink]="'/pgactivityeng'" class='shadow button pge-solid'>
+          <p class='data'>{{ 'HOME.activity_pge_eng' | translate }}</p>
+        </div>
+
+        <div [routerLink]="'/pgactivityodia'" class='shadow button pge-solid'>
+          <p class='data'>{{ 'HOME.activity_pge_odia' | translate }}</p>
+        </div>
+
+        <div [routerLink]="'/pgassessment'" class='button pge-bordered'>
+          <p class='data'>{{ 'HOME.assessment_pge' | translate }}</p>  
+        </div>
+    </div>
+    <div class='decorative-side-panel pge-bg'>
+    </div>
+  </div> -->
+
+    <!-- Payment details  -->
+    <!-- <div [routerLink]="'/tchpayment'"  class='shadow home-card'>
+    <div class='card-left-block cyan-bg'>
+      <ion-icon name='cash' style="font-size: 3rem"></ion-icon>
+    </div>
+    <div class='centered-text-for-card'>
+      <p class='data'>{{ 'HOME.payment' | translate }}</p>
+    </div>
+    <div class='decorative-side-panel-small cyan-bg'>
+    </div>
+  </div> -->
+
+    <!-- Training details  -->
+    <!-- <div [routerLink]="'/training1'"  class='shadow home-card'>
+    <div class='card-left-block lemon-bg'>
+      <ion-icon name='trending-up' style="font-size: 3rem"></ion-icon>
+    </div>
+    <div class='centered-text-for-card'>
+      <p class='data'>{{ 'HOME.training' | translate }}</p>
+    </div>
+    <div class='decorative-side-panel-small lemon-bg'>
+    </div>
+  </div> -->
+
+    <!-- Payment + Training  -->
+    <!-- <div class='shadow home-card spread-evenly'>
+    <div [routerLink]="'/tchpayment'">
+      <div class='solid-icon cyan-bg'>
+        <ion-icon class="data-large white" name='cash'></ion-icon>
+      </div>
+      <p class='data'>{{ 'HOME.payment' | translate }}</p>
+    </div>
+    <div class='vertical-bar'></div>
+    <div [routerLink]="'/training1'">
+      <div class='solid-icon lemon-bg'>
+        <ion-icon class='data-large white' name='trending-up'></ion-icon>
+      </div>
+      <p class='data'>{{ 'HOME.training' | translate }}</p>
+    </div>
+  </div> -->
+</ion-content>

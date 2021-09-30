@@ -1,0 +1,58 @@
+<ion-header no-border [ngClass]="(toolbarshadow)?'':'shadow'">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title> {{ 'STUDENT.studentinfo' | translate}} </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [scrollEvents]="true" (ionScroll)="logScrolling($event)">
+  <ion-card>
+    <div class="details">
+      <div class="lable">
+        <span>Name -&nbsp;</span>
+        <p>{{data.studentname}}</p>
+      </div>
+      <div class="lable">
+        <span>parentsname -&nbsp;</span>
+        <p>{{data.parentsname}}</p>
+      </div>
+
+      <div class="lable">
+        <span>phone -&nbsp;</span>
+        <p>{{data.phone}}</p>
+      </div>
+
+      <div class="lable">
+        <span>gender -&nbsp;</span>
+        <p>{{data.gender}}</p>
+      </div>
+
+      <div class="lable">
+        <span>Registration Date -&nbsp;</span>
+        <p>{{data.registration_date.split("T")[0]}}</p>
+      </div>
+
+      <div class="lable">
+        <span>DOB -&nbsp;</span>
+        <p>{{data.dob.split("T")[0]}}</p>
+      </div>
+
+      <div class="lable">
+        <span>Program -&nbsp;</span>
+        <p style="text-transform: uppercase">{{data.program}}</p>
+      </div>
+    </div>
+  </ion-card>
+
+  <ion-card [hidden]="show_hide_div">
+    <ion-card-header> Baseline & Endline Graph </ion-card-header>
+    <ion-card-content>
+      <canvas
+        #barCanvas
+        style="position: relative; height: 30vh; width: 40vw"
+      ></canvas>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

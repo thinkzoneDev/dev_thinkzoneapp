@@ -1,0 +1,41 @@
+<ion-header no-border [ngClass]="'shadow'">
+    <ion-toolbar class='material-toolbar' color="--ion-color-reghead">
+        <ion-row style="position: relative">
+            <ion-title class='page-title-absolute'>
+                <p class="marginBottom">{{ 'WORKSHOP.leap' | translate }}</p>
+            </ion-title>
+            <ion-back-button style="color:#ffffff; display: block;" (click)="navigateback()"></ion-back-button>
+        </ion-row>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+    <ion-grid>
+        <ion-item class="radio-margin ">
+            <ion-label>{{ 'WORKSHOP.startdate' | translate }}</ion-label>
+            <ion-label class="boldblue">{{ startdate_str }}</ion-label>
+        </ion-item>
+        <ion-item class="radio-margin ">
+            <ion-label>{{ 'WORKSHOP.enddate' | translate }}</ion-label>
+            <ion-label class="boldblue">{{ enddate_str }}</ion-label>
+        </ion-item>
+        <ion-item>
+            <ion-label>{{ 'WORKSHOP.daysleft' | translate }}</ion-label>
+            <ion-label class="boldblue">{{ days_remaining }}</ion-label>
+        </ion-item>
+    </ion-grid>
+    <ion-grid>
+        <div style='flex-wrap: wrap;display: flex;justify-content: space-between;' class='horizontal-flexboxx monthDiv'>
+            <div style="padding: 6px;" (click)='subject_button_click(subject)' *ngFor='let subject of subjects'
+                [ngClass]='(subject.selected)?"selected-chip":"unselected-chip"'>
+                <p class='data marginBottom'>{{subject.subject}}</p>
+            </div>
+        </div>
+    </ion-grid>
+    <div class="goDiv">
+        <ion-button class="buttonwidth " (click)="go_button_click()" color="--ion-color-reghead ">
+            <span>{{ 'WORKSHOP.go' | translate }}</span>
+            <ion-icon style="display: block;font-size:18px;" name="arrow-forward"></ion-icon>
+        </ion-button>
+    </div>
+</ion-content>

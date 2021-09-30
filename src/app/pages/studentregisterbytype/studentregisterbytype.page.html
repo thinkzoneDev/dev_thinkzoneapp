@@ -1,0 +1,36 @@
+<ion-content (click)="closeModal()">
+  <div class="close-main">
+    <div class="close" (click)="closeModal()">
+      <ion-icon name="close"></ion-icon>
+    </div>
+  </div>
+</ion-content>
+<ion-footer>
+  <div class="wrapper">
+    <ion-card
+      class="math_activity"
+      class="ion-text-center"
+      (click)="openRegisterModal(null, 'new')"
+    >
+      <img
+        src="../../../../assets/img/hbl/appStudent.png"
+        alt=""
+        class="cardimg"
+      />
+      <p class="data hometitle">Regular Student</p>
+    </ion-card>
+
+    <ion-card
+      class="math_activity"
+      class="ion-text-center"
+      (click)="openHBLRegisterModal(null, 'new')"
+    >
+      <img
+        src="../../../../assets/img/hbl/hblStudent.png"
+        alt=""
+        class="cardimg"
+      />
+      <p class="data hometitle">HBL Student</p>
+    </ion-card>
+  </div>
+</ion-footer>

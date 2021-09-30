@@ -1,0 +1,120 @@
+ion-header {
+  ion-toolbar {
+    --background: #373b44;
+    --background: -webkit-linear-gradient(to right, #4286f4, #373b44);
+    --background: linear-gradient(to right, #4286f4, #373b44);
+
+    ion-back-button {
+      color: white;
+    }
+
+    ion-title {
+      text-align: center;
+      font-size: 1.2rem;
+      font-weight: 400;
+      letter-spacing: 1px;
+      font-family: Arial, Helvetica, sans-serif;
+      color: white;
+      margin-left: -48px;
+    }
+  }
+}
+
+ion-content {
+  --background: #eff4ff;
+
+  .container {
+    margin: 0;
+    padding: 0;
+    margin-top: 10px;
+
+    .wrapper {
+      margin: auto;
+      background: #314755;
+      background: -webkit-linear-gradient(to right, #26a0da, #314755);
+      background: linear-gradient(to right, #26a0da, #314755);
+      display: flex;
+      justify-content: space-evenly;
+      align-items: flex-start;
+      flex-direction: column;
+      box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+      width: 97%;
+      min-height: 180px;
+      border-radius: 5px;
+      padding: 7px;
+
+      h2,
+      p {
+        font-size: 1.1rem;
+        color: white;
+        margin: 0;
+        font-family: Arial, Helvetica, sans-serif;
+        font-weight: 400;
+        letter-spacing: 1px;
+        text-transform: capitalize;
+      }
+
+      h2 {
+        font-size: 1.4rem;
+        font-weight: 600;
+        font-family: Arial, Helvetica, sans-serif;
+      }
+    }
+
+    ion-card {
+      margin: 10px auto;
+      width: 96%;
+      background: white;
+      min-height: 200px;
+      display: flex;
+      justify-content: space-evenly;
+      align-items: flex-start;
+      flex-direction: column;
+
+      h2 {
+        font-size: 1.2rem;
+        color: black;
+        margin: 10px 5px;
+        font-family: Arial, Helvetica, sans-serif;
+        font-weight: 600;
+        letter-spacing: 1px;
+        text-transform: capitalize;
+      }
+
+      .card {
+        display: flex;
+        justify-content: space-evenly;
+        align-items: flex-start;
+        width: 100%;
+        margin: 10px auto;
+        padding: 0;
+
+        p {
+          margin: 5px;
+          width: 98%;
+          font-size: 1.1rem;
+          font-family: Arial, Helvetica, sans-serif;
+          font-weight: 500;
+          letter-spacing: 1px;
+          text-transform: capitalize;
+        }
+
+        .correctoption {
+          background-color: #4caf50;
+          word-wrap: break-word;
+          color: #f7fafc;
+          border-radius: 5px;
+          box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+          padding: 5px;
+        }
+
+        .option {
+          word-wrap: break-word;
+          color: black;
+          background-color: white;
+          padding: 5px;
+        }
+      }
+    }
+  }
+}

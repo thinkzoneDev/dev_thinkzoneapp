@@ -1,0 +1,75 @@
+<ion-header no-border [ngClass]="(toolbarshadow)?'':'shadow'">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>leaderboard</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [scrollEvents]="true" (ionScroll)="logScrolling($event)">
+  <div class="container">
+    <div class="wraper" *ngIf="user_available">
+      <h2 style="margin-bottom: 5px">You</h2>
+      <div class="img">
+        <img
+          src="{{ userimage }}"
+          onerror="this.onerror=null; this.src='./../../../../assets/img/default-user-profile-image.png'"
+        />
+      </div>
+      <div class="user_score">
+        <ion-icon name="star"></ion-icon>
+        <h2>{{(user_score * 100).toFixed()}}</h2>
+      </div>
+    </div>
+    <div class="wraper" *ngIf="user_available === undefined">
+      <h1>Sorry you are not availabe in leaderboard</h1>
+    </div>
+
+    <div class="wraper-container" *ngFor="let user of alldata;let i=index;">
+      <div
+        *ngIf="i == 0; else elsepart"
+        class="list-1"
+        (click)="openUserPopup(user)"
+      >
+        <div class="index">
+          <p>{{i +1}}</p>
+        </div>
+
+        <div class="user-img">
+          <img
+            src="{{ user.image }}"
+            onerror="this.onerror=null; this.src='./../../../../assets/img/default-user-profile-image.png'"
+          />
+        </div>
+        <h1>{{user.username}}</h1>
+        <div class="star-score">
+          <img src="../../../assets/img/hbl/trophy.png" />
+          <p>{{ (user.finalrank * 100).toFixed() }}</p>
+        </div>
+      </div>
+
+      <ng-template #elsepart>
+        <div class="list" (click)="openUserPopup(user)">
+          <div class="index">
+            <p>{{i+1}}</p>
+          </div>
+
+          <div class="user-img">
+            <img
+              src="{{ user.image }}"
+              onerror="this.onerror=null; this.src='./../../../../assets/img/default-user-profile-image.png'"
+            />
+          </div>
+
+          <h1>{{user.username}}</h1>
+
+          <div class="star-score">
+            <ion-icon name="star"></ion-icon>
+            <p>{{ (user.finalrank * 100).toFixed() }}</p>
+          </div>
+        </div>
+      </ng-template>
+    </div>
+  </div>
+</ion-content>

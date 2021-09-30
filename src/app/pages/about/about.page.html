@@ -1,0 +1,28 @@
+<!-- Old Code -->
+<!-- <ion-header no-border [ngClass]="(toolbarshadow)?'':'shadow'">
+    <ion-toolbar class='material-toolbar' color="--ion-color-reghead">
+        <ion-row>
+            <ion-title class='page-title-absolute'>
+                <p class="pMargin white">About us</p>
+            </ion-title>
+            <ion-back-button style="color:#ffffff"></ion-back-button>
+        </ion-row>
+    </ion-toolbar>
+</ion-header> 
+<ion-content [scrollEvents]="true" (ionScroll)="logScrolling($event)">
+    <div>
+        <img src="assets/img/aboutus.jpeg" style="height: 45vh;width: fit-content;">
+    </div>
+    <div class='about'>
+        <p class='data'>
+            <span class='blue data-large'>ThinkZone</span> is an award-winning social enterprise that works towards improving the educational outcomes of children from under-resourced communities using a 'tech plus touch' model and activity-based methodology. We do this by empowering community educators, school teachers, public childcare workers, and parents to deliver quality early-childhood and primary grade education programs.
+        </p>
+    </div>
+</ion-content> -->
+
+<!-- New Code -->
+<ion-content #content [scrollEvents]="true" (ionScroll)="logScrolling($event)">
+  <div class="img" (click)="closeIt()">
+    <img src="../../../assets/img/about_us.png" />
+  </div>
+</ion-content>
