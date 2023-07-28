@@ -22,7 +22,7 @@ export class ProfilePage {
   public profile_data: any = [];
 
   // Data
-  "image": "https://shared001.s3.us-east-2.amazonaws.com/1584793889053.jpg";
+
   _id: string = "";
   username: string = "";
   usertype: string = "";
